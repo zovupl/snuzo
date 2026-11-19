@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SNUZO by Fight Mode</title>
+<meta name="description" content="SNUZO by Fight Mode. Saszetki bez nikotyny. Moc w trzech rundach.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800;900&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: Apple/Tesla-style alternating full-bleed bands, one product per screen, huge wordmark, lots of air. */
+:root{
+  --ink:#0b0b0c;
+  --ink-2:#161618;
+  --paper:#f5f5f7;
+  --white:#ffffff;
+  --mute:#86868b;
+  --mute-dark:#a1a1a6;
+  --gold:#c9a24b;
+  --steel:#9fd3ff;
+  --berry:#e2477a;
+  --citrus:#ffb21c;
+  --display:"Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --body:"Inter", "Helvetica Neue", Arial, sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--white);font-family:var(--body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-0.03em}
+p{margin:0}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(11,11,12,.72);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;gap:20px}
+.logo{font-family:var(--display);font-weight:900;letter-spacing:.02em;font-size:19px;text-decoration:none}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:13px;color:#d2d2d7}
+.nav ul a{text-decoration:none}
+.nav ul a:hover{color:var(--white)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;font-family:var(--body);font-weight:600;font-size:15px;padding:12px 24px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease, background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-sm{padding:7px 16px;font-size:13px}
+.btn-light{background:var(--white);color:var(--ink)}
+.btn-ghost{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+.btn-dark{background:var(--ink);color:var(--white)}
+@media (max-width:720px){.nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:72px 96px;text-align:center;background:radial-gradient(ellipse 70% 55% at 50% 62%, #23232a 0%, var(--ink) 70%)}
+.eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.hero h1{font-size:clamp(84px, 19vw, 230px);font-weight:900;line-height:.86;letter-spacing:-0.05em;margin-top:14px}
+.hero .lead{font-family:var(--display);font-weight:500;font-size:clamp(22px, 3.2vw, 32px);color:#e8e8ed;margin-top:18px;letter-spacing:-0.01em}
+.hero .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px;font-size:13px;color:var(--mute-dark)}
+.chips span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:5px 12px}
+
+/* can (drawn in CSS, top view with perspective) */
+.stage{margin:56px auto 0;width:min(440px, 82vw);aspect-ratio:1/0.62;position:relative;max-width:100%}
+.can{position:absolute;inset:0;margin:auto;width:100%;height:100%}
+.can .side{position:absolute;left:0;right:0;bottom:0;height:34%;border-radius:0 0 50% 50% / 0 0 46% 46%;background:linear-gradient(90deg,#050506 0%,#2a2a30 22%,#3c3c44 50%,#1a1a1f 80%,#050506 100%)}
+.can .lid{position:absolute;left:0;right:0;top:0;height:80%;border-radius:50%;background:radial-gradient(ellipse at 38% 30%, #3a3a42 0%, #17171b 55%, #0c0c0e 100%);box-shadow:inset 0 0 0 6px #26262c, inset 0 0 0 9px #0a0a0b, 0 40px 80px -20px rgba(0,0,0,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translateZ(0)}
+.can .lid b{font-family:var(--display);font-weight:900;font-size:clamp(30px, 7.4vw, 62px);letter-spacing:-0.03em;line-height:1}
+.can .lid small{font-size:clamp(8px, 1.6vw, 11px);letter-spacing:.3em;color:var(--gold);margin-top:6px;font-weight:600}
+.can .lid i{font-style:normal;margin-top:10px;font-size:clamp(8px,1.5vw,10px);letter-spacing:.18em;color:var(--mute-dark);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px 9px}
+.glow{position:absolute;left:10%;right:10%;bottom:-14%;height:30%;background:radial-gradient(ellipse at center, rgba(201,162,75,.35), transparent 70%);filter:blur(10px)}
+@media (prefers-reduced-motion:no-preference){
+  .can{animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+}
+
+/* facts band */
+.facts{background:var(--paper);color:var(--ink);padding-block:84px}
+.facts .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+.fact b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(56px, 8vw, 92px);letter-spacing:-0.04em;line-height:1}
+.fact span{display:block;margin-top:10px;color:#515154;font-size:17px}
+@media (max-width:640px){.facts .grid{grid-template-columns:1fr;gap:44px}}
+
+/* section heads */
+.head{text-align:center;max-width:720px;margin:0 auto 56px}
+.head h2{font-size:clamp(40px, 6vw, 64px);font-weight:800;line-height:1.02}
+.head p{margin-top:16px;font-size:clamp(17px,2vw,21px);color:var(--mute)}
+
+/* flavours */
+.flav{background:var(--white);color:var(--ink);padding-block:110px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--paper);border-radius:28px;padding:36px 28px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;min-width:0}
+.mini{width:150px;height:150px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--white);box-shadow:inset 0 0 0 5px rgba(255,255,255,.18), 0 24px 40px -18px rgba(0,0,0,.45);margin-bottom:10px}
+.mini b{font-family:var(--display);font-weight:900;font-size:28px;letter-spacing:-0.02em}
+.mini small{font-size:8px;letter-spacing:.3em;opacity:.85}
+.mini.steel{background:radial-gradient(circle at 35% 30%, #d8eeff, #5fa9e6 70%);color:#0b2236}
+.mini.berry{background:radial-gradient(circle at 35% 30%, #ff8db0, #b8174e 72%)}
+.mini.citrus{background:radial-gradient(circle at 35% 30%, #ffe08a, #f08a00 72%);color:#3a2100}
+.card h3{font-size:26px;font-weight:800}
+.card .taste{color:#515154}
+.dots{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--mute);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.dots i{width:22px;height:5px;border-radius:3px;background:#d2d2d7}
+.dots i.on{background:var(--ink)}
+.price{font-family:var(--display);font-weight:700;font-size:20px;margin-top:4px}
+.card .btn{margin-top:6px}
+@media (max-width:860px){.cards{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+
+/* rounds */
+.rounds{background:var(--ink);padding-block:120px}
+.rounds .head p{color:var(--mute-dark)}
+.bars{display:grid;gap:22px;max-width:820px;margin:0 auto}
+.bar{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center}
+.bar .lab{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-0.02em}
+.bar .lab small{display:block;font-family:var(--body);font-weight:500;font-size:14px;color:var(--mute-dark);letter-spacing:0}
+.track{height:14px;background:var(--ink-2);border-radius:999px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.fill{height:100%;border-radius:999px;background:linear-gradient(90deg, #6b5420, var(--gold))}
+@media (max-width:560px){.bar{grid-template-columns:1fr;gap:10px}}
+
+/* fighters */
+.fighters{background:linear-gradient(180deg, var(--ink) 0%, #141416 100%);padding-block:40px 120px}
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.photo{aspect-ratio:4/5;border-radius:28px;background:linear-gradient(160deg,#2b2b31,#0d0d10);display:flex;align-items:flex-end;padding:24px;color:var(--mute-dark);font-size:14px;border:1px dashed rgba(255,255,255,.18);max-width:100%}
+.split h2{font-size:clamp(38px,5vw,58px);font-weight:800;line-height:1.02}
+.split p{margin-top:18px;color:var(--mute-dark);font-size:19px;max-width:30em}
+.split .btn{margin-top:28px}
+@media (max-width:820px){.split{grid-template-columns:1fr;gap:36px}}
+
+/* how */
+.how{background:var(--paper);color:var(--ink);padding-block:110px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.step{background:var(--white);border-radius:24px;padding:30px 26px;min-width:0}
+.step::before{counter-increment:s;content:counter(s);display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--white);align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:15px;margin-bottom:18px}
+.step h3{font-size:22px;font-weight:800}
+.step p{margin-top:8px;color:#515154}
+@media (max-width:820px){.steps{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--paper);color:#6e6e73;font-size:12px;padding-block:28px 48px;border-top:1px solid #d2d2d7}
+footer .wrap{display:grid;gap:10px}
+footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.draft{position:fixed;right:max(14px, env(safe-area-inset-right, 0px));bottom:calc(14px + env(safe-area-inset-bottom, 0px));z-index:30;background:var(--gold);color:var(--ink);font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Główna">
+  <div class="wrap">
+    <a class="logo" href="#top">SNUZO</a>
+    <ul>
+      <li><a href="#smaki">Smaki</a></li>
+      <li><a href="#moc">Moc</a></li>
+      <li><a href="#zawodnicy">Zawodnicy</a></li>
+      <li><a href="#jak">Jak używać</a></li>
+    </ul>
+    <a class="btn btn-light btn-sm" href="#smaki">Kup</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">by Fight Mode</p>
+    <h1>SNUZO</h1>
+    <p class="lead">Saszetki bez nikotyny. Moc w trzech rundach.</p>
+    <div class="ctas">
+      <a class="btn btn-light" href="#smaki">Kup teraz</a>
+      <a class="btn btn-ghost" href="#moc">Zobacz rundy</a>
+    </div>
+    <div class="chips"><span>0% nikotyny</span><span>20 saszetek</span><span>18+</span></div>
+    <div class="stage" aria-hidden="true">
+      <div class="glow"></div>
+      <div class="can">
+        <div class="side"></div>
+        <div class="lid"><b>SNUZO</b><small>BY FIGHT MODE</small><i>RUNDA 2 · COLD STEEL</i></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="facts">
+  <div class="wrap grid">
+    <div class="fact"><b>0 mg</b><span>nikotyny w saszetce</span></div>
+    <div class="fact"><b>20</b><span>saszetek w puszce</span></div>
+    <div class="fact"><b>3</b><span>rundy mocy do wyboru</span></div>
+  </div>
+</section>
+
+<section class="flav" id="smaki">
+  <div class="wrap">
+    <div class="head">
+      <h2>Wybierz swój smak.</h2>
+      <p>Kolor puszki to smak. Kreski to runda. Rozpoznasz z dwóch metrów.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="mini steel"><b>SNUZO</b><small>FIGHT MODE</small></div>
+        <h3>COLD STEEL</h3>
+        <p class="taste">Mięta i lód</p>
+        <div class="dots" aria-label="Runda 2 z 3"><i class="on"></i><i class="on"></i><i></i>&nbsp;Runda 2</div>
+        <p class="price">24,99 zł</p>
+        <a class="btn btn-dark" href="#smaki">Dodaj do koszyka</a>
+      </article>
+      <article class="card">
+        <div class="mini berry"><b>SNUZO</b><small>FIGHT MODE</small></div>
+        <h3>CLINCH</h3>
+        <p class="taste">Owoce leśne</p>
+        <div class="dots" aria-label="Runda 1 z 3"><i class="on"></i><i></i><i></i>&nbsp;Runda 1</div>
+        <p class="price">24,99 zł</p>
+        <a class="btn btn-dark" href="#smaki">Dodaj do koszyka</a>
+      </article>
+      <article class="card">
+        <div class="mini citrus"><b>SNUZO</b><small>FIGHT MODE</small></div>
+        <h3>FACE OFF</h3>
+        <p class="taste">Cytrusy</p>
+        <div class="dots" aria-label="Runda 3 z 3"><i class="on"></i><i class="on"></i><i class="on"></i>&nbsp;Runda 3</div>
+        <p class="price">24,99 zł</p>
+        <a class="btn btn-dark" href="#smaki">Dodaj do koszyka</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="rounds" id="moc">
+  <div class="wrap">
+    <div class="head">
+      <h2>Moc liczymy w rundach.</h2>
+      <p>Mrowienie i chłód z ekstraktu Acmella oleracea. Zacznij od pierwszej rundy.</p>
+    </div>
+    <div class="bars">
+      <div class="bar"><div class="lab">Runda 1<small>delikatnie</small></div><div class="track"><div class="fill" style="width:34%"></div></div></div>
+      <div class="bar"><div class="lab">Runda 2<small>wyraźnie</small></div><div class="track"><div class="fill" style="width:67%"></div></div></div>
+      <div class="bar"><div class="lab">Runda 3<small>na maksa</small></div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="fighters" id="zawodnicy">
+  <div class="wrap split">
+    <div class="photo">Tu zdjęcie zawodnika FM z puszką (face-off / ważenie)</div>
+    <div>
+      <p class="eyebrow">Z narożnika Fight Mode</p>
+      <h2 style="margin-top:12px">Wybór zawodników.</h2>
+      <p>Każdy zawodnik Fight Mode ma swój smak. Zobacz, co wybierają przed walką, i zgarnij limitowaną edycję z galą.</p>
+      <a class="btn btn-ghost" href="https://fightmode.tv" target="_blank" rel="noopener">fightmode.tv</a>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="jak">
+  <div class="wrap">
+    <div class="head">
+      <h2>Jak używać.</h2>
+      <p>Prosto. Bez dymu, bez tytoniu, bez nikotyny.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Pod wargę</h3><p>Włóż jedną saszetkę pod górną wargę.</p></div>
+      <div class="step"><h3>Poczuj rundę</h3><p>Po chwili pojawia się mrowienie i chłód.</p></div>
+      <div class="step"><h3>Max 10 dziennie</h3><p>Nie przekraczaj zalecanej porcji. Produkt dla osób 18+.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>SNUZO by Fight Mode · snuzo.pl</span><span>Produkt dla osób pełnoletnich (18+)</span></div>
+    <p>Suplement diety. Nie zastępuje zróżnicowanej diety. Producent: Instytut Urządzeń Ekstrakcyjnych sp. z o.o., Maków Mazowiecki. Nie stosować u dzieci, kobiet w ciąży i karmiących piersią.</p>
+    <p>Makieta robocza z 19.11.2026. Smaki, ceny i zdjęcia przykładowe.</p>
+  </div>
+</footer>
+
+<div class="draft">Makieta robocza</div>
+</body>
+</html>
