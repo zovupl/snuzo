@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SNUZO by Fight Mode</title>
-<meta name="description" content="SNUZO by Fight Mode. Saszetki bez nikotyny. Moc w trzech rundach.">
+<meta name="description" content="SNUZO by Fight Mode. Saszetki bez nikotyny. Sześć smaków.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +19,6 @@
   --mute:#86868b;
   --mute-dark:#a1a1a6;
   --gold:#c9a24b;
-  --steel:#9fd3ff;
-  --berry:#e2477a;
-  --citrus:#ffb21c;
   --display:"Inter Tight", "Helvetica Neue", Arial, sans-serif;
   --body:"Inter", "Helvetica Neue", Arial, sans-serif;
   --wrap:1120px;
@@ -60,19 +57,16 @@ p{margin:0}
 .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px;font-size:13px;color:var(--mute-dark)}
 .chips span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:5px 12px}
 
-/* can (drawn in CSS, top view with perspective) */
-.stage{margin:56px auto 0;width:min(440px, 82vw);aspect-ratio:1/0.62;position:relative;max-width:100%}
-.can{position:absolute;inset:0;margin:auto;width:100%;height:100%}
-.can .side{position:absolute;left:0;right:0;bottom:0;height:34%;border-radius:0 0 50% 50% / 0 0 46% 46%;background:linear-gradient(90deg,#050506 0%,#2a2a30 22%,#3c3c44 50%,#1a1a1f 80%,#050506 100%)}
-.can .lid{position:absolute;left:0;right:0;top:0;height:80%;border-radius:50%;background:radial-gradient(ellipse at 38% 30%, #3a3a42 0%, #17171b 55%, #0c0c0e 100%);box-shadow:inset 0 0 0 6px #26262c, inset 0 0 0 9px #0a0a0b, 0 40px 80px -20px rgba(0,0,0,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translateZ(0)}
-.can .lid b{font-family:var(--display);font-weight:900;font-size:clamp(30px, 7.4vw, 62px);letter-spacing:-0.03em;line-height:1}
-.can .lid small{font-size:clamp(8px, 1.6vw, 11px);letter-spacing:.3em;color:var(--gold);margin-top:6px;font-weight:600}
-.can .lid i{font-style:normal;margin-top:10px;font-size:clamp(8px,1.5vw,10px);letter-spacing:.18em;color:var(--mute-dark);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px 9px}
-.glow{position:absolute;left:10%;right:10%;bottom:-14%;height:30%;background:radial-gradient(ellipse at center, rgba(201,162,75,.35), transparent 70%);filter:blur(10px)}
-@media (prefers-reduced-motion:no-preference){
-  .can{animation:float 6s ease-in-out infinite}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-}
+/* logo + cans */
+.wm{display:block;height:100%;width:auto}
+.logo{height:26px;display:block}
+.hero h1{height:clamp(130px, 25vw, 270px);display:flex;justify-content:center}
+.trio{display:flex;justify-content:center;align-items:center;margin:56px auto 0;max-width:900px}
+.trio img{width:34%;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.trio img:nth-child(2){width:42%;margin:0 -5%;position:relative;z-index:1}
+.tin{width:min(240px,100%);height:auto;filter:drop-shadow(0 18px 22px rgba(0,0,0,.28));transition:transform .25s ease;margin-bottom:6px}
+.card:hover .tin{transform:translateY(-6px)}
+@media (prefers-reduced-motion:reduce){.tin{transition:none}.card:hover .tin{transform:none}}
 
 /* facts band */
 .facts{background:var(--paper);color:var(--ink);padding-block:84px}
@@ -90,31 +84,11 @@ p{margin:0}
 .flav{background:var(--white);color:var(--ink);padding-block:110px}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .card{background:var(--paper);border-radius:28px;padding:36px 28px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;min-width:0}
-.mini{width:150px;height:150px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--white);box-shadow:inset 0 0 0 5px rgba(255,255,255,.18), 0 24px 40px -18px rgba(0,0,0,.45);margin-bottom:10px}
-.mini b{font-family:var(--display);font-weight:900;font-size:28px;letter-spacing:-0.02em}
-.mini small{font-size:8px;letter-spacing:.3em;opacity:.85}
-.mini.steel{background:radial-gradient(circle at 35% 30%, #d8eeff, #5fa9e6 70%);color:#0b2236}
-.mini.berry{background:radial-gradient(circle at 35% 30%, #ff8db0, #b8174e 72%)}
-.mini.citrus{background:radial-gradient(circle at 35% 30%, #ffe08a, #f08a00 72%);color:#3a2100}
 .card h3{font-size:26px;font-weight:800}
 .card .taste{color:#515154}
-.dots{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--mute);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
-.dots i{width:22px;height:5px;border-radius:3px;background:#d2d2d7}
-.dots i.on{background:var(--ink)}
 .price{font-family:var(--display);font-weight:700;font-size:20px;margin-top:4px}
 .card .btn{margin-top:6px}
 @media (max-width:860px){.cards{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
-
-/* rounds */
-.rounds{background:var(--ink);padding-block:120px}
-.rounds .head p{color:var(--mute-dark)}
-.bars{display:grid;gap:22px;max-width:820px;margin:0 auto}
-.bar{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center}
-.bar .lab{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-0.02em}
-.bar .lab small{display:block;font-family:var(--body);font-weight:500;font-size:14px;color:var(--mute-dark);letter-spacing:0}
-.track{height:14px;background:var(--ink-2);border-radius:999px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
-.fill{height:100%;border-radius:999px;background:linear-gradient(90deg, #6b5420, var(--gold))}
-@media (max-width:560px){.bar{grid-template-columns:1fr;gap:10px}}
 
 /* fighters */
 .fighters{background:linear-gradient(180deg, var(--ink) 0%, #141416 100%);padding-block:40px 120px}
@@ -142,13 +116,13 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="snuzo" viewBox="0 0 2229 1355"><path fill="currentColor" fill-rule="evenodd" d="M1988 1354C1910 1346 1858 1304 1838 1234C1833 1216 1831 1210 1830 1198C1829 1192 1827 1183 1827 1178C1823 1160 1823 1127 1823 889C1823 667 1823 618 1820 453C1817 257 1818 190 1825 155C1839 80 1879 33 1947 12C1957 9 1993 4 2004 4C2122 4 2201 70 2217 181C2218 189 2219 197 2220 200C2223 219 2224 247 2224 400C2225 483 2225 566 2226 584C2230 902 2230 1128 2224 1178C2212 1277 2159 1333 2058 1353C2051 1354 1998 1355 1988 1354ZM1127 1348C1065 1342 1013 1308 990 1257C971 1216 966 1175 966 1060C966 1024 966 950 965 894C964 840 964 724 963 637C962 550 962 450 961 413C959 281 959 27 960 22C963 15 958 15 1050 16L1131 16L1133 19C1137 22 1137 41 1137 409C1137 583 1138 812 1138 918L1139 1112L1141 1123C1146 1145 1153 1152 1168 1152C1182 1152 1190 1143 1194 1121L1196 1110L1195 565L1195 21L1198 18L1201 15L1286 15C1375 14 1373 14 1376 19C1379 26 1378 1123 1375 1153C1358 1297 1276 1361 1127 1348ZM184 1346C125 1339 74 1310 45 1267C26 1240 12 1196 8 1153C5 1122 5 1105 2 833L2 771L5 768L8 765L26 765C78 763 173 763 176 766C181 770 181 767 181 880C180 1036 181 1116 184 1128C189 1153 208 1162 224 1146C236 1135 237 1120 235 998C231 779 234 795 187 736C162 706 139 677 122 656C107 637 104 634 79 602C30 541 12 502 5 443C5 436 3 425 2 420C-1 397 -0 192 4 181C4 180 5 171 7 162C22 72 74 21 166 3C198 -3 254 -0 290 9C353 26 399 76 410 142C417 186 417 195 417 350L416 481L414 483L411 486L329 486C263 485 246 485 243 484C237 482 237 483 237 423C237 242 235 210 228 197C219 180 196 181 187 198C181 211 178 347 184 408C186 442 199 469 226 498C235 507 257 534 271 552C291 576 310 600 326 620C355 655 367 671 384 702C387 709 390 714 390 715C390 715 392 719 394 724C401 740 409 769 414 798C418 820 418 1115 414 1152C411 1173 407 1197 405 1207C403 1212 401 1219 400 1224C392 1253 370 1289 348 1306C311 1336 241 1353 184 1346ZM779 1342C750 1341 752 1343 746 1312C743 1300 740 1286 739 1282C737 1273 732 1251 728 1226C726 1216 724 1205 723 1200C722 1196 720 1188 720 1182C719 1176 717 1168 716 1164C715 1161 713 1152 712 1145C711 1138 709 1129 708 1126C707 1122 705 1113 704 1106C703 1100 701 1092 700 1088C699 1084 697 1076 696 1068C695 1061 693 1051 692 1045C690 1039 689 1031 688 1027C687 1023 686 1014 684 1008C682 1001 680 991 680 986C679 981 677 972 675 968C674 963 672 953 671 946C670 939 668 931 667 928C667 924 665 916 664 909C663 902 661 893 660 889C659 885 657 877 656 871C656 865 654 856 652 850C651 844 649 834 648 827C645 808 638 783 636 783C632 783 632 796 635 1228C636 1344 636 1338 629 1340C624 1342 480 1341 476 1340C471 1337 471 1346 470 1165C469 1072 469 951 468 894C467 838 467 755 466 710C466 665 466 573 465 507C463 280 463 27 464 23C466 16 462 16 541 16C621 16 615 15 619 23C620 26 622 32 623 38C624 44 627 55 628 63C630 71 633 83 635 90C640 115 644 131 645 133C646 135 647 142 649 149C650 156 654 176 658 194C662 212 665 229 665 231C666 233 668 242 669 250C671 258 675 274 677 284C679 296 682 311 684 318C686 325 688 336 688 340C689 345 691 355 693 362C695 368 696 376 697 378C697 380 698 386 699 390C701 399 707 429 713 456C715 466 717 478 718 482C719 486 720 493 721 498C722 502 723 509 724 513C725 517 727 528 728 536C735 580 742 592 743 562C744 541 742 308 740 206C739 125 739 23 740 20C742 16 747 16 771 16C784 16 819 16 850 16L905 15L908 18L911 21L911 52C911 69 911 137 912 202C912 267 913 444 914 594C914 744 914 920 915 984C916 1360 916 1340 910 1342C908 1343 818 1343 779 1342ZM1430 1342C1421 1341 1420 1341 1419 1337C1417 1332 1418 1175 1420 1170C1420 1167 1422 1159 1423 1150C1424 1141 1426 1132 1427 1128C1429 1118 1430 1113 1432 1100C1432 1093 1434 1084 1435 1080C1436 1075 1438 1065 1439 1056C1440 1048 1442 1037 1443 1032C1444 1026 1446 1014 1447 1006C1449 997 1451 985 1452 979C1454 973 1455 965 1456 960C1457 956 1458 948 1460 943C1461 938 1463 928 1463 921C1464 914 1466 904 1467 898C1469 891 1471 881 1471 874C1472 868 1474 859 1475 855C1476 851 1478 842 1479 834C1480 827 1482 816 1484 810C1485 805 1487 795 1488 789C1488 783 1490 773 1492 768C1493 762 1495 752 1496 746C1496 739 1498 728 1500 721C1502 713 1503 703 1504 698C1505 694 1506 685 1507 680C1509 674 1511 665 1512 658C1512 652 1514 643 1516 638C1517 633 1519 624 1520 618C1520 612 1522 602 1524 594C1526 587 1527 577 1528 572C1529 567 1530 559 1531 555C1532 551 1534 541 1535 534C1536 527 1538 516 1540 511C1541 506 1543 497 1543 491C1544 486 1546 477 1547 472C1548 467 1550 457 1551 450C1552 443 1554 433 1555 428C1556 423 1558 412 1559 405C1560 397 1562 386 1564 382C1565 377 1566 370 1567 367C1567 364 1569 353 1571 342C1573 331 1576 318 1576 313C1577 307 1579 299 1580 295C1581 290 1583 281 1584 275C1585 268 1587 259 1588 254C1589 249 1590 241 1591 236C1592 232 1593 224 1594 219C1597 202 1604 204 1510 203L1431 202L1429 200L1426 198L1426 108C1426 7 1426 14 1433 12C1437 11 1630 11 1719 12L1770 12L1772 15C1776 19 1778 180 1774 198C1773 202 1769 223 1766 243C1763 263 1759 286 1757 295C1756 304 1754 319 1752 330C1750 340 1748 354 1747 362C1745 369 1744 378 1743 382C1742 386 1741 393 1740 398C1739 402 1737 411 1736 416C1736 421 1733 434 1732 444C1726 471 1723 489 1720 507C1719 516 1717 528 1716 535C1714 541 1713 550 1712 555C1711 560 1710 570 1708 576C1707 583 1705 594 1704 602C1703 609 1701 617 1700 621C1700 625 1698 636 1696 646C1694 655 1692 669 1691 676C1685 704 1683 717 1680 732C1678 741 1677 751 1676 754C1675 758 1673 767 1672 774C1671 781 1669 793 1667 800C1665 808 1664 816 1663 819C1663 822 1662 829 1660 835C1659 841 1657 850 1656 855C1656 861 1654 870 1653 876C1651 881 1649 890 1648 895C1648 900 1646 909 1644 914C1643 919 1641 930 1640 937C1639 944 1637 955 1636 962C1634 968 1633 977 1632 982C1631 986 1630 994 1629 998C1628 1002 1626 1012 1625 1021C1623 1030 1621 1040 1620 1044C1619 1049 1617 1059 1616 1066C1614 1074 1612 1083 1611 1086C1611 1089 1609 1097 1607 1104C1606 1111 1605 1119 1604 1122C1601 1137 1599 1136 1673 1135C1767 1134 1772 1134 1775 1141C1778 1149 1776 1334 1772 1337L1770 1340L1650 1340C1584 1341 1512 1341 1490 1342C1448 1343 1443 1343 1430 1342ZM2033 1156C2037 1154 2043 1148 2045 1143C2051 1133 2051 1094 2049 644C2048 532 2048 397 2048 344C2048 237 2048 227 2043 212C2034 185 2008 183 1999 208C1995 221 1995 207 1995 672L1996 1116L1998 1128C2002 1154 2016 1164 2033 1156Z"/></symbol></svg>
 
 <nav class="nav" aria-label="Główna">
   <div class="wrap">
-    <a class="logo" href="#top">SNUZO</a>
+    <a class="logo" href="#top"><svg class="wm" viewBox="0 0 2229 1355" role="img" aria-label="SNUZO"><use href="#snuzo"/></svg></a>
     <ul>
       <li><a href="#smaki">Smaki</a></li>
-      <li><a href="#moc">Moc</a></li>
       <li><a href="#zawodnicy">Zawodnicy</a></li>
       <li><a href="#jak">Jak używać</a></li>
     </ul>
@@ -159,19 +133,17 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <header class="hero" id="top">
   <div class="wrap">
     <p class="eyebrow">by Fight Mode</p>
-    <h1>SNUZO</h1>
-    <p class="lead">Saszetki bez nikotyny. Moc w trzech rundach.</p>
+    <h1><svg class="wm" viewBox="0 0 2229 1355" role="img" aria-label="SNUZO"><use href="#snuzo"/></svg></h1>
+    <p class="lead">Saszetki bez nikotyny. Sześć smaków.</p>
     <div class="ctas">
       <a class="btn btn-light" href="#smaki">Kup teraz</a>
-      <a class="btn btn-ghost" href="#moc">Zobacz rundy</a>
+      <a class="btn btn-ghost" href="#jak">Jak używać</a>
     </div>
     <div class="chips"><span>0% nikotyny</span><span>20 saszetek</span><span>18+</span></div>
-    <div class="stage" aria-hidden="true">
-      <div class="glow"></div>
-      <div class="can">
-        <div class="side"></div>
-        <div class="lid"><b>SNUZO</b><small>BY FIGHT MODE</small><i>RUNDA 2 · COLD STEEL</i></div>
-      </div>
+    <div class="trio">
+      <img src="img/jagoda.webp" width="697" height="734" alt="Puszka SNUZO Jagoda">
+      <img src="img/liczi.webp" width="689" height="731" alt="Puszka SNUZO Liczi">
+      <img src="img/mango.webp" width="691" height="734" alt="Puszka SNUZO Mango">
     </div>
   </div>
 </header>
@@ -180,7 +152,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap grid">
     <div class="fact"><b>0 mg</b><span>nikotyny w saszetce</span></div>
     <div class="fact"><b>20</b><span>saszetek w puszce</span></div>
-    <div class="fact"><b>3</b><span>rundy mocy do wyboru</span></div>
+    <div class="fact"><b>6</b><span>smaków do wyboru</span></div>
   </div>
 </section>
 
@@ -188,47 +160,51 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap">
     <div class="head">
       <h2>Wybierz swój smak.</h2>
-      <p>Kolor puszki to smak. Kreski to runda. Rozpoznasz z dwóch metrów.</p>
+      <p>Każdy smak ma swój kolor.</p>
     </div>
     <div class="cards">
       <article class="card">
-        <div class="mini steel"><b>SNUZO</b><small>FIGHT MODE</small></div>
-        <h3>COLD STEEL</h3>
-        <p class="taste">Mięta i lód</p>
-        <div class="dots" aria-label="Runda 2 z 3"><i class="on"></i><i class="on"></i><i></i>&nbsp;Runda 2</div>
+        <img class="tin" src="img/liczi.webp" width="690" height="733" loading="lazy" alt="Puszka SNUZO LICZI">
+        <h3>LICZI</h3>
+        <p class="taste">20 saszetek, 0% nikotyny</p>
         <p class="price">24,99 zł</p>
         <a class="btn btn-dark" href="#smaki">Dodaj do koszyka</a>
       </article>
       <article class="card">
-        <div class="mini berry"><b>SNUZO</b><small>FIGHT MODE</small></div>
-        <h3>CLINCH</h3>
-        <p class="taste">Owoce leśne</p>
-        <div class="dots" aria-label="Runda 1 z 3"><i class="on"></i><i></i><i></i>&nbsp;Runda 1</div>
+        <img class="tin" src="img/cola.webp" width="690" height="733" loading="lazy" alt="Puszka SNUZO COLA">
+        <h3>COLA</h3>
+        <p class="taste">20 saszetek, 0% nikotyny</p>
         <p class="price">24,99 zł</p>
         <a class="btn btn-dark" href="#smaki">Dodaj do koszyka</a>
       </article>
       <article class="card">
-        <div class="mini citrus"><b>SNUZO</b><small>FIGHT MODE</small></div>
-        <h3>FACE OFF</h3>
-        <p class="taste">Cytrusy</p>
-        <div class="dots" aria-label="Runda 3 z 3"><i class="on"></i><i class="on"></i><i class="on"></i>&nbsp;Runda 3</div>
+        <img class="tin" src="img/jablko-mieta.webp" width="690" height="733" loading="lazy" alt="Puszka SNUZO JABŁKO &amp; MIĘTA">
+        <h3>JABŁKO &amp; MIĘTA</h3>
+        <p class="taste">20 saszetek, 0% nikotyny</p>
         <p class="price">24,99 zł</p>
         <a class="btn btn-dark" href="#smaki">Dodaj do koszyka</a>
       </article>
-    </div>
-  </div>
-</section>
-
-<section class="rounds" id="moc">
-  <div class="wrap">
-    <div class="head">
-      <h2>Moc liczymy w rundach.</h2>
-      <p>Mrowienie i chłód z ekstraktu Acmella oleracea. Zacznij od pierwszej rundy.</p>
-    </div>
-    <div class="bars">
-      <div class="bar"><div class="lab">Runda 1<small>delikatnie</small></div><div class="track"><div class="fill" style="width:34%"></div></div></div>
-      <div class="bar"><div class="lab">Runda 2<small>wyraźnie</small></div><div class="track"><div class="fill" style="width:67%"></div></div></div>
-      <div class="bar"><div class="lab">Runda 3<small>na maksa</small></div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+      <article class="card">
+        <img class="tin" src="img/jagoda.webp" width="690" height="733" loading="lazy" alt="Puszka SNUZO JAGODA">
+        <h3>JAGODA</h3>
+        <p class="taste">20 saszetek, 0% nikotyny</p>
+        <p class="price">24,99 zł</p>
+        <a class="btn btn-dark" href="#smaki">Dodaj do koszyka</a>
+      </article>
+      <article class="card">
+        <img class="tin" src="img/mango.webp" width="690" height="733" loading="lazy" alt="Puszka SNUZO MANGO">
+        <h3>MANGO</h3>
+        <p class="taste">20 saszetek, 0% nikotyny</p>
+        <p class="price">24,99 zł</p>
+        <a class="btn btn-dark" href="#smaki">Dodaj do koszyka</a>
+      </article>
+      <article class="card">
+        <img class="tin" src="img/ananas.webp" width="690" height="733" loading="lazy" alt="Puszka SNUZO ANANAS">
+        <h3>ANANAS</h3>
+        <p class="taste">20 saszetek, 0% nikotyny</p>
+        <p class="price">24,99 zł</p>
+        <a class="btn btn-dark" href="#smaki">Dodaj do koszyka</a>
+      </article>
     </div>
   </div>
 </section>
@@ -253,7 +229,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     </div>
     <div class="steps">
       <div class="step"><h3>Pod wargę</h3><p>Włóż jedną saszetkę pod górną wargę.</p></div>
-      <div class="step"><h3>Poczuj rundę</h3><p>Po chwili pojawia się mrowienie i chłód.</p></div>
+      <div class="step"><h3>Poczuj efekt</h3><p>Po chwili pojawia się mrowienie i chłód.</p></div>
       <div class="step"><h3>Max 10 dziennie</h3><p>Nie przekraczaj zalecanej porcji. Produkt dla osób 18+.</p></div>
     </div>
   </div>
@@ -263,7 +239,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap">
     <div class="row"><span>SNUZO by Fight Mode · snuzo.pl</span><span>Produkt dla osób pełnoletnich (18+)</span></div>
     <p>Suplement diety. Nie zastępuje zróżnicowanej diety. Producent: Instytut Urządzeń Ekstrakcyjnych sp. z o.o., Maków Mazowiecki. Nie stosować u dzieci, kobiet w ciąży i karmiących piersią.</p>
-    <p>Makieta robocza z 19.11.2026. Smaki, ceny i zdjęcia przykładowe.</p>
+    <p>Makieta robocza z 24.11.2026. Ceny przykładowe, wizualizacje puszek poglądowe.</p>
   </div>
 </footer>
 
