@@ -138,7 +138,7 @@ model-viewer.ok{opacity:1}
 /* sklad */
 .comp{display:grid;gap:30px;align-items:center}
 .mvbox{position:relative;width:min(84vw,420px);aspect-ratio:1;margin:0 auto}
-.mvbox model-viewer{position:absolute;inset:0;width:100%;height:100%}
+.mvbox model-viewer{position:absolute;inset:0;width:100%;height:100%;touch-action:none;clip-path:ellipse(36% 30% at 50% 50%)}
 .specs{background:var(--white);border-radius:var(--r);overflow:hidden}
 .specs div{padding:16px 22px;border-bottom:1px solid var(--line2);font-size:15px}
 .specs div:last-child{border:0}
@@ -291,7 +291,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 
 
 /* dotyk tylko na puszce: reszta pola przewija strone */
-model-viewer.mv{clip-path:ellipse(var(--hx,40%) var(--hy,34%) at var(--cx,50%) var(--cy,52%));transition:clip-path .45s cubic-bezier(.2,.8,.2,1),opacity .5s}
+model-viewer.mv{touch-action:none;clip-path:ellipse(var(--hx,40%) var(--hy,34%) at var(--cx,50%) var(--cy,52%));transition:clip-path .45s cubic-bezier(.2,.8,.2,1),opacity .5s}
 .tile .ph model-viewer{pointer-events:none}
 .mvbox model-viewer{--hx:30%;--hy:26%}
 model-viewer.lidopen{clip-path:inset(0)}
