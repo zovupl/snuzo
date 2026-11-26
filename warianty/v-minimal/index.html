@@ -228,11 +228,6 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 .mb-go{font-size:12px;font-weight:800;color:var(--gold)}
 @media (min-width:900px){.minibar{display:none!important}}
 
-/* bento: puszka kręci się i otwiera sama */
-const benMv=$("benMv"),benS=spinner(benMv);benS.r="1.45m";benS.ph0=70;benS.amp=4;benS.sp=.7;track(benS);
-let benT=null;const benLoop=()=>{if(!benS.on)return;try{const d=benMv.duration||1.5;benMv.currentTime=0;benMv.play();setTimeout(()=>benMv.pause(),d*1000)}catch(_){}benT=setTimeout(benLoop,6500)};
-if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>{benS.on=e.isIntersecting;if(e.isIntersecting){loadMV();clearTimeout(benT);benT=setTimeout(benLoop,1500)}else clearTimeout(benT)}),{threshold:.3}).observe(benMv);
-
 /* product modal */
 .pm{position:fixed;inset:0;z-index:85;display:grid;align-items:end;visibility:hidden}
 .pm.on{visibility:visible}
@@ -483,12 +478,11 @@ function loadMV(){if(mvReady)return;mvReady=true;customElements.whenDefined("mod
 const spins=new Set();
 function spinner(mv){const o={mv,th:-18,user:0,on:false,hold:false};
   o.set=()=>{mv.cameraOrbit=`${o.th.toFixed(2)}deg ${(o.ph0||56).toFixed(2)}deg ${o.r||"2.6m"}`};
-  mv.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse")o.hold=true});
-  mv.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse"&&!o.drag){o.hold=false;o.user=performance.now()+3000}});
+  
   if(mv.hasAttribute("data-drag")){let x0=0,y0=0,t0=0,p0=0,id=null;const lo=o.lo??42,hi=o.hi??78;
     mv.addEventListener("pointerdown",e=>{id=e.pointerId;o.drag=true;o.hold=true;x0=e.clientX;y0=e.clientY;t0=o.th;p0=o.ph0||56;o.amp=0;try{mv.setPointerCapture(id)}catch(_){}});
     mv.addEventListener("pointermove",e=>{if(!o.drag||e.pointerId!==id)return;e.preventDefault();o.th=t0-(e.clientX-x0)*.6;o.ph0=Math.max(o.lo??42,Math.min(o.hi??78,p0-(e.clientY-y0)*.25));o.set()});
-    const end=e=>{if(!o.drag)return;o.drag=false;id=null;o.user=performance.now()+3000;if(e.pointerType!=="mouse")o.hold=false};
+    const end=e=>{if(!o.drag)return;o.drag=false;id=null;o.user=performance.now()+3000;o.hold=false};
     mv.addEventListener("pointerup",end);mv.addEventListener("pointercancel",end);}
   return o}
 let lastT=0;
@@ -557,8 +551,13 @@ let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on"
 render();
 
 /* sklad: dno */
-const dnoMv=$("dnoMv"),dnoS=spinner(dnoMv);dnoS.ph0=142;dnoS.lo=125;dnoS.hi=160;dnoS.amp=4;dnoS.r="1.9m";dnoS.th=20;track(dnoS);
+const dnoMv=$("dnoMv"),dnoS=spinner(dnoMv);dnoS.ph0=142;dnoS.lo=15;dnoS.hi=165;dnoS.amp=4;dnoS.r="1.9m";dnoS.th=20;track(dnoS);
 if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>{dnoS.on=e.isIntersecting;if(e.isIntersecting)loadMV()}),{threshold:.3}).observe(dnoMv);
+
+/* bento: puszka kręci się i otwiera sama */
+const benMv=$("benMv"),benS=spinner(benMv);benS.r="1.45m";benS.ph0=70;benS.amp=4;benS.sp=.7;track(benS);
+let benT=null;const benLoop=()=>{if(!benS.on)return;try{const d=benMv.duration||1.5;benMv.currentTime=0;benMv.play();setTimeout(()=>benMv.pause(),d*1000)}catch(_){}benT=setTimeout(benLoop,6500)};
+if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>{benS.on=e.isIntersecting;if(e.isIntersecting){loadMV();clearTimeout(benT);benT=setTimeout(benLoop,1500)}else clearTimeout(benT)}),{threshold:.3}).observe(benMv);
 
 /* product modal: galeria */
 const pm=$("pm"),pmMv=$("pmMv"),pmSp=spinner(pmMv);pmSp.r="2.6m";pmSp.sp=.6;track(pmSp);let pmS,pmQ=1,lastP;
