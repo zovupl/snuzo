@@ -1,5 +1,5 @@
 /* SNUZO — baner zgody na cookies (samodzielny) */
-#snuzo-cc{--cc-ink:#111;--cc-ink2:#3b3934;--cc-mute:#6f6b62;--cc-gold:#E1B600;--cc-gold2:#9a7a10;--cc-bg:#fffdf8;
+#snuzo-cc{--cc-ink:#111;--cc-ink2:#3b3934;--cc-mute:#6f6b62;--cc-gold:#E1B600;--cc-gold2:#7a600a;--cc-bg:#fffdf8;
   position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;margin:0 auto;max-width:560px;
   background:var(--cc-bg);color:var(--cc-ink);border:1px solid rgba(154,122,16,.45);border-radius:12px;
   box-shadow:0 18px 50px rgba(17,17,17,.22),0 2px 0 var(--cc-gold) inset;

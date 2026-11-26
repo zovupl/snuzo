@@ -104,7 +104,29 @@
       var t = e.target.closest('[data-cookies-open]');
       if (t) { e.preventDefault(); window.snuzoCookies.open(); }
     });
-    if (!read()) open(false);
+    if (!read()) whenAgeClosed(function () { if (!read()) open(false); });
+  }
+
+  /* Bramka wieku (#age bez atrybutu hidden) ma pierwszeństwo: baner pokazujemy dopiero po jej zamknięciu. */
+  function ageOpen() {
+    var a = document.getElementById('age');
+    return !!(a && !a.hidden);
+  }
+  function whenAgeClosed(cb) {
+    if (!ageOpen()) { cb(); return; }
+    var done = false, a = document.getElementById('age'), mo, iv;
+    function check() {
+      if (done || ageOpen()) return;
+      done = true;
+      if (mo) mo.disconnect();
+      clearInterval(iv);
+      setTimeout(cb, 300); // chwila po zniknięciu bramki, żeby fokus nie skakał
+    }
+    if (window.MutationObserver) {
+      mo = new MutationObserver(check);
+      mo.observe(a, { attributes: true, attributeFilter: ['hidden'] });
+    }
+    iv = setInterval(check, 400); // zapas, gdyby bramka została podmieniona w DOM
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
