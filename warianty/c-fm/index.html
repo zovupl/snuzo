@@ -101,7 +101,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .pedestal .ring .spin{transform-origin:210px 210px;animation:rot 70s linear infinite}
 @keyframes rot{to{transform:rotate(360deg)}}
 model-viewer{display:block;background:transparent;--poster-color:transparent;--progress-bar-color:transparent;outline:none}
-.mv{position:absolute;left:50%;top:50%;width:150%;height:150%;transform:translate(-50%,-50%);cursor:grab}
+.mv{position:absolute;left:50%;top:50%;width:112%;height:112%;transform:translate(-50%,-50%);cursor:grab}
 .can360{position:absolute;left:50%;top:50%;width:84%;aspect-ratio:1;transform:translate(-50%,-50%);cursor:grab;touch-action:pan-y}
 .can360 img,.can360 .sp{position:absolute;inset:0;width:100%;height:100%}
 .can360 .sp{background-size:600% 400%;background-repeat:no-repeat;opacity:0}
@@ -428,7 +428,7 @@ footer p{font-size:14px;color:var(--ink2)}
           <circle cx="210" cy="210" r="193" fill="none" stroke="url(#gm)" stroke-width=".7"/>
           <g class="spin"><text font-family="Archivo" font-weight="700" font-size="13" letter-spacing="6" fill="#9a7a10"><textPath href="#ringp">SNUZO · BY FIGHT MODE · SASZETKI BEZ NIKOTYNY · 0 MG NIKOTYNY · 20 SASZETEK ·</textPath></text></g>
         </svg>
-        <model-viewer class="mv" id="heroMv" src="../../img/3d/mango.gltf" poster="../../img/p-mango.webp" camera-orbit="-18deg 56deg 2.7m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO Mango w 3D"></model-viewer>
+        <model-viewer class="mv" id="heroMv" src="../../img/3d/mango.gltf" poster="../../img/p-mango.webp" camera-orbit="-18deg 56deg 2.05m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO Mango w 3D"></model-viewer>
         <p class="hint360" aria-hidden="true">↻ Obróć puszkę palcem</p>
       </div>
     </div>
@@ -612,7 +612,7 @@ $("ageNo").onclick=()=>{location.href="https://fightmode.tv"};
 
 /* 3D: model-viewer, wolny obrót "spirala" */
 let mvReady=false;
-function loadMV(){if(mvReady)return;mvReady=true;const sc=document.createElement("script");sc.type="module";sc.src="../../js/model-viewer.min.js";document.head.appendChild(sc)}
+function loadMV(){if(mvReady)return;mvReady=true;customElements.whenDefined("model-viewer").then(()=>{const M=customElements.get("model-viewer");try{M.minimumRenderScale=1}catch(_){}});const sc=document.createElement("script");sc.type="module";sc.src="../../js/model-viewer.min.js";document.head.appendChild(sc)}
 const spins=new Set();
 function spinner(mv){const o={mv,th:-18,user:0,on:false,hold:false};
   const sync=()=>{try{const c=mv.getCameraOrbit();o.th=c.theta*180/Math.PI;o.ph0=c.phi*180/Math.PI;o.amp=0}catch(_){}};
@@ -627,11 +627,11 @@ function spinner(mv){const o={mv,th:-18,user:0,on:false,hold:false};
 let lastT=0;
 function tick(t){const dt=lastT?Math.min(64,t-lastT):16;lastT=t;
   spins.forEach(o=>{if(!o.on||o.hold||t<o.user)return;o.th+=dt*.0045*(o.sp??1);const ph=(o.ph0||56)+(o.amp??6)*Math.sin(t/((o.per||1800)*2.2)+(o.fz||0));o.mv.cameraOrbit=`${o.th.toFixed(2)}deg ${ph.toFixed(2)}deg ${o.r||'1.7m'}`});
-  if(spins.size&&!reduce)requestAnimationFrame(tick);else lastT=0}
-function track(o){spins.add(o);if(spins.size===1&&!reduce)requestAnimationFrame(tick)}
+  if(spins.size)requestAnimationFrame(tick);else lastT=0}
+function track(o){spins.add(o);if(spins.size===1)requestAnimationFrame(tick)}
 
 /* hero */
-const heroMv=$("heroMv"),heroS=spinner(heroMv);heroS.r="2.7m";heroS.ph0=56;heroS.on=true;track(heroS);let cur=4;
+const heroMv=$("heroMv"),heroS=spinner(heroMv);heroS.r="2.05m";heroS.ph0=56;heroS.on=true;track(heroS);let cur=4;
 function pick(i){cur=i;const[s,n,c,t]=F[i];root.style.setProperty("--t",t);root.style.setProperty("--c",c);
   heroMv.poster=IMG+"p-"+s+".webp";heroMv.src=IMG+"3d/"+s+".gltf";heroMv.alt="Puszka SNUZO "+n+" w 3D";
   $("flavName").textContent=n;$("heroBuy").textContent=`Dodaj ${n} · ${zl(P)}`;$("flav").querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-pressed",j===i))}
