@@ -497,7 +497,7 @@ function lid(mv){let t0=0,x0=0,y0=0,open=false,busy=false;
   const tog=()=>{if(busy)return;const d=mv.duration||1.5,h=d/2;if(!open){mv.classList.add("lidopen");run(0,h,h)}else{run(h+.05,d,0);setTimeout(()=>mv.classList.remove("lidopen"),d*500+80)}open=!open};
   mv.addEventListener("pointerdown",e=>{x0=e.clientX;y0=e.clientY});
   mv.addEventListener("pointerup",e=>{if(Math.hypot(e.clientX-x0,e.clientY-y0)>10)return;const n=performance.now();if(n-t0<340){tog();t0=0}else t0=n})}
-document.querySelectorAll("model-viewer").forEach(lid);
+document.querySelectorAll("model-viewer").forEach(m=>{if(m.id!=="dnoMv"&&m.id!=="benMv")lid(m)});
 
 /* hero */
 const heroMv=$("heroMv"),heroS=spinner(heroMv);heroS.r=matchMedia("(max-width:699px)").matches?"3m":"1.95m";heroS.ph0=62;heroS.ph0=56;heroS.on=true;track(heroS);let cur=4;
