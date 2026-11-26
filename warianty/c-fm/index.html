@@ -616,13 +616,13 @@ function loadMV(){if(mvReady)return;mvReady=true;customElements.whenDefined("mod
 const spins=new Set();
 function spinner(mv){const o={mv,th:-18,user:0,on:false,hold:false};
   const sync=()=>{try{const c=mv.getCameraOrbit();o.th=c.theta*180/Math.PI;o.ph0=c.phi*180/Math.PI;o.amp=0}catch(_){}};
-  const pause=()=>{o.hold=true};const resume=()=>{o.hold=false;o.user=performance.now()+5000;sync()};
+  const pause=()=>{o.hold=true};const resume=()=>{o.hold=false;o.user=performance.now()+3000;sync()};
   mv.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse")pause()});
   mv.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse")resume()});
   mv.addEventListener("pointerdown",pause);
   mv.addEventListener("pointerup",e=>{if(e.pointerType!=="mouse")resume();else sync()});
   mv.addEventListener("pointercancel",resume);
-  mv.addEventListener("camera-change",e=>{if(e.detail&&e.detail.source==="user-interaction"){o.user=performance.now()+5000;sync()}});
+  mv.addEventListener("camera-change",e=>{if(e.detail&&e.detail.source==="user-interaction"){o.user=performance.now()+3000;sync()}});
   return o}
 let lastT=0;
 function tick(t){const dt=lastT?Math.min(64,t-lastT):16;lastT=t;
