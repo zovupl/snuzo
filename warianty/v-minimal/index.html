@@ -304,6 +304,7 @@ model-viewer.lidopen{clip-path:inset(0)}
 .tq span{min-width:20px;text-align:center;font-weight:600;font-size:15px}
 .tile .add{flex:1;min-height:38px}
 @media (max-width:699px){.tq{height:34px}.tq button{width:28px;height:34px}.tile .row{flex-direction:column;align-items:stretch}.tq{justify-content:space-between}}
+.lidbtn{display:block;margin:14px auto 0;height:40px;padding:0 20px;border-radius:999px;background:#fff;border:1.5px solid var(--ink);font-size:14px;font-weight:600;cursor:pointer;transition:background .2s,color .2s}.lidbtn:hover,.lidbtn[aria-pressed=true]{background:var(--ink);color:#fff}
 </style>
 <style>img{-webkit-touch-callout:none;-webkit-user-drag:none;user-select:none}</style>
 </head>
@@ -333,6 +334,7 @@ model-viewer.lidopen{clip-path:inset(0)}
     <model-viewer data-drag class="mv" id="heroMv" src="../../img/3d/mango.gltf?v=11262221" camera-orbit="-18deg 62deg 2.6m" interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 3deg 0.5m" max-camera-orbit="auto 177deg 20m" interpolation-decay="120" alt="Puszka SNUZO w 3D"></model-viewer>
   </div>
   <div class="flav" id="flav" role="group" aria-label="Wybierz smak"></div>
+  <button class="lidbtn" type="button" id="heroLid" aria-pressed="false">Otwórz puszkę</button>
   <p class="flavname"><span id="flavName">Mango</span></p>
 </section>
 
@@ -495,8 +497,7 @@ function track(o){spins.add(o);if(spins.size===1)requestAnimationFrame(tick)}
 function lid(mv){let t0=0,x0=0,y0=0,open=false,busy=false;
   const run=(from,to,end)=>{busy=true;mv.timeScale=1;mv.currentTime=from;mv.play();const w=()=>{if(mv.currentTime>=to-.01||mv.currentTime<from-.05){mv.pause();mv.currentTime=end;busy=false;return}requestAnimationFrame(w)};requestAnimationFrame(w)};
   const tog=()=>{if(busy)return;const d=mv.duration||1.5,h=d/2;if(!open){mv.classList.add("lidopen");run(0,h,h)}else{run(h+.05,d,0);setTimeout(()=>mv.classList.remove("lidopen"),d*500+80)}open=!open};
-  mv.addEventListener("pointerdown",e=>{x0=e.clientX;y0=e.clientY});
-  mv.addEventListener("pointerup",e=>{if(Math.hypot(e.clientX-x0,e.clientY-y0)>10)return;const n=performance.now();if(n-t0<340){tog();t0=0}else t0=n})}
+  mv._lid=()=>{tog();return open}}
 document.querySelectorAll("model-viewer").forEach(m=>{if(m.id!=="dnoMv"&&m.id!=="benMv")lid(m)});
 
 /* hero */
@@ -507,6 +508,8 @@ function pick(i){cur=i;const[s,n,c,t]=F[i];root.style.setProperty("--t",t);root.
 $("flav").innerHTML=F.map(([s,n,c])=>`<button type="button" style="--c:${c}" aria-label="${n}"></button>`).join("");
 $("flav").querySelectorAll("button").forEach((b,i)=>b.onclick=()=>{loadMV();pick(i)});
 $("flav").querySelectorAll("button")[cur].setAttribute("aria-pressed","true");root.style.setProperty("--t",F[cur][3]);
+heroMv.addEventListener("load",()=>{lid(heroMv);const b=$("heroLid");b.textContent="Otwórz puszkę";b.setAttribute("aria-pressed","false")});
+$("heroLid").onclick=()=>{const b=$("heroLid");if(!heroMv._lid)return;const o=heroMv._lid();b.textContent=o?"Zamknij puszkę":"Otwórz puszkę";b.setAttribute("aria-pressed",o)};
 $("heroBuy").onclick=()=>add(F[cur][0],1,$("heroMv"));
 if("requestIdleCallback"in window)addEventListener("load",()=>requestIdleCallback(loadMV,{timeout:1500}),{once:true});else addEventListener("load",()=>setTimeout(loadMV,600),{once:true});
 ["pointerdown","touchstart","scroll"].forEach(ev=>addEventListener(ev,loadMV,{once:true,passive:true}));
