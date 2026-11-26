@@ -82,7 +82,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* hero */
 .hero{text-align:center;padding:56px var(--g) 30px;position:relative;overflow:hidden;isolation:isolate}
-.hero::before{content:"";position:absolute;left:50%;top:58%;width:min(120vw,1100px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--t) 85%,transparent),transparent);z-index:-1;transition:background .6s}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 42% at 50% 64%,color-mix(in srgb,var(--t) 85%,transparent),transparent 100%);z-index:-1;transition:background .6s}
 .eyebrow{font-size:17px;font-weight:600;color:var(--c);transition:color .4s}
 .hero h1{font-size:clamp(46px,9vw,96px);line-height:1;font-weight:700;letter-spacing:-.045em;margin-top:6px}
 .hero .sub{font-size:clamp(19px,2.4vw,26px);color:var(--ink2);margin-top:12px;letter-spacing:-.02em}
@@ -291,7 +291,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 
 
 /* dotyk tylko na puszce: reszta pola przewija strone */
-model-viewer.mv{clip-path:ellipse(var(--hx,27%) var(--hy,22%) at var(--cx,50%) var(--cy,52%));transition:clip-path .45s cubic-bezier(.2,.8,.2,1),opacity .5s}
+model-viewer.mv{clip-path:ellipse(var(--hx,40%) var(--hy,34%) at var(--cx,50%) var(--cy,52%));transition:clip-path .45s cubic-bezier(.2,.8,.2,1),opacity .5s}
 .tile .ph model-viewer{pointer-events:none}
 .mvbox model-viewer{--hx:30%;--hy:26%}
 model-viewer.lidopen{clip-path:inset(0)}
