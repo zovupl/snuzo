@@ -81,8 +81,7 @@ model-viewer.ok{opacity:1}
 .tiles{display:grid;gap:16px}
 .tile{background:var(--white);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 14px rgba(0,0,0,.04)}
 .tile .ph{position:relative;aspect-ratio:1/.8;background:radial-gradient(70% 70% at 50% 55%,var(--t),var(--alt) 85%);cursor:pointer}
-.tile .ph img{position:absolute;left:12%;top:8%;width:76%;height:84%;object-fit:contain;filter:drop-shadow(0 24px 22px rgba(0,0,0,.18));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-@media (hover:hover){.tile:hover .ph img{transform:scale(1.04) rotate(-3deg)}}
+.tile .ph{overflow:hidden}.tile .ph model-viewer{position:absolute;inset:-12% -6%;width:112%;height:124%}
 .tile .tag{position:absolute;left:16px;top:16px;font-size:12px;font-weight:600;color:var(--c);background:rgba(255,255,255,.8);padding:4px 10px;border-radius:999px}
 .tile .body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:4px;flex:1}
 .tile h3{font-size:26px;font-weight:700;letter-spacing:-.03em}
@@ -480,7 +479,12 @@ if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>he
 
 /* smaki */
 const ORDER=["mango","cola","liczi","jagoda","jablko-mieta","ananas"];
-$("shop").innerHTML=ORDER.map(s=>{const[,n,c,t]=by(s);return `<li class="tile" style="--c:${c};--t:${t}"><div class="ph" data-pm="${s}">${s==="mango"?'<span class="tag">Nowość</span>':""}<img src="${IMG}hd-${s}-p.webp" width="1400" height="1400" loading="lazy" alt="Puszka SNUZO ${n}"></div><div class="body"><h3>${n}</h3><p class="meta">20 saszetek · 0 mg nikotyny</p><div class="row"><p class="p">${zl(P)}</p><button class="add" type="button" data-s="${s}">Kup</button></div><button class="more" type="button" data-pm="${s}">Zobacz z każdej strony ›</button></div></li>`}).join("");
+$("shop").innerHTML=ORDER.map(s=>{const[,n,c,t]=by(s);return `<li class="tile" style="--c:${c};--t:${t}"><div class="ph">${s==="mango"?'<span class="tag">Nowość</span>':""}<model-viewer data-s="${s}" src="${IMG}3d/${s}.gltf" loading="lazy" camera-orbit="-18deg 58deg 2.15m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO ${n} w 3D"></model-viewer></div><div class="body"><h3>${n}</h3><p class="meta">20 saszetek · 0 mg nikotyny</p><div class="row"><p class="p">${zl(P)}</p><button class="add" type="button" data-s="${s}">Kup</button></div><button class="more" type="button" data-pm="${s}">Zobacz z każdej strony ›</button></div></li>`}).join("");
+
+document.querySelectorAll("#shop model-viewer").forEach(lid);
+const CFG=[[1,54,7,1700,0],[-1,60,9,2300,1.4],[.8,50,6,2000,2.6],[-.9,58,8,1600,3.7],[1.1,52,10,2600,.8],[-1.2,62,6,1900,2.1]];
+const cards=[...document.querySelectorAll("#shop model-viewer")].map((mv,k)=>{const o=spinner(mv),c=CFG[k%6];o.sp=c[0]*.8;o.ph0=c[1];o.amp=c[2];o.per=c[3];o.fz=c[4];o.r="2.15m";o.th=-18+k*47;mv.cameraOrbit=`${o.th}deg ${o.ph0}deg 2.15m`;track(o);return o});
+if("IntersectionObserver"in window){const io=new IntersectionObserver(es=>es.forEach(e=>{const o=cards.find(c=>c.mv===e.target);if(o){o.on=e.isIntersecting;if(e.isIntersecting)loadMV()}}),{threshold:.3});cards.forEach(o=>io.observe(o.mv))}else cards.forEach(o=>o.on=true);
 
 /* cart */
 let cart=store.get("snuzo-cart",{});const save=()=>store.set("snuzo-cart",cart);const FREE=99;
