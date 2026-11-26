@@ -13,7 +13,7 @@
 <style>
 :root{
   --paper:#eef0f2; --white:#fff; --ink:#16181c; --mute:#62656c; --line:rgba(22,24,28,.12);
-  --gold:#a98336;
+  --gold:#E1B600; --gold-d:#9a7a10;
   --f:#2a3a7a; --tint:#e3e6f0;
   --font:"Archivo","Helvetica Neue",Arial,sans-serif;
   --wrap:1280px; --r:14px;
@@ -21,7 +21,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--font);font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0;padding:0}
 ul,ol{list-style:none}
@@ -34,7 +34,10 @@ button{font:inherit;color:inherit}
 /* header */
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--tint) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background .5s}
 .top .wrap{display:flex;align-items:center;gap:28px;height:68px}
+.top .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .top .logo svg{height:24px;width:auto;display:block}
+.top .by{font-size:13px;color:var(--mute)}
+.fml{height:18px;width:auto;filter:brightness(0)}
 .top nav{margin-left:auto}
 .top nav ul{display:flex;gap:28px;font-size:15px;font-weight:500}
 .top nav a{text-decoration:none}
@@ -55,7 +58,8 @@ button{font:inherit;color:inherit}
 .giant span{display:inline-block;transition:opacity .25s,transform .45s cubic-bezier(.2,.8,.2,1)}
 .giant.swap span{opacity:0;transform:translateY(6%)}
 .copy{position:relative;z-index:2}
-.copy h1{font-size:clamp(34px,3.6vw,52px);line-height:1.02;font-weight:800;font-stretch:75%;font-variation-settings:"wdth" 75;letter-spacing:-.01em}
+.copy h1{font-size:clamp(46px,5.4vw,82px);line-height:.88;font-weight:900;font-stretch:62%;font-variation-settings:"wdth" 62;text-transform:uppercase;letter-spacing:0}
+.copy h1::after{content:"";display:block;width:64px;height:5px;background:var(--gold);margin-top:22px}
 .copy .lead{margin-top:16px;color:var(--mute);max-width:26em}
 .pick{margin-top:30px}
 .pick p{font-size:14px;color:var(--mute)}
@@ -63,10 +67,10 @@ button{font:inherit;color:inherit}
 .sw{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
 .sw button{width:38px;height:38px;border-radius:50%;border:0;background:var(--c);cursor:pointer;box-shadow:0 0 0 3px var(--tint),0 0 0 4px transparent;transition:box-shadow .2s,transform .2s}
 .sw button:hover{transform:scale(1.08)}
-.sw button[aria-pressed=true]{box-shadow:0 0 0 3px var(--tint),0 0 0 5px var(--ink)}
+.sw button[aria-pressed=true]{box-shadow:0 0 0 3px var(--tint),0 0 0 5px var(--gold)}
 .buy{display:flex;align-items:center;gap:22px;margin-top:30px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 28px;border-radius:999px;border:0;background:var(--ink);color:#fff;font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .15s,background .2s}
-.btn:hover{background:#000;transform:translateY(-1px)}
+.btn:hover{background:#000;box-shadow:inset 0 -3px 0 var(--gold);transform:translateY(-1px)}
 .btn:active{transform:translateY(0)}
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .btn.ghost:hover{background:var(--ink);color:#fff}
@@ -113,7 +117,7 @@ button{font:inherit;color:inherit}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
 .steps li{padding:30px 30px 10px 0;counter-increment:s}
 .steps li+li{padding-left:30px;border-left:1px solid var(--line)}
-.steps li::before{content:counter(s);display:block;font-size:84px;line-height:1;font-weight:900;font-stretch:62%;font-variation-settings:"wdth" 62;color:var(--gold);margin-bottom:18px}
+.steps li::before{content:counter(s);display:block;font-size:84px;line-height:1;font-weight:900;font-stretch:62%;font-variation-settings:"wdth" 62;color:var(--gold-d);margin-bottom:18px}
 .steps h3{font-size:22px;font-weight:700;line-height:1.2}
 .steps p{margin-top:8px;color:var(--mute);max-width:24em}
 .note{margin-top:44px;font-size:14px;color:var(--mute)}
@@ -141,14 +145,19 @@ button{font:inherit;color:inherit}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{padding:0 0 26px;color:var(--mute);max-width:44em}
 
-/* fight mode */
-.fm{background:var(--ink);color:#fff;border-radius:calc(var(--r) * 1.6);margin-inline:max(12px,calc((100vw - var(--wrap)) / 2 - 40px));padding:96px 0}
-.fm .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end}
-.fm .h2{color:#fff}
-.fm p{color:#a9acb3;max-width:30em}
-.fm p+p{margin-top:22px}
-.fm a{color:#fff}
-@media (max-width:820px){.fm .wrap{grid-template-columns:1fr;gap:24px}.fm{padding:72px 0}}
+/* fighters */
+.fighters{position:relative;overflow:hidden;color:#fff;background:radial-gradient(120% 90% at 75% 100%,#3a2a12 0%,#15120e 45%,#0d0d0f 100%);padding:110px 0 0}
+.fighters .wrap{position:relative;z-index:2}
+.ftxt{max-width:560px}
+.fmlogo{width:220px;margin-bottom:34px}
+.fighters .h2{color:#fff}
+.fighters .h2::after{content:"";display:block;width:64px;height:5px;background:var(--gold);margin-top:22px}
+.fighters p{color:#b9bcc2;margin-top:22px;max-width:32em}
+.btn.gold{margin-top:30px;background:var(--gold);color:#111}
+.btn.gold:hover{background:#ffd21a;box-shadow:none}
+.crew{position:relative;z-index:1;width:min(1500px,100%);margin:-40px auto 0;-webkit-mask-image:linear-gradient(#000 70%,transparent 100%);mask-image:linear-gradient(#000 70%,transparent 100%)}
+@media (min-width:1100px){.fighters{min-height:760px;padding:130px 0}.crew{position:absolute;right:-3%;bottom:0;width:min(57%,960px);margin:0}}
+@media (max-width:760px){.fighters{padding-top:80px}.crew{margin-top:30px}}
 
 /* footer */
 footer{padding:88px 0 40px;font-size:14px;color:var(--mute)}
@@ -201,12 +210,13 @@ footer a:hover{color:var(--ink);text-decoration:underline}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="SNUZO, strona główna"><svg viewBox="0 0 2229 1355"><use href="#snuzo"/></svg></a>
+    <a class="logo" href="#top" aria-label="SNUZO by Fight Mode, strona główna"><svg viewBox="0 0 2229 1355"><use href="#snuzo"/></svg><span class="by">by</span><img class="fml" src="img/fm-logo.png" width="949" height="275" alt=""></a>
     <nav aria-label="Główna">
       <ul>
         <li><a href="#smaki">Smaki</a></li>
         <li><a href="#jak">Jak używać</a></li>
         <li><a href="#produkt">Produkt</a></li>
+        <li><a href="#zawodnicy">Zawodnicy</a></li>
         <li><a href="#faq">Pytania</a></li>
       </ul>
     </nav>
@@ -221,8 +231,8 @@ footer a:hover{color:var(--ink);text-decoration:underline}
 <section class="hero" aria-labelledby="h1">
   <div class="wrap">
     <div class="copy">
-      <h1 id="h1">Saszetki bez nikotyny. Sześć smaków.</h1>
-      <p class="lead">SNUZO by Fight Mode. 20 saszetek w puszce, smak na 5–20 minut.</p>
+      <h1 id="h1">Saszetki bez nikotyny</h1>
+      <p class="lead">Sześć smaków od Fight Mode. 20 saszetek w puszce, smak na 5–20 minut.</p>
       <div class="pick">
         <p>Smak: <b id="hName">Jagoda</b></p>
         <div class="sw" id="sw" role="group" aria-label="Wybierz smak"></div>
@@ -246,6 +256,18 @@ footer a:hover{color:var(--ink);text-decoration:underline}
     <div class="shead"><h2 class="h2" id="smaki-h">Smaki</h2><p>Kolor wieczka to smak. Wszystkie puszki mają 20 saszetek i tę samą cenę, więc możesz złożyć własny zestaw.</p></div>
     <ul class="grid" id="grid"></ul>
   </div>
+</section>
+
+<section class="fighters" id="zawodnicy" aria-labelledby="fm-h">
+  <div class="wrap">
+    <div class="ftxt">
+      <img class="fmlogo" src="img/fm-logo.png" width="949" height="275" alt="Fight Mode">
+      <h2 class="h2" id="fm-h">Wybór zawodników</h2>
+      <p>SNUZO powstało razem z federacją Fight Mode. Każdy zawodnik ma swój smak. Zobacz, co wybierają przed walką, i zgarnij limitowaną edycję z najbliższą galą.</p>
+      <a class="btn gold" href="https://fightmode.tv" target="_blank" rel="noopener">fightmode.tv</a>
+    </div>
+  </div>
+  <img class="crew" src="img/zawodnicy.webp" width="1920" height="1289" alt="Zawodnicy i zawodniczki Fight Mode">
 </section>
 
 <section class="sec how" id="jak" aria-labelledby="jak-h">
@@ -290,15 +312,7 @@ footer a:hover{color:var(--ink);text-decoration:underline}
   </div>
 </section>
 
-<section class="fm" id="fightmode" aria-labelledby="fm-h">
-  <div class="wrap">
-    <h2 class="h2" id="fm-h">Z narożnika Fight Mode</h2>
-    <div>
-      <p>SNUZO powstało razem z federacją Fight Mode. Te same puszki zobaczysz w szatni przed walką.</p>
-      <p><a href="https://fightmode.tv" target="_blank" rel="noopener">fightmode.tv</a></p>
-    </div>
-  </div>
-</section>
+
 </main>
 
 <footer>
