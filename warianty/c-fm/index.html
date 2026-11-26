@@ -101,7 +101,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .pedestal .ring .spin{transform-origin:210px 210px;animation:rot 70s linear infinite}
 @keyframes rot{to{transform:rotate(360deg)}}
 model-viewer{display:block;background:transparent;--poster-color:transparent;--progress-bar-color:transparent;outline:none}
-.mv{position:absolute;left:50%;top:50%;width:96%;height:96%;transform:translate(-50%,-50%);cursor:grab}
+.mv{position:absolute;left:50%;top:50%;width:150%;height:150%;transform:translate(-50%,-50%);cursor:grab}
 .can360{position:absolute;left:50%;top:50%;width:84%;aspect-ratio:1;transform:translate(-50%,-50%);cursor:grab;touch-action:pan-y}
 .can360 img,.can360 .sp{position:absolute;inset:0;width:100%;height:100%}
 .can360 .sp{background-size:600% 400%;background-repeat:no-repeat;opacity:0}
@@ -169,10 +169,10 @@ model-viewer{display:block;background:transparent;--poster-color:transparent;--p
 .cards{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--g) 18px;margin:0 calc(-1 * var(--g));scrollbar-width:none}
 .cards::-webkit-scrollbar{display:none}
 .card{flex:0 0 82%;scroll-snap-align:center;position:relative;background:#fff;border-radius:24px;border:1px solid var(--line);box-shadow:0 26px 40px -32px rgba(40,30,0,.5);overflow:hidden;display:flex;flex-direction:column}
-.card .top2{position:relative;height:360px;background:radial-gradient(85% 70% at 50% 88%,var(--t),#fff 72%);overflow:hidden}
+.card .top2{position:relative;height:360px;cursor:pointer;background:radial-gradient(85% 70% at 50% 88%,var(--t),#fff 72%);overflow:hidden}
 .card .top2::before{content:attr(data-n);position:absolute;left:0;right:0;top:14px;text-align:center;font-stretch:62%;font-weight:900;text-transform:uppercase;font-size:112px;line-height:.8;color:var(--c);opacity:.13;white-space:nowrap}
 .card .fig{position:absolute;left:4%;bottom:0;height:92%;width:auto;max-width:none;-webkit-mask-image:linear-gradient(#000 75%,transparent);mask-image:linear-gradient(#000 75%,transparent)}
-.card model-viewer{position:absolute;right:-4%;bottom:-2%;width:64%;height:64%}
+.card .can3{position:absolute;right:0;bottom:0;width:74%;height:74%}
 .card .tag{position:absolute;left:12px;top:12px;z-index:2;font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;background:#111;color:var(--gold);padding:5px 9px;border-radius:999px}
 .card .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
 .card h3{font-stretch:62%;font-weight:900;text-transform:uppercase;font-size:44px;line-height:.9}
@@ -242,7 +242,8 @@ model-viewer{display:block;background:transparent;--poster-color:transparent;--p
 
 /* sklad kompakt */
 .comp2{display:grid;gap:18px;align-items:center;background:#fff;border:1px solid var(--line2);border-radius:24px;padding:20px}
-.comp2>img{width:min(60vw,300px);margin:0 auto}
+.comp2 .mvbox{position:relative;width:min(78vw,340px);aspect-ratio:1;margin:0 auto}
+.comp2 .mvbox model-viewer{position:absolute;inset:-8%;width:116%;height:116%}
 .comp2 .h2{font-size:clamp(46px,8vw,80px)}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
 .chips li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:13px;color:var(--mute);background:var(--paper)}
@@ -329,8 +330,18 @@ footer p{font-size:14px;color:var(--ink2)}
 .pm .box{position:relative;width:100%;max-height:94svh;overflow:auto;background:var(--paper);border-radius:24px 24px 0 0;transform:translateY(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);overscroll-behavior:contain}
 .pm.on .box{transform:none}
 .pm .x{position:absolute;right:14px;top:14px;z-index:3;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:22px}
-.pm .view{background:radial-gradient(70% 60% at 50% 45%,var(--t),#fff 78%);padding:18px 18px 14px;border-radius:24px 24px 0 0}
-.pm .stage{position:relative;width:min(80vw,460px);aspect-ratio:1;margin:0 auto}
+.pm .view{background:radial-gradient(80% 70% at 50% 45%,var(--t),var(--paper) 80%);padding:0 0 12px;border-radius:24px 24px 0 0}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.gal::-webkit-scrollbar{display:none}
+.gal .sl{flex:0 0 100%;scroll-snap-align:center;position:relative;aspect-ratio:1;max-height:62svh}
+.gal .sl img{position:absolute;inset:4%;width:92%;height:92%;object-fit:contain;filter:drop-shadow(0 26px 24px rgba(0,0,0,.22))}
+.gal model-viewer{position:absolute;inset:0;width:100%;height:100%}
+.gal .hint360{bottom:10px}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:4px}
+.dots button{width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.7);padding:3px;font-size:10px;font-weight:800}
+.dots button[aria-current=true]{border-color:var(--ink);box-shadow:0 0 0 2px var(--gold)}
+.dots img{width:100%;height:100%;object-fit:contain}
+
 .pm .stage model-viewer{position:absolute;inset:0;width:100%;height:100%}.pm .stage .ph2{position:absolute;inset:6%;width:88%;height:88%;object-fit:contain;display:none}.pm .stage.photo model-viewer{visibility:hidden}.pm .stage.photo .ph2{display:block}
 .pm .thumbs{display:flex;gap:8px;justify-content:center;margin-top:12px}
 .pm .thumbs button{width:54px;height:54px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:3px;font-size:11px;font-weight:800}
@@ -353,7 +364,7 @@ footer p{font-size:14px;color:var(--ink2)}
 .pm details dl div{padding:8px 0;border-top:1px solid var(--line2)}
 .pm details dt{font-weight:700}
 .pm details dd{color:var(--ink2)}
-@media (min-width:900px){.pm{place-items:center;padding:20px}.pm .box{width:min(1060px,100%);max-height:calc(100svh - 40px);border-radius:26px;display:grid;grid-template-columns:1.1fr 1fr;transform:translateY(30px);opacity:0;transition:transform .45s,opacity .3s}.pm.on .box{opacity:1;transform:none}.pm .view{border-radius:26px 0 0 26px;padding:30px;display:flex;flex-direction:column;justify-content:center}.pm .info{padding:46px 36px 30px}.pm .info h2{font-size:80px}}
+@media (min-width:900px){.gal .sl{max-height:none}.pm{place-items:center;padding:20px}.pm .box{width:min(1060px,100%);max-height:calc(100svh - 40px);border-radius:26px;display:grid;grid-template-columns:1.1fr 1fr;transform:translateY(30px);opacity:0;transition:transform .45s,opacity .3s}.pm.on .box{opacity:1;transform:none}.pm .view{border-radius:26px 0 0 26px;padding:20px 0;display:flex;flex-direction:column;justify-content:center}.pm .info{padding:46px 36px 30px}.pm .info h2{font-size:80px}}
 
 /* age gate */
 .age{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:20px;background:rgba(244,241,234,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
@@ -417,7 +428,7 @@ footer p{font-size:14px;color:var(--ink2)}
           <circle cx="210" cy="210" r="193" fill="none" stroke="url(#gm)" stroke-width=".7"/>
           <g class="spin"><text font-family="Archivo" font-weight="700" font-size="13" letter-spacing="6" fill="#9a7a10"><textPath href="#ringp">SNUZO · BY FIGHT MODE · SASZETKI BEZ NIKOTYNY · 0 MG NIKOTYNY · 20 SASZETEK ·</textPath></text></g>
         </svg>
-        <model-viewer class="mv" id="heroMv" src="../../img/3d/mango.gltf" poster="../../img/p-mango.webp" camera-orbit="-18deg 64deg 1.2m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1.08" environment-image="neutral" tone-mapping="commerce" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" alt="Puszka SNUZO Mango w 3D"></model-viewer>
+        <model-viewer class="mv" id="heroMv" src="../../img/3d/mango.gltf" poster="../../img/p-mango.webp" camera-orbit="-18deg 56deg 2.7m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO Mango w 3D"></model-viewer>
         <p class="hint360" aria-hidden="true">↻ Obróć puszkę palcem</p>
       </div>
     </div>
@@ -482,7 +493,7 @@ footer p{font-size:14px;color:var(--ink2)}
 <section class="sec" id="sklad" aria-labelledby="sklad-h" style="padding-top:0">
   <div class="wrap">
     <div class="comp2 rv">
-      <img src="../../img/g-cola-bot.webp" width="1000" height="1000" loading="lazy" alt="Dno puszki SNUZO z etykietą">
+      <div class="mvbox"><model-viewer id="dnoMv" src="../../img/3d/cola.gltf" poster="../../img/g-cola-bot.webp" loading="lazy" camera-orbit="20deg 128deg 1.7m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="0" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Dno puszki SNUZO Cola w 3D, z etykietą"></model-viewer><p class="hint360">↻ Obróć i przeczytaj</p></div>
       <div>
         <h2 class="h2 cond" id="sklad-h"><span class="serif">wszystko jest na dnie puszki</span>Skład</h2>
         <ul class="chips"><li><b>0 mg</b>nikotyny</li><li><b>0</b>tytoniu</li><li><b>20</b>saszetek</li><li><b>maks. 10</b>dziennie</li></ul>
@@ -550,7 +561,7 @@ footer p{font-size:14px;color:var(--ink2)}
   <div class="bg" data-close></div>
   <div class="box" role="dialog" aria-modal="true" aria-labelledby="pmName">
     <button class="x" type="button" data-close aria-label="Zamknij">×</button>
-    <div class="view"><div class="stage" id="pmStage"><model-viewer id="pmMv" camera-orbit="-18deg 64deg 1.2m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1.08" environment-image="neutral" tone-mapping="commerce" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" alt="Puszka SNUZO w 3D"></model-viewer><img class="ph2" id="pmPh" alt=""></div><div class="thumbs" id="pmThumbs"></div></div>
+    <div class="view"><div class="gal" id="pmGal"><div class="sl"><model-viewer id="pmMv" camera-orbit="-18deg 56deg 1.9m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO w 3D"></model-viewer><p class="hint360">↻ Obróć palcem</p></div></div><div class="dots" id="pmDots"></div></div>
     <div class="info">
       <p class="serif">SNUZO by Fight Mode</p>
       <h2 id="pmName"></h2>
@@ -603,17 +614,24 @@ $("ageNo").onclick=()=>{location.href="https://fightmode.tv"};
 let mvReady=false;
 function loadMV(){if(mvReady)return;mvReady=true;const sc=document.createElement("script");sc.type="module";sc.src="../../js/model-viewer.min.js";document.head.appendChild(sc)}
 const spins=new Set();
-function spinner(mv){const o={mv,th:-18,user:0,on:false};
-  mv.addEventListener("camera-change",e=>{if(e.detail&&e.detail.source==="user-interaction"){o.user=performance.now()+2600;try{o.th=mv.getCameraOrbit().theta*180/Math.PI}catch(_){}}});
+function spinner(mv){const o={mv,th:-18,user:0,on:false,hold:false};
+  const sync=()=>{try{const c=mv.getCameraOrbit();o.th=c.theta*180/Math.PI;o.ph0=c.phi*180/Math.PI;o.amp=0}catch(_){}};
+  const pause=()=>{o.hold=true};const resume=()=>{o.hold=false;o.user=performance.now()+8000;sync()};
+  mv.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse")pause()});
+  mv.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse")resume()});
+  mv.addEventListener("pointerdown",pause);
+  mv.addEventListener("pointerup",e=>{if(e.pointerType!=="mouse")resume();else sync()});
+  mv.addEventListener("pointercancel",resume);
+  mv.addEventListener("camera-change",e=>{if(e.detail&&e.detail.source==="user-interaction"){o.user=performance.now()+8000;sync()}});
   return o}
 let lastT=0;
 function tick(t){const dt=lastT?Math.min(64,t-lastT):16;lastT=t;
-  spins.forEach(o=>{if(!o.on||t<o.user)return;o.th+=dt*.012;const ph=(o.ph0||64)+8*Math.sin(t/1700);o.mv.cameraOrbit=`${o.th.toFixed(2)}deg ${ph.toFixed(2)}deg ${o.r||'1.2m'}`});
+  spins.forEach(o=>{if(!o.on||o.hold||t<o.user)return;o.th+=dt*.0045*(o.sp??1);const ph=(o.ph0||56)+(o.amp??6)*Math.sin(t/((o.per||1800)*2.2)+(o.fz||0));o.mv.cameraOrbit=`${o.th.toFixed(2)}deg ${ph.toFixed(2)}deg ${o.r||'1.7m'}`});
   if(spins.size&&!reduce)requestAnimationFrame(tick);else lastT=0}
 function track(o){spins.add(o);if(spins.size===1&&!reduce)requestAnimationFrame(tick)}
 
 /* hero */
-const heroMv=$("heroMv"),heroS=spinner(heroMv);heroS.on=true;track(heroS);let cur=4;
+const heroMv=$("heroMv"),heroS=spinner(heroMv);heroS.r="2.7m";heroS.ph0=56;heroS.on=true;track(heroS);let cur=4;
 function pick(i){cur=i;const[s,n,c,t]=F[i];root.style.setProperty("--t",t);root.style.setProperty("--c",c);
   heroMv.poster=IMG+"p-"+s+".webp";heroMv.src=IMG+"3d/"+s+".gltf";heroMv.alt="Puszka SNUZO "+n+" w 3D";
   $("flavName").textContent=n;$("heroBuy").textContent=`Dodaj ${n} · ${zl(P)}`;$("flav").querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-pressed",j===i))}
@@ -628,10 +646,11 @@ if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>he
 /* smaki + zawodnicy (pary umowne) */
 const Z={"liczi":["kusz","Jessica Kusz"],"cola":["lombard","Hector Lombard"],"jablko-mieta":["sobierajski","Wojciech Sobierajski"],"jagoda":["rybak","Dominika Rybak"],"mango":["halych","Vasyl Halych"],"ananas":["kubiak","Artur Kubiak"]};
 const ORDER=["mango","cola","liczi","jagoda","jablko-mieta","ananas"];
-$("shop").innerHTML=ORDER.map(s=>{const[,n,c,t]=by(s),[z,nm]=Z[s];return `<li class="card rv" style="--c:${c};--t:${t}"><div class="top2" data-n="${n.split(" ")[0]}">${s==="mango"?'<span class="tag">Na start</span>':""}<img class="fig" src="${IMG}f-${z}-s.webp" srcset="${IMG}f-${z}-s.webp 480w, ${IMG}f-${z}.webp 900w" sizes="(min-width:900px) 300px, 60vw" width="600" height="900" loading="lazy" alt="${nm}, Fight Mode 2"><model-viewer data-s="${s}" src="${IMG}3d/${s}.gltf" poster="${IMG}p6-${s}.webp" loading="lazy" camera-orbit="-18deg 58deg 1.3m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1.08" environment-image="neutral" tone-mapping="commerce" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" alt="Puszka SNUZO ${n} w 3D"></model-viewer></div><div class="body"><h3>${n}</h3><p class="who">W narożniku: <b>${nm}</b> · Fight Mode 2</p><div class="row2"><p class="p">${zl(P)}<small>20 saszetek · 0 mg nikotyny</small></p><button class="add" type="button" data-s="${s}">Do koszyka</button></div><button class="more" type="button" data-pm="${s}">Zdjęcia i skład</button></div></li>`}).join("");
-const cards=[...document.querySelectorAll("#shop model-viewer")].map(mv=>{const o=spinner(mv);o.ph0=56;o.r='1.3m';track(o);return o});
-if(hover){document.querySelectorAll("#shop .card").forEach((el,k)=>{el.addEventListener("mouseenter",()=>cards[k].on=true);el.addEventListener("mouseleave",()=>cards[k].on=false)})}
-else if("IntersectionObserver"in window){const io=new IntersectionObserver(es=>es.forEach(e=>{const o=cards.find(c=>c.mv===e.target);if(o)o.on=e.isIntersecting}),{threshold:.5});cards.forEach(o=>io.observe(o.mv))}
+$("shop").innerHTML=ORDER.map(s=>{const[,n,c,t]=by(s),[z,nm]=Z[s];return `<li class="card rv" style="--c:${c};--t:${t}"><div class="top2" data-n="${n.split(" ")[0]}">${s==="mango"?'<span class="tag">Na start</span>':""}<img class="fig" src="${IMG}f-${z}-s.webp" srcset="${IMG}f-${z}-s.webp 480w, ${IMG}f-${z}.webp 900w" sizes="(min-width:900px) 300px, 60vw" width="600" height="900" loading="lazy" alt="${nm}, Fight Mode 2"><model-viewer class="can3" data-s="${s}" src="${IMG}3d/${s}.gltf" poster="${IMG}p6-${s}.webp" loading="lazy" camera-orbit="-18deg 56deg 1.9m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO ${n} w 3D"></model-viewer></div><div class="body"><h3>${n}</h3><p class="who">W narożniku: <b>${nm}</b> · Fight Mode 2</p><div class="row2"><p class="p">${zl(P)}<small>20 saszetek · 0 mg nikotyny</small></p><button class="add" type="button" data-s="${s}">Do koszyka</button></div><button class="more" type="button" data-pm="${s}">Zdjęcia i skład</button></div></li>`}).join("");
+const CFG=[[1,54,7,1700,0],[-1,60,9,2300,1.4],[.8,50,6,2000,2.6],[-.9,58,8,1600,3.7],[1.1,52,10,2600,.8],[-1.2,62,6,1900,2.1]];
+const cards=[...document.querySelectorAll("#shop model-viewer")].map((mv,k)=>{const o=spinner(mv),c=CFG[k%6];o.sp=c[0]*.8;o.ph0=c[1];o.amp=c[2];o.per=c[3];o.fz=c[4];o.r="1.9m";o.th=-18+k*47;mv.cameraOrbit=`${o.th}deg ${o.ph0}deg 1.9m`;track(o);return o});
+if("IntersectionObserver"in window){const io=new IntersectionObserver(es=>es.forEach(e=>{const o=cards.find(c=>c.mv===e.target);if(o){o.on=e.isIntersecting;if(e.isIntersecting)loadMV()}}),{threshold:.35});cards.forEach(o=>io.observe(o.mv))}else cards.forEach(o=>o.on=true);
+document.querySelectorAll("#shop .top2").forEach(el=>{let x=0,y=0;el.addEventListener("pointerdown",e=>{x=e.clientX;y=e.clientY});el.addEventListener("click",e=>{if(Math.hypot(e.clientX-x,e.clientY-y)>8)return;const s=el.closest(".card").querySelector(".add").dataset.s;openPm(s)})});
 
 /* cart */
 let cart=store.get("snuzo-cart",{});const save=()=>store.set("snuzo-cart",cart);
@@ -648,17 +667,22 @@ $("checkout").onclick=()=>toast("Kasa ruszy razem ze sklepem snuzo.pl");
 let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2000)}
 render();
 
-/* product modal */
-const pm=$("pm"),pmMv=$("pmMv"),pmSp=spinner(pmMv);track(pmSp);let pmS,pmQ=1,lastP;
-const V=[["3d","3D"],["p","3/4"],["top","Góra"],["sid","Bok"],["bot","Dno"]];
-function view(v){$("pmThumbs").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===v));const st=$("pmStage");
-  if(v==="3d"){st.classList.remove("photo");pmSp.on=true;return}pmSp.on=false;st.classList.add("photo");$("pmPh").src=v==="p"?IMG+"p-"+pmS+".webp":IMG+"g-"+pmS+"-"+v+".webp"}
+/* sklad: dno */
+const dnoMv=$("dnoMv"),dnoS=spinner(dnoMv);dnoS.ph0=126;dnoS.amp=8;dnoS.r="1.7m";dnoS.th=20;track(dnoS);
+if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>{dnoS.on=e.isIntersecting;if(e.isIntersecting)loadMV()}),{threshold:.3}).observe(dnoMv);
+
+/* product modal: galeria */
+const pm=$("pm"),pmMv=$("pmMv"),pmSp=spinner(pmMv);pmSp.r="1.9m";pmSp.sp=.6;track(pmSp);let pmS,pmQ=1,lastP;
+const V=[["p","3/4"],["top","Góra"],["sid","Bok"],["bot","Dno"]];
 function openPm(s){loadMV();pmS=s;pmQ=1;$("pmQ").textContent=1;const[,n,c,t]=by(s);pm.style.setProperty("--t",t);$("pmName").textContent=n;$("pmFl").textContent=n;
-  pmMv.poster=IMG+"p-"+s+".webp";pmMv.src=IMG+"3d/"+s+".gltf";$("pmPh").alt="Puszka SNUZO "+n;
-  $("pmThumbs").innerHTML=V.map(([v,l])=>`<button type="button" data-v="${v}" aria-label="${l}">${v==="3d"?l:`<img src="${v==="p"?IMG+"p6-"+s+".webp":IMG+"g-"+s+"-"+v+".webp"}" alt="" loading="lazy">`}</button>`).join("");
-  lastP=document.activeElement;pm.classList.add("on");pm.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";setTimeout(()=>pm.querySelector(".x").focus(),60);view("3d")}
+  pmMv.poster=IMG+"hd-"+s+"-p.webp";pmMv.src=IMG+"3d/"+s+".gltf";
+  const g=$("pmGal");g.querySelectorAll(".sl.ph").forEach(x=>x.remove());
+  V.forEach(([v,l])=>{const d=document.createElement("div");d.className="sl ph";d.innerHTML=`<img src="${IMG}hd-${s}-${v}.webp" width="1400" height="1400" alt="Puszka SNUZO ${n}: ${l}" loading="lazy">`;g.appendChild(d)});
+  $("pmDots").innerHTML=`<button type="button" data-i="0" aria-label="3D" aria-current="true">3D</button>`+V.map(([v,l],k)=>`<button type="button" data-i="${k+1}" aria-label="${l}"><img src="${IMG}p6-${s}.webp" alt="" style="${v==="p"?"":"display:none"}">${v==="p"?"":l}</button>`).join("");
+  g.scrollLeft=0;lastP=document.activeElement;pm.classList.add("on");pm.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";pmSp.on=true;setTimeout(()=>pm.querySelector(".x").focus(),60)}
+$("pmGal").addEventListener("scroll",()=>{const g=$("pmGal"),k=Math.round(g.scrollLeft/g.clientWidth);pmSp.on=k===0;$("pmDots").querySelectorAll("button").forEach((b,i)=>b.setAttribute("aria-current",i===k))},{passive:true});
+$("pmDots").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const g=$("pmGal");g.scrollTo({left:g.clientWidth*+b.dataset.i,behavior:reduce?"auto":"smooth"})});
 function closePm(){pm.classList.remove("on");pm.setAttribute("aria-hidden","true");document.body.style.overflow="";pmSp.on=false;lastP&&lastP.focus()}
-$("pmThumbs").addEventListener("click",e=>{const b=e.target.closest("button");if(b)view(b.dataset.v)});
 pm.addEventListener("click",e=>{if(e.target.closest("[data-close]"))closePm()});
 $("pmMinus").onclick=()=>{pmQ=Math.max(1,pmQ-1);$("pmQ").textContent=pmQ};$("pmPlus").onclick=()=>{pmQ++;$("pmQ").textContent=pmQ};
 $("pmAdd").onclick=()=>{add(pmS,pmQ);closePm()};
