@@ -228,6 +228,11 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 .mb-go{font-size:12px;font-weight:800;color:var(--gold)}
 @media (min-width:900px){.minibar{display:none!important}}
 
+/* bento: puszka kręci się i otwiera sama */
+const benMv=$("benMv"),benS=spinner(benMv);benS.r="1.45m";benS.ph0=70;benS.amp=4;benS.sp=.7;track(benS);
+let benT=null;const benLoop=()=>{if(!benS.on)return;try{const d=benMv.duration||1.5;benMv.currentTime=0;benMv.play();setTimeout(()=>benMv.pause(),d*1000)}catch(_){}benT=setTimeout(benLoop,6500)};
+if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>{benS.on=e.isIntersecting;if(e.isIntersecting){loadMV();clearTimeout(benT);benT=setTimeout(benLoop,1500)}else clearTimeout(benT)}),{threshold:.3}).observe(benMv);
+
 /* product modal */
 .pm{position:fixed;inset:0;z-index:85;display:grid;align-items:end;visibility:hidden}
 .pm.on{visibility:visible}
