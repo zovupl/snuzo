@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SNUZO by Fight Mode</title>
+<meta name="description" content="SNUZO by Fight Mode. Saszetki bez nikotyny w sześciu smakach. 20 saszetek w puszce. Sprzedaż tylko osobom pełnoletnim.">
+<meta name="theme-color" content="#f5f3ee">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111;--ink2:#3b3934;--mute:#6f6b62;--paper:#f5f3ee;--paper2:#ebe7de;
+  --gold:#E1B600;--gold2:#9a7a10;--goldline:linear-gradient(90deg,transparent,#c9a227 18%,#f1d77a 50%,#c9a227 82%,transparent);
+  --metal:linear-gradient(135deg,#8a6a0c 0%,#e1b600 28%,#fff1b0 46%,#c99a06 62%,#7d5f08 100%);
+  --wrap:1240px;--g:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Archivo",system-ui,sans-serif;font-stretch:100%;color:var(--ink);background:var(--paper) url(marble.svg) 0 0/1600px 1600px repeat;line-height:1.55;font-size:17px;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--g)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cond{font-stretch:62%;font-weight:900;text-transform:uppercase;letter-spacing:-.005em;line-height:.86}
+.kick{font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:var(--gold2);display:flex;align-items:center;gap:14px}
+.kick::before,.kick::after{content:"";height:1px;flex:1;max-width:80px;background:linear-gradient(90deg,transparent,#c9a227)}
+.kick::after{transform:scaleX(-1)}
+.serif{font-family:"Instrument Serif",serif;font-weight:400;font-style:italic;text-transform:none;letter-spacing:0}
+.btn{border-radius:12px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 30px;background:var(--ink);color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;position:relative;isolation:isolate;overflow:hidden;transition:color .3s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--metal);transform:translateY(101%);transition:transform .4s cubic-bezier(.7,0,.2,1);z-index:-1}
+.btn:hover{color:var(--ink)}.btn:hover::before{transform:none}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.rule{height:1px;background:var(--goldline);border:0}
+
+/* header */
+.top{position:fixed;inset:0 0 auto;z-index:40;transition:background .3s,box-shadow .3s}
+.top.s{background:rgba(245,243,238,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(154,122,16,.35)}
+.top .wrap{display:flex;align-items:center;height:68px;gap:28px;max-width:1440px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:64px;height:39px;color:var(--ink)}
+.brand .by{font-family:"Instrument Serif",serif;font-style:italic;font-size:17px;color:var(--gold2)}
+.brand img{width:92px;filter:brightness(0)}
+.top nav{margin-left:auto}
+.top nav ul{display:flex;gap:26px;list-style:none}
+.top nav a{text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:6px 0;background:linear-gradient(var(--gold2),var(--gold2)) 0 100%/0 1px no-repeat;transition:background-size .3s}
+.top nav a:hover{background-size:100% 1px}
+.cartbtn{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;height:40px;padding:0 16px;box-shadow:inset 0 0 0 1px rgba(17,17,17,.8)}
+.cartbtn svg{width:18px;height:18px}
+.cartbtn b{min-width:22px;height:22px;border-radius:11px;background:var(--ink);color:var(--gold);display:grid;place-items:center;font-size:11px;letter-spacing:0}
+
+/* hero */
+.hero{position:relative;min-height:max(900px,100svh);padding-top:68px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 50% at 50% 62%,rgba(225,182,0,.20),transparent 70%),radial-gradient(120% 70% at 50% 120%,rgba(17,17,17,.10),transparent 60%)}
+.hero .frame{position:absolute;inset:84px 20px 20px;border:1px solid rgba(154,122,16,.45);pointer-events:none;z-index:5}
+.hero .frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(154,122,16,.18)}
+.presents{position:relative;z-index:3;display:flex;justify-content:center;margin-top:34px}
+.fmbig{position:relative;z-index:1;width:min(56vw,780px);margin:14px auto 0;filter:brightness(0);opacity:.94}
+.crew{position:absolute;z-index:2;left:50%;top:345px;width:min(900px,62vw);transform:translateX(-50%);display:flex;justify-content:center;align-items:flex-start;gap:12px}
+.crew img{width:17.5%;aspect-ratio:3/4;object-fit:cover;border-radius:16px 16px 0 0;box-shadow:0 0 0 1px rgba(154,122,16,.55),0 30px 40px -24px rgba(0,0,0,.5);-webkit-mask-image:linear-gradient(#000 62%,transparent 98%);mask-image:linear-gradient(#000 62%,transparent 98%)}
+.crew img:nth-child(1),.crew img:nth-child(5){margin-top:40px}
+.crew img:nth-child(2),.crew img:nth-child(4){margin-top:14px}
+.trophy{position:absolute;z-index:4;left:50%;bottom:56px;width:400px;height:400px;transform:translateX(-50%)}
+.trophy .plate{position:absolute;inset:0;width:100%;height:100%}
+.trophy .plate .spin{transform-origin:210px 210px;animation:spin 60s linear infinite}
+.trophy .can{position:absolute;left:50%;top:50%;width:79%;transform:translate(-50%,-52%);filter:drop-shadow(0 34px 30px rgba(0,0,0,.38)) drop-shadow(0 8px 8px rgba(0,0,0,.25))}
+.hcopy{position:absolute;z-index:6;left:max(56px,calc(50% - 640px));bottom:90px;max-width:330px}
+.hcopy h1{font-size:70px}
+.hcopy h1 .serif{display:block;font-size:30px;line-height:1;color:var(--gold2);margin-bottom:10px}
+.hcopy p{margin-top:16px;color:var(--ink2);font-size:16px}
+.hbuy{position:absolute;z-index:6;right:max(56px,calc(50% - 640px));bottom:90px;width:300px;text-align:right}
+.hbuy dl{background:rgba(245,243,238,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;grid-template-columns:1fr auto;gap:0;margin-bottom:22px;border-top:1px solid rgba(154,122,16,.5)}
+.hbuy dt,.hbuy dd{padding:9px 0;border-bottom:1px solid rgba(154,122,16,.3);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.hbuy dt{text-align:left;color:var(--mute)}
+.hbuy dd{font-weight:800}
+.hbuy .btn{width:100%}
+.hbuy .age{margin-top:14px;font-size:12px;color:var(--mute);letter-spacing:.06em;display:flex;gap:8px;justify-content:flex-end;align-items:center}
+.age b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1.5px solid currentColor;font-size:11px;font-weight:800;color:var(--ink);letter-spacing:0}
+
+/* entrance */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fade{from{opacity:0}}
+@keyframes up{from{opacity:0;transform:translateY(28px)}}
+@keyframes logoIn{from{opacity:0;clip-path:inset(0 50% 0 50%);letter-spacing:.2em}to{clip-path:inset(0 0 0 0)}}
+@keyframes crewIn{from{opacity:0;transform:translateX(-50%) translateY(60px) scale(1.04);filter:blur(8px) saturate(.9)}}
+@keyframes plateIn{from{opacity:0;transform:scale(.6) rotate(-40deg)}}
+@keyframes canIn{0%{opacity:0;transform:translate(-50%,-140%) rotate(-14deg) scale(.9)}70%{opacity:1;transform:translate(-50%,-48%) rotate(2deg) scale(1.01)}100%{transform:translate(-50%,-52%)}}
+@keyframes frameIn{from{opacity:0;transform:scale(1.03)}}
+@keyframes shine{from{transform:translateX(-120%) skewX(-20deg)}to{transform:translateX(320%) skewX(-20deg)}}
+.js .hero .frame{animation:frameIn 1.4s .1s both cubic-bezier(.2,.7,.2,1)}
+.js .presents{animation:up .8s .15s both}
+.js .fmbig{animation:logoIn 1.1s .3s both cubic-bezier(.77,0,.18,1)}
+.js .crew{animation:crewIn 1.5s .75s both cubic-bezier(.2,.7,.2,1)}
+.js .trophy .plate{animation:plateIn 1.2s 1.35s both cubic-bezier(.2,.8,.2,1)}
+.js .trophy .can{animation:canIn 1.1s 1.6s both cubic-bezier(.3,.7,.2,1)}
+.js .hcopy>*{animation:up .9s both cubic-bezier(.2,.7,.2,1)}
+.js .hcopy>*:nth-child(1){animation-delay:2.0s}.js .hcopy>*:nth-child(2){animation-delay:2.12s}
+.js .hbuy{animation:up .9s 2.2s both cubic-bezier(.2,.7,.2,1)}
+
+/* ticker */
+.ticker{background:var(--ink);color:var(--gold);overflow:hidden;border-block:1px solid #c9a227;position:relative;z-index:2}
+.ticker div{display:flex;gap:48px;width:max-content;padding:16px 0;animation:tick 40s linear infinite}
+.ticker span{font-stretch:62%;font-weight:800;font-size:22px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:48px}
+.ticker span::after{content:"";width:8px;height:8px;background:var(--metal);transform:rotate(45deg)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* sections */
+.sec{padding:clamp(80px,11vw,150px) 0;position:relative}
+.head{text-align:center;max-width:760px;margin:0 auto clamp(44px,6vw,72px)}
+.head .kick{justify-content:center}
+.h2{font-size:clamp(64px,10vw,140px);margin-top:18px}
+.h2 .serif{font-size:.42em;color:var(--gold2);display:block;line-height:1;margin-bottom:.12em}
+.head p{margin:22px auto 0;max-width:34em;color:var(--ink2)}
+
+/* fight card */
+.card-sec{background:#0b0b0b url(../../img/dym.webp) center/cover;color:#f3efe6;overflow:hidden}
+.card-sec::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 50% at 50% 0,rgba(225,182,0,.16),transparent 70%),linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.55))}
+.card-sec .wrap{position:relative}
+.card-sec .kick{color:var(--gold)}
+.card-sec .h2 .serif{color:var(--gold)}
+.card-sec .head p{color:#c9c3b6}
+.card-sec .fmmark{width:240px;margin:0 auto 26px;opacity:.95}
+.bouts{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;list-style:none}
+.bout{position:relative;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(225,182,0,.35);padding:10px;transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .3s}
+.bout:hover{transform:translateY(-6px);border-color:rgba(225,182,0,.8)}
+.bout .pic{position:relative;aspect-ratio:3/4;overflow:hidden;background:#111;border-radius:12px}
+.bout .pic img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.bout:hover .pic img{transform:scale(1.04)}
+.bout .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.85));}
+.bout .no{position:absolute;left:16px;top:14px;z-index:2;font-size:11px;letter-spacing:.3em;color:var(--gold);font-weight:700}
+.bout .name{position:absolute;left:18px;bottom:16px;z-index:2;font-size:10.5cqw;line-height:.9;color:#fff;max-width:60cqw;white-space:nowrap}
+.bout .name .fn{display:block;font-size:.34em;letter-spacing:.06em;color:#d9d3c5;margin-top:4px}
+.bout .name small{display:block;font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;font-stretch:100%;text-transform:none;font-size:20px;color:var(--gold);margin-bottom:6px;letter-spacing:0}
+.bout{container-type:inline-size}.bout .tin{position:absolute;right:-12px;top:calc(10px + 133.33cqw - 37cqw);z-index:3;width:40cqw;filter:drop-shadow(0 18px 18px rgba(0,0,0,.6));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.bout:hover .tin{transform:rotate(-8deg) translateY(-6px)}
+.tape{margin-top:26px;padding:0 8px}
+.tape div{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid rgba(225,182,0,.22);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#a9a294}
+.tape dd{color:#fff;font-weight:700;letter-spacing:.1em}
+.tape dd i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:8px;box-shadow:0 0 0 1px rgba(255,255,255,.4)}
+.bout .add{border-radius:12px;margin:16px 8px 8px;width:calc(100% - 16px);height:46px;border:1px solid var(--gold);color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .3s,color .3s}
+.bout .add:hover{background:var(--gold);color:#111}
+
+/* shop */
+.shop{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(154,122,16,.45);border-left:1px solid rgba(154,122,16,.45)}
+.item{position:relative;border-right:1px solid rgba(154,122,16,.45);border-bottom:1px solid rgba(154,122,16,.45);padding:28px 28px 30px;display:flex;flex-direction:column;background:rgba(255,255,255,.35);transition:background .4s}
+.item:hover{background:rgba(255,255,255,.75)}
+.item .ph{position:relative;aspect-ratio:1;display:grid;place-items:center;margin-bottom:12px}
+.item .ph::before{content:"";position:absolute;width:76%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--t),transparent 70%);transition:transform .6s}
+.item .ph::after{content:"";position:absolute;width:82%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(154,122,16,.4)}
+.item .ph img{position:relative;z-index:1;width:84%;filter:drop-shadow(0 22px 20px rgba(0,0,0,.22));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.item:hover .ph img{transform:translateY(-10px) rotate(-4deg)}
+.item:hover .ph::before{transform:scale(1.1)}
+.item .row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.item h3{font-size:40px}
+.item .p{font-weight:800;font-size:18px;white-space:nowrap}
+.item .sub{color:var(--mute);font-size:14px;margin:6px 0 20px;display:flex;align-items:center;gap:8px}
+.item .sub i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.item .btn{margin-top:auto;height:48px;font-size:12px}
+.item .btn.ok{background:var(--gold);color:var(--ink)}
+.shopnote{text-align:center;margin-top:24px;font-size:14px;color:var(--mute)}
+
+/* gala strip */
+.gala{position:relative;padding:0 var(--g);max-width:calc(var(--wrap) + 2 * var(--g));margin:0 auto}
+.ghead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.ghead img{width:180px;filter:brightness(0)}
+.ghead h2{font-size:clamp(44px,5.6vw,84px);text-align:right}
+.ghead h2 .serif{display:block;font-size:24px;line-height:1.1;color:var(--gold2);margin-bottom:8px}
+.posters{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.posters li{border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px rgba(154,122,16,.45),0 18px 34px -18px rgba(0,0,0,.45);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.posters li:hover{transform:translateY(-8px) rotate(-1deg)}
+.posters img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+@media (max-width:900px){.posters{grid-template-columns:repeat(3,1fr)}.ghead h2{text-align:left}}
+@media (max-width:520px){.posters{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:calc(-1 * var(--g));padding-inline:var(--g)}.posters li{flex:0 0 62%;scroll-snap-align:start}}
+
+/* how */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px);counter-reset:s}
+.steps li{position:relative;padding-top:24px;border-top:1px solid var(--ink)}
+.steps li::before{counter-increment:s;content:"0" counter(s);display:block;font-stretch:62%;font-weight:900;font-size:150px;line-height:.8;color:transparent;-webkit-text-stroke:1.5px var(--gold2);margin-bottom:22px}
+.steps h3{font-size:40px;margin-bottom:10px}
+.steps p{color:var(--ink2)}
+.note{margin-top:48px;text-align:center;font-size:14px;color:var(--mute)}
+.note b{color:var(--ink)}
+
+/* composition */
+.comp{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,6vw,90px);align-items:center}
+.comp figure{position:relative}
+.comp figure img{width:100%;filter:drop-shadow(0 40px 36px rgba(0,0,0,.25))}
+.comp figure::before{content:"";position:absolute;inset:8% 8% 2%;border-radius:50%;border:1px solid rgba(154,122,16,.5);box-shadow:0 0 0 14px rgba(255,255,255,.35),0 0 0 15px rgba(154,122,16,.25)}
+.comp figure figcaption{position:absolute;left:0;bottom:0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2)}
+.comp .h2{text-align:left;font-size:clamp(56px,7vw,104px)}
+.comp .kick{justify-content:flex-start}.comp .kick::before{display:none}
+.specs{margin-top:34px;border-top:1px solid var(--ink)}
+.specs div{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:15px 0;border-bottom:1px solid rgba(154,122,16,.35)}
+.specs dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding-top:3px}
+.specs dd{color:var(--ink2);font-size:16px}
+.specs dd small{display:block;color:var(--mute);font-size:13px;margin-top:4px}
+.specs .big{font-stretch:62%;font-weight:900;font-size:30px;color:var(--ink);line-height:1}
+
+/* faq */
+.faq{max-width:860px;margin:0 auto;border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid rgba(154,122,16,.4)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-size:20px;font-weight:700}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:14px;height:14px;background:linear-gradient(var(--gold2),var(--gold2)) center/100% 1.5px no-repeat,linear-gradient(var(--gold2),var(--gold2)) center/1.5px 100% no-repeat;transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 24px;color:var(--ink2);max-width:42em}
+
+/* footer */
+footer{background:var(--paper2);border-top:1px solid rgba(154,122,16,.5);padding:72px 0 30px;position:relative}
+footer::before{content:"";position:absolute;inset:-1px 0 auto;height:3px;background:var(--goldline)}
+.fcols{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:40px}
+.fbrand{display:flex;align-items:center;gap:14px}
+.fbrand svg{width:110px;height:67px}
+.fbrand img{width:130px;filter:brightness(0)}
+footer h3{font-size:12px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:16px;color:var(--gold2)}
+footer ul{list-style:none;display:grid;gap:9px}
+footer a{text-decoration:none;font-size:15px}
+footer a:hover{text-decoration:underline;text-decoration-color:var(--gold2)}
+footer p{font-size:15px;color:var(--ink2)}
+.pay{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.pay span{font-size:11px;font-weight:800;letter-spacing:.14em;padding:7px 11px;border:1px solid rgba(17,17,17,.5);background:rgba(255,255,255,.5)}
+.legal{margin-top:56px;padding-top:22px;border-top:1px solid rgba(154,122,16,.35);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--mute)}
+.legal p{display:flex;align-items:center;gap:10px;font-size:13px}
+
+/* cart */
+.scrim{position:fixed;inset:0;background:rgba(10,10,10,.5);opacity:0;pointer-events:none;transition:opacity .3s;z-index:60}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);background:var(--paper) url(marble.svg) 0 0/1600px;z-index:61;transform:translateX(100%);transition:transform .45s cubic-bezier(.7,0,.2,1);display:flex;flex-direction:column;border-left:1px solid #c9a227;visibility:hidden}
+.open .scrim{opacity:1;pointer-events:auto}
+.open .drawer{transform:none;visibility:visible}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;border-bottom:1px solid rgba(154,122,16,.4)}
+.dh h2{font-size:40px}
+.x{font-size:30px;width:44px;height:44px;line-height:1}
+.items{flex:1;overflow:auto;padding:8px 26px}
+.it{display:grid;grid-template-columns:76px 1fr auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(154,122,16,.25)}
+.it .th{width:76px;height:76px;border-radius:50%;display:grid;place-items:center}
+.it .th img{width:86%}
+.it h3{font-size:16px}
+.it .s{font-size:13px;color:var(--mute)}
+.qty{display:inline-flex;align-items:center;margin-top:8px;border:1px solid rgba(17,17,17,.4)}
+.qty button{width:32px;height:30px;font-size:16px}
+.qty span{min-width:26px;text-align:center;font-weight:700;font-size:14px}
+.lp{font-weight:800;text-align:right}
+.rm{font-size:12px;color:var(--mute);text-decoration:underline;margin-top:6px}
+.empty{padding:40px 0;text-align:center;color:var(--ink2)}
+.empty .btn{margin-top:18px}
+.df{padding:22px 26px 26px;border-top:1px solid rgba(154,122,16,.4)}
+.df[hidden]{display:none}
+.sum{display:flex;justify-content:space-between;font-weight:800;font-size:20px}
+.df .s{font-size:13px;color:var(--mute);margin:6px 0 16px}
+.df .btn{width:100%}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:14px 22px;font-size:14px;border-bottom:2px solid var(--gold);opacity:0;pointer-events:none;transition:.35s;z-index:70}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+html:not(.js) .rv{opacity:1;transform:none}
+
+/* responsive */
+@media (max-width:1100px){
+  .top nav{display:none}.cartbtn{margin-left:auto}
+  .hcopy h1{font-size:60px}.hcopy,.hbuy{bottom:60px}.hbuy{width:250px}
+  .trophy{width:340px;height:340px;bottom:60px}.trophy .can{width:270px}
+  .trophy svg{width:100%;height:100%}
+  .bouts{grid-template-columns:repeat(2,1fr)}
+  .shop{grid-template-columns:repeat(2,1fr)}
+  .fcols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .top .wrap{height:60px;gap:12px}
+  .brand svg{width:52px;height:32px}.brand img{width:72px}
+  .cartbtn span{display:none}.cartbtn{padding:0 12px}
+  .hero{min-height:0;padding:60px 0 44px;display:flex;flex-direction:column}
+  .hero .frame{inset:70px 10px 10px}
+  .presents{margin-top:30px}
+  .fmbig{width:84vw;margin-top:12px}
+  .crew{position:relative;left:auto;top:auto;width:auto;max-width:none;margin:2vw 10px 0;transform:none;gap:6px}
+  .crew img{border-radius:10px 10px 0 0}
+  @keyframes crewIn{from{opacity:0;transform:translateY(40px);filter:blur(8px)}}
+  .trophy{position:relative;left:auto;bottom:auto;transform:none;margin:-26vw auto 0;width:min(80vw,340px);height:auto;aspect-ratio:1}
+  .trophy .can{width:78%}
+  .hcopy,.hbuy{position:relative;left:auto;right:auto;bottom:auto;max-width:none;width:auto;margin:22px var(--g) 0;text-align:center}
+  .hcopy h1{font-size:58px}
+  .hbuy .age{justify-content:center}
+  .bouts{grid-template-columns:1fr;gap:56px}
+  .shop{grid-template-columns:1fr}
+  .item{padding:22px}.item .ph{width:72%;margin:0 auto 8px}
+  .gala img{aspect-ratio:4/3}
+  .gala figcaption{position:static;padding:18px;background:#111}
+  .comp figure figcaption{display:none}
+  .gala figcaption img{width:130px}
+  .steps{grid-template-columns:1fr;gap:34px}
+  .steps li::before{font-size:110px}
+  .comp{grid-template-columns:1fr}
+  .comp figure{max-width:340px;margin:0 auto}
+  .specs div{grid-template-columns:1fr;gap:4px}
+  .fcols{grid-template-columns:1fr}
+  .ticker span{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="snuzo" viewBox="0 0 2229 1355"><path fill="currentColor" fill-rule="evenodd" d="M1988 1354C1910 1346 1858 1304 1838 1234C1833 1216 1831 1210 1830 1198C1829 1192 1827 1183 1827 1178C1823 1160 1823 1127 1823 889C1823 667 1823 618 1820 453C1817 257 1818 190 1825 155C1839 80 1879 33 1947 12C1957 9 1993 4 2004 4C2122 4 2201 70 2217 181C2218 189 2219 197 2220 200C2223 219 2224 247 2224 400C2225 483 2225 566 2226 584C2230 902 2230 1128 2224 1178C2212 1277 2159 1333 2058 1353C2051 1354 1998 1355 1988 1354ZM1127 1348C1065 1342 1013 1308 990 1257C971 1216 966 1175 966 1060C966 1024 966 950 965 894C964 840 964 724 963 637C962 550 962 450 961 413C959 281 959 27 960 22C963 15 958 15 1050 16L1131 16L1133 19C1137 22 1137 41 1137 409C1137 583 1138 812 1138 918L1139 1112L1141 1123C1146 1145 1153 1152 1168 1152C1182 1152 1190 1143 1194 1121L1196 1110L1195 565L1195 21L1198 18L1201 15L1286 15C1375 14 1373 14 1376 19C1379 26 1378 1123 1375 1153C1358 1297 1276 1361 1127 1348ZM184 1346C125 1339 74 1310 45 1267C26 1240 12 1196 8 1153C5 1122 5 1105 2 833L2 771L5 768L8 765L26 765C78 763 173 763 176 766C181 770 181 767 181 880C180 1036 181 1116 184 1128C189 1153 208 1162 224 1146C236 1135 237 1120 235 998C231 779 234 795 187 736C162 706 139 677 122 656C107 637 104 634 79 602C30 541 12 502 5 443C5 436 3 425 2 420C-1 397 -0 192 4 181C4 180 5 171 7 162C22 72 74 21 166 3C198 -3 254 -0 290 9C353 26 399 76 410 142C417 186 417 195 417 350L416 481L414 483L411 486L329 486C263 485 246 485 243 484C237 482 237 483 237 423C237 242 235 210 228 197C219 180 196 181 187 198C181 211 178 347 184 408C186 442 199 469 226 498C235 507 257 534 271 552C291 576 310 600 326 620C355 655 367 671 384 702C387 709 390 714 390 715C390 715 392 719 394 724C401 740 409 769 414 798C418 820 418 1115 414 1152C411 1173 407 1197 405 1207C403 1212 401 1219 400 1224C392 1253 370 1289 348 1306C311 1336 241 1353 184 1346ZM779 1342C750 1341 752 1343 746 1312C743 1300 740 1286 739 1282C737 1273 732 1251 728 1226C726 1216 724 1205 723 1200C722 1196 720 1188 720 1182C719 1176 717 1168 716 1164C715 1161 713 1152 712 1145C711 1138 709 1129 708 1126C707 1122 705 1113 704 1106C703 1100 701 1092 700 1088C699 1084 697 1076 696 1068C695 1061 693 1051 692 1045C690 1039 689 1031 688 1027C687 1023 686 1014 684 1008C682 1001 680 991 680 986C679 981 677 972 675 968C674 963 672 953 671 946C670 939 668 931 667 928C667 924 665 916 664 909C663 902 661 893 660 889C659 885 657 877 656 871C656 865 654 856 652 850C651 844 649 834 648 827C645 808 638 783 636 783C632 783 632 796 635 1228C636 1344 636 1338 629 1340C624 1342 480 1341 476 1340C471 1337 471 1346 470 1165C469 1072 469 951 468 894C467 838 467 755 466 710C466 665 466 573 465 507C463 280 463 27 464 23C466 16 462 16 541 16C621 16 615 15 619 23C620 26 622 32 623 38C624 44 627 55 628 63C630 71 633 83 635 90C640 115 644 131 645 133C646 135 647 142 649 149C650 156 654 176 658 194C662 212 665 229 665 231C666 233 668 242 669 250C671 258 675 274 677 284C679 296 682 311 684 318C686 325 688 336 688 340C689 345 691 355 693 362C695 368 696 376 697 378C697 380 698 386 699 390C701 399 707 429 713 456C715 466 717 478 718 482C719 486 720 493 721 498C722 502 723 509 724 513C725 517 727 528 728 536C735 580 742 592 743 562C744 541 742 308 740 206C739 125 739 23 740 20C742 16 747 16 771 16C784 16 819 16 850 16L905 15L908 18L911 21L911 52C911 69 911 137 912 202C912 267 913 444 914 594C914 744 914 920 915 984C916 1360 916 1340 910 1342C908 1343 818 1343 779 1342ZM1430 1342C1421 1341 1420 1341 1419 1337C1417 1332 1418 1175 1420 1170C1420 1167 1422 1159 1423 1150C1424 1141 1426 1132 1427 1128C1429 1118 1430 1113 1432 1100C1432 1093 1434 1084 1435 1080C1436 1075 1438 1065 1439 1056C1440 1048 1442 1037 1443 1032C1444 1026 1446 1014 1447 1006C1449 997 1451 985 1452 979C1454 973 1455 965 1456 960C1457 956 1458 948 1460 943C1461 938 1463 928 1463 921C1464 914 1466 904 1467 898C1469 891 1471 881 1471 874C1472 868 1474 859 1475 855C1476 851 1478 842 1479 834C1480 827 1482 816 1484 810C1485 805 1487 795 1488 789C1488 783 1490 773 1492 768C1493 762 1495 752 1496 746C1496 739 1498 728 1500 721C1502 713 1503 703 1504 698C1505 694 1506 685 1507 680C1509 674 1511 665 1512 658C1512 652 1514 643 1516 638C1517 633 1519 624 1520 618C1520 612 1522 602 1524 594C1526 587 1527 577 1528 572C1529 567 1530 559 1531 555C1532 551 1534 541 1535 534C1536 527 1538 516 1540 511C1541 506 1543 497 1543 491C1544 486 1546 477 1547 472C1548 467 1550 457 1551 450C1552 443 1554 433 1555 428C1556 423 1558 412 1559 405C1560 397 1562 386 1564 382C1565 377 1566 370 1567 367C1567 364 1569 353 1571 342C1573 331 1576 318 1576 313C1577 307 1579 299 1580 295C1581 290 1583 281 1584 275C1585 268 1587 259 1588 254C1589 249 1590 241 1591 236C1592 232 1593 224 1594 219C1597 202 1604 204 1510 203L1431 202L1429 200L1426 198L1426 108C1426 7 1426 14 1433 12C1437 11 1630 11 1719 12L1770 12L1772 15C1776 19 1778 180 1774 198C1773 202 1769 223 1766 243C1763 263 1759 286 1757 295C1756 304 1754 319 1752 330C1750 340 1748 354 1747 362C1745 369 1744 378 1743 382C1742 386 1741 393 1740 398C1739 402 1737 411 1736 416C1736 421 1733 434 1732 444C1726 471 1723 489 1720 507C1719 516 1717 528 1716 535C1714 541 1713 550 1712 555C1711 560 1710 570 1708 576C1707 583 1705 594 1704 602C1703 609 1701 617 1700 621C1700 625 1698 636 1696 646C1694 655 1692 669 1691 676C1685 704 1683 717 1680 732C1678 741 1677 751 1676 754C1675 758 1673 767 1672 774C1671 781 1669 793 1667 800C1665 808 1664 816 1663 819C1663 822 1662 829 1660 835C1659 841 1657 850 1656 855C1656 861 1654 870 1653 876C1651 881 1649 890 1648 895C1648 900 1646 909 1644 914C1643 919 1641 930 1640 937C1639 944 1637 955 1636 962C1634 968 1633 977 1632 982C1631 986 1630 994 1629 998C1628 1002 1626 1012 1625 1021C1623 1030 1621 1040 1620 1044C1619 1049 1617 1059 1616 1066C1614 1074 1612 1083 1611 1086C1611 1089 1609 1097 1607 1104C1606 1111 1605 1119 1604 1122C1601 1137 1599 1136 1673 1135C1767 1134 1772 1134 1775 1141C1778 1149 1776 1334 1772 1337L1770 1340L1650 1340C1584 1341 1512 1341 1490 1342C1448 1343 1443 1343 1430 1342ZM2033 1156C2037 1154 2043 1148 2045 1143C2051 1133 2051 1094 2049 644C2048 532 2048 397 2048 344C2048 237 2048 227 2043 212C2034 185 2008 183 1999 208C1995 221 1995 207 1995 672L1996 1116L1998 1128C2002 1154 2016 1164 2033 1156Z"/></symbol></svg>
+<a class="sr" href="#sklep">Przejdź do sklepu</a>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="SNUZO by Fight Mode, strona główna"><svg viewBox="0 0 2229 1355" aria-hidden="true"><use href="#snuzo"/></svg><span class="by">by</span><img src="../../img/fm-logo.png" width="949" height="275" alt=""></a>
+    <nav aria-label="Główna"><ul>
+      <li><a href="#zawodnicy">Zawodnicy</a></li>
+      <li><a href="#sklep">Sklep</a></li>
+      <li><a href="#jak">Jak używać</a></li>
+      <li><a href="#sklad">Skład</a></li>
+      <li><a href="#faq">Pytania</a></li>
+    </ul></nav>
+    <button class="cartbtn" type="button" id="cartOpen" aria-label="Otwórz koszyk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span>Koszyk</span> <b id="cartCount">0</b>
+    </button>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="h1">
+  <div class="frame" aria-hidden="true"></div>
+  <p class="presents kick">Fight Mode przedstawia</p>
+  <img class="fmbig" src="../../img/fm-logo.png" width="949" height="275" alt="Fight Mode">
+  <div class="crew" role="img" aria-label="Zawodnicy Fight Mode 2: Dominika Rybak, Hector Lombard, Albert Sosnowski, Norman Parke, Jessica Kusz"><img src="../../img/z-rybak.webp" width="600" height="800" alt=""><img src="../../img/z-lombard.webp" width="600" height="800" alt=""><img src="../../img/z-sosnowski.webp" width="600" height="800" alt=""><img src="../../img/z-parke.webp" width="600" height="800" alt=""><img src="../../img/z-kusz.webp" width="600" height="800" alt=""></div>
+  <div class="trophy">
+    <svg class="plate" viewBox="0 0 420 420" aria-hidden="true">
+      <defs>
+        <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7d5f08"/><stop offset=".3" stop-color="#e1b600"/><stop offset=".5" stop-color="#fff1b0"/><stop offset=".68" stop-color="#c99a06"/><stop offset="1" stop-color="#6e5306"/></linearGradient>
+        <radialGradient id="gl"><stop offset="0" stop-color="#fff6cf" stop-opacity=".95"/><stop offset=".55" stop-color="#f4e7b8" stop-opacity=".55"/><stop offset="1" stop-color="#f5f3ee" stop-opacity="0"/></radialGradient>
+        <path id="ring" d="M210 210 m-178 0 a178 178 0 1 1 356 0 a178 178 0 1 1 -356 0"/>
+      </defs>
+      <circle cx="210" cy="210" r="210" fill="url(#gl)"/>
+      <circle cx="210" cy="210" r="200" fill="none" stroke="url(#gm)" stroke-width="2"/>
+      <circle cx="210" cy="210" r="193" fill="none" stroke="url(#gm)" stroke-width=".7"/>
+      <circle cx="210" cy="210" r="160" fill="none" stroke="url(#gm)" stroke-width=".7" opacity=".7"/>
+      <g class="spin"><text font-family="Archivo" font-weight="700" font-size="13" letter-spacing="6.2" fill="#9a7a10"><textPath href="#ring">SNUZO · BY FIGHT MODE · SASZETKI BEZ NIKOTYNY · 0 MG NIKOTYNY · 20 SASZETEK ·</textPath></text></g>
+      <g fill="url(#gm)"><path d="M210 4l5 10-5 10-5-10z"/><path d="M210 396l5 10-5 10-5-10z"/><path d="M4 210l10-5 10 5-10 5z"/><path d="M396 210l10-5 10 5-10 5z"/></g>
+    </svg>
+    <img class="can" id="heroCan" src="../../img/p-jagoda.webp" width="1000" height="1000" alt="Puszka SNUZO Jagoda">
+  </div>
+  <div class="hcopy">
+    <h1 id="h1" class="cond"><span class="serif">SNUZO by Fight Mode</span>Saszetki bez nikotyny</h1>
+    <p>Sześć smaków wybranych z zawodnikami federacji. 20 saszetek w puszce, smak na 5–20 minut.</p>
+  </div>
+  <div class="hbuy">
+    <dl>
+      <dt>Nikotyna</dt><dd>0 mg</dd>
+      <dt>W puszce</dt><dd>20 saszetek</dd>
+      <dt>Smaki</dt><dd>6</dd>
+      <dt>Cena</dt><dd>od 24,99 zł</dd>
+    </dl>
+    <a class="btn" href="#sklep">Wybierz smak</a>
+    <p class="age"><b>18+</b>Sprzedaż tylko pełnoletnim</p>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div>
+  <span>SNUZO by Fight Mode</span><span>Saszetki bez nikotyny</span><span>0 mg nikotyny</span><span>Bez tytoniu</span><span>6 smaków</span><span>18+</span>
+  <span>SNUZO by Fight Mode</span><span>Saszetki bez nikotyny</span><span>0 mg nikotyny</span><span>Bez tytoniu</span><span>6 smaków</span><span>18+</span>
+</div></div>
+
+<section class="sec card-sec" id="zawodnicy" aria-labelledby="zaw-h">
+  <div class="wrap">
+    <div class="head rv">
+      <img class="fmmark" src="../../img/fm-logo.png" width="949" height="275" alt="Fight Mode">
+      <p class="kick">Karta walk</p>
+      <h2 class="h2 cond" id="zaw-h"><span class="serif">sześć narożników, sześć smaków</span>Wybór zawodników</h2>
+      <p>Każdy zawodnik Fight Mode dostał swoją puszkę. Zestawienie jak przed galą: nazwisko, smak, liczby.</p>
+    </div>
+    <ul class="bouts" id="bouts"></ul>
+  </div>
+</section>
+
+<section class="sec" id="sklep" aria-labelledby="sklep-h">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kick">Sklep</p>
+      <h2 class="h2 cond" id="sklep-h"><span class="serif">kolor wieczka to smak</span>Sześć smaków</h2>
+      <p>Każda puszka ma 20 saszetek i tę samą cenę. Złóż własny zestaw.</p>
+    </div>
+    <ul class="shop rv" id="shop"></ul>
+    <p class="shopnote">Dostawa InPost do Paczkomatu albo kurierem. Płatność BLIK, kartą lub przelewem.</p>
+  </div>
+</section>
+
+<section class="gala rv" aria-labelledby="gala-h">
+  <div class="ghead"><img src="../../img/fm-logo.png" width="949" height="275" alt="Fight Mode"><h2 class="cond" id="gala-h"><span class="serif">3 października 2026, Arena Legionowo</span>Fight Mode 2</h2></div>
+  <ul class="posters"><li><img src="../../img/fm2-lombard-szadzinski.webp" width="660" height="880" loading="lazy" alt="Plakat walki Lombard Vs Szadzinski"></li><li><img src="../../img/fm2-sobierajski-parke.webp" width="660" height="880" loading="lazy" alt="Plakat walki Sobierajski Vs Parke"></li><li><img src="../../img/fm2-halych-parobiec.webp" width="660" height="880" loading="lazy" alt="Plakat walki Halych Vs Parobiec"></li><li><img src="../../img/fm2-kusz-czyzewska.webp" width="660" height="880" loading="lazy" alt="Plakat walki Kusz Vs Czyzewska"></li><li><img src="../../img/fm2-rybak-andrzejewska.webp" width="660" height="880" loading="lazy" alt="Plakat walki Rybak Vs Andrzejewska"></li><li><img src="../../img/fm2-kwiatkowski-durski.webp" width="660" height="880" loading="lazy" alt="Plakat walki Kwiatkowski Vs Durski"></li></ul>
+</section>
+
+<section class="sec" id="jak" aria-labelledby="jak-h">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kick">Trzy rundy</p>
+      <h2 class="h2 cond" id="jak-h"><span class="serif">prosto i bez dymu</span>Jak używać</h2>
+    </div>
+    <ol class="steps">
+      <li class="rv"><h3 class="cond">Włóż saszetkę</h3><p>Jedną saszetkę pod górną wargę albo pod język.</p></li>
+      <li class="rv"><h3 class="cond">Trzymaj 5–20 minut</h3><p>Tyle trwa smak. Nie połykaj i nie rozrywaj saszetki.</p></li>
+      <li class="rv"><h3 class="cond">Wyrzuć do kosza</h3><p>Zużytą saszetkę schowaj do górnej przegródki puszki, a potem wyrzuć do kosza.</p></li>
+    </ol>
+    <p class="note rv"><b>Maksymalnie 10 saszetek dziennie.</b> Przechowuj w suchym miejscu do 20°C, z dala od światła i wilgoci, poza zasięgiem dzieci.</p>
+  </div>
+</section>
+
+<section class="sec" id="sklad" aria-labelledby="sklad-h" style="padding-top:0">
+  <div class="wrap comp">
+    <figure class="rv"><img src="../../img/p-cola.webp" width="1000" height="1000" loading="lazy" alt="Puszka SNUZO Cola"><figcaption>Puszka 20 saszetek</figcaption></figure>
+    <div class="rv">
+      <p class="kick">Na papierze</p>
+      <h2 class="h2 cond" id="sklad-h"><span class="serif">wszystko, co na dnie puszki</span>Skład</h2>
+      <dl class="specs">
+        <div><dt>Nikotyna</dt><dd class="big">0 mg</dd></div>
+        <div><dt>W puszce</dt><dd class="big">20 saszetek</dd></div>
+        <div><dt>Skład</dt><dd>Celuloza, woda, eelpee*, aromat, sól, sukraloza, sorbian potasu, węglan potasu.<small>*autorski kompleks 4 składników w oparciu o glikol propylenowy i spilanthol.</small></dd></div>
+        <div><dt>Porcja</dt><dd>Zalecana dzienna porcja: maksymalnie 10 saszetek dziennie.</dd></div>
+        <div><dt>Przechowywanie</dt><dd>W suchym miejscu do 20°C.<small>Chronić przed światłem i wilgocią. Przechowywać w miejscu niedostępnym dla dzieci.</small></dd></div>
+        <div><dt>Producent</dt><dd>Instytut Urządzeń Ekstrakcyjnych sp. z o.o.<small>ul. Zrembowska 7, 06-200 Maków Mazowiecki</small></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq" aria-labelledby="faq-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <p class="kick">Pytania</p>
+      <h2 class="h2 cond" id="faq-h"><span class="serif">krótko i konkretnie</span>FAQ</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Czy SNUZO ma nikotynę albo tytoń?</summary><p>Nie. Saszetki nie zawierają nikotyny ani tytoniu. Pełny skład jest na puszce i wyżej na tej stronie.</p></details>
+      <details><summary>Kto może kupić SNUZO?</summary><p>Tylko osoby pełnoletnie. Przy odbiorze możemy poprosić o potwierdzenie wieku.</p></details>
+      <details><summary>Ile saszetek dziennie?</summary><p>Maksymalnie 10. Jedna saszetka to 5–20 minut smaku.</p></details>
+      <details><summary>Co z zużytymi saszetkami?</summary><p>Puszka ma górną przegródkę na zużyte saszetki. Potem wyrzuć je do kosza.</p></details>
+      <details><summary>Jak szybko dostanę zamówienie?</summary><p>Wysyłamy przez InPost do Paczkomatu albo kurierem. Czas i koszt dostawy zobaczysz w koszyku przed płatnością.</p></details>
+      <details><summary>Jak zwrócić produkt?</summary><p>Zasady zwrotów i reklamacji są w regulaminie sklepu. Napisz do nas, a wyślemy instrukcję.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div>
+        <div class="fbrand"><svg viewBox="0 0 2229 1355" aria-label="SNUZO" role="img"><use href="#snuzo"/></svg><img src="../../img/fm-logo.png" width="949" height="275" alt="Fight Mode"></div>
+        <p style="margin-top:16px;max-width:22em">Saszetki bez nikotyny by Fight Mode.</p>
+        <div class="pay" aria-label="Płatności i dostawa"><span>BLIK</span><span>Karta</span><span>Przelew</span><span>InPost</span></div>
+      </div>
+      <div><h3>Sklep</h3><ul><li><a href="#sklep">Wszystkie smaki</a></li><li><a href="#zawodnicy">Zawodnicy</a></li><li><a href="#jak">Jak używać</a></li><li><a href="#faq">Pytania</a></li></ul></div>
+      <div><h3>Informacje</h3><ul><li><a href="#">Regulamin</a></li><li><a href="#">Polityka prywatności</a></li><li><a href="#">Dostawa i płatności</a></li><li><a href="#">Zwroty i reklamacje</a></li><li><a href="#">Kontakt</a></li></ul></div>
+      <div><h3>Podmiot odpowiedzialny</h3><p>Instytut Urządzeń Ekstrakcyjnych sp. z o.o.<br>ul. Zrembowska 7<br>06-200 Maków Mazowiecki</p></div>
+    </div>
+    <div class="legal">
+      <p><span class="age"><b>18+</b></span>Sprzedaż wyłącznie osobom pełnoletnim.</p>
+      <p>Makieta robocza, ceny przykładowe. © 2026 SNUZO by Fight Mode</p>
+    </div>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dh" aria-hidden="true">
+  <div class="dh"><h2 id="dh" class="cond">Koszyk</h2><button class="x" type="button" id="cartClose" aria-label="Zamknij koszyk">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="df" id="df">
+    <div class="sum"><span>Razem</span><span id="sum">0,00 zł</span></div>
+    <p class="s">Koszt dostawy InPost policzymy w następnym kroku.</p>
+    <button class="btn" type="button" id="checkout">Przejdź do kasy</button>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+document.documentElement.classList.add("js");
+(()=>{
+const IMG="../../img/",P=24.99,F=[
+ ["liczi","Liczi","#a62a4e","#f1dfe4"],
+ ["cola","Cola","#5a2716","#eadfd9"],
+ ["jablko-mieta","Jabłko & Mięta","#406336","#e0e9dc"],
+ ["jagoda","Jagoda","#1e3368","#dfe3ef"],
+ ["mango","Mango","#d2581a","#f6e2d4"],
+ ["ananas","Ananas","#d08e14","#f6ead0"]];
+const Z=[["lombard","Hector Lombard","cola"],["parke","Norman Parke","jablko-mieta"],["sosnowski","Albert Sosnowski","ananas"],["sobierajski","Wojciech Sobierajski","mango"],["kusz","Jessica Kusz","liczi"],["rybak","Dominika Rybak","jagoda"]];
+const $=id=>document.getElementById(id),zl=v=>v.toFixed(2).replace(".",",")+" zł",by=s=>F.find(f=>f[0]===s);
+let cart={};
+try{cart=JSON.parse(localStorage.getItem("snuzo-cart")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("snuzo-cart",JSON.stringify(cart))}catch(e){}};
+
+$("bouts").innerHTML=Z.map(([z,nm,s],i)=>{const[,n,c]=by(s);return `<li class="bout rv"><div class="pic"><span class="no">WALKA 0${i+1}</span><img src="${IMG}z-${z}.webp" width="600" height="800" loading="lazy" alt="${nm}, zawodnik Fight Mode 2"><p class="name cond"><small>Fight Mode 2</small>${nm.split(" ").slice(-1)[0]}<span class="fn">${nm.split(" ")[0]}</span></p></div><img class="tin" src="${IMG}p-${s}.webp" width="1000" height="1000" loading="lazy" alt="Puszka SNUZO ${n}"><dl class="tape"><div><dt>Smak</dt><dd><i style="--c:${c}"></i>${n}</dd></div><div><dt>Saszetki</dt><dd>20</dd></div><div><dt>Nikotyna</dt><dd>0 mg</dd></div></dl><button class="add" type="button" data-s="${s}">Dodaj ${n}</button></li>`}).join("");
+
+$("shop").innerHTML=F.map(([s,n,c,t])=>`<li class="item" style="--c:${c};--t:${t}"><div class="ph"><img src="${IMG}p-${s}.webp" width="1000" height="1000" loading="lazy" alt="Puszka SNUZO ${n}"></div><div class="row"><h3 class="cond">${n}</h3><span class="p">${zl(P)}</span></div><p class="sub"><i></i>20 saszetek · 0 mg nikotyny</p><button class="btn add" type="button" data-s="${s}">Dodaj do koszyka</button></li>`).join("");
+
+document.addEventListener("click",e=>{const b=e.target.closest("button.add");if(!b)return;add(b.dataset.s);
+  const t=b.textContent;b.classList.add("ok");b.textContent="Dodano";setTimeout(()=>{b.classList.remove("ok");b.textContent=t},1300)});
+
+function add(s){cart[s]=(cart[s]||0)+1;save();render();toast(by(s)[1]+" w koszyku")}
+function render(){const ks=Object.keys(cart).filter(k=>cart[k]>0&&by(k));let n=0,sum=0;
+  $("items").innerHTML=ks.length?ks.map(k=>{const[s,nm,c,t]=by(k),q=cart[k];n+=q;sum+=q*P;
+   return `<div class="it"><div class="th" style="background:${t}"><img src="${IMG}p-${s}.webp" alt=""></div><div><h3>${nm}</h3><p class="s">20 saszetek</p><div class="qty"><button type="button" data-d="-1" data-s="${s}" aria-label="Mniej ${nm}">−</button><span>${q}</span><button type="button" data-d="1" data-s="${s}" aria-label="Więcej ${nm}">+</button></div></div><div><p class="lp">${zl(q*P)}</p><button class="rm" type="button" data-rm="${s}">Usuń</button></div></div>`}).join("")
+   :`<div class="empty"><p>Koszyk jest pusty. Wybierz smak i dodaj puszkę.</p><button class="btn ghost" type="button" id="toShop">Zobacz smaki</button></div>`;
+  $("cartCount").textContent=n;$("sum").textContent=zl(sum);$("df").hidden=!ks.length;
+  const t=$("toShop");if(t)t.onclick=()=>{close();location.hash="sklep"}}
+$("items").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.d){cart[b.dataset.s]=Math.max(0,(cart[b.dataset.s]||0)+ +b.dataset.d)}
+  if(b.dataset.rm){delete cart[b.dataset.rm]}save();render()});
+const dr=$("drawer");let last;
+function open(){last=document.activeElement;document.body.classList.add("open");dr.setAttribute("aria-hidden","false");setTimeout(()=>$("cartClose").focus(),50)}
+function close(){document.body.classList.remove("open");dr.setAttribute("aria-hidden","true");last&&last.focus()}
+$("cartOpen").onclick=open;$("cartClose").onclick=close;$("scrim").onclick=close;
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("open"))close()});
+$("checkout").onclick=()=>toast("Kasa ruszy razem ze sklepem snuzo.pl");
+let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2200)}
+render();
+
+// header + reveal
+const top=$("top"),onS=()=>top.classList.toggle("s",scrollY>20);onS();addEventListener("scroll",onS,{passive:true});
+const io="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"}):null;
+document.querySelectorAll(".rv").forEach((el,i)=>{if(io){el.style.transitionDelay=(el.matches(".bout,.steps li")?([...el.parentNode.children].indexOf(el)%3)*90:0)+"ms";io.observe(el)}else el.classList.add("in")});
+
+// hero can: cycle flavours slowly on the plate
+const hc=$("heroCan"),rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(!rm){let i=3;F.forEach(f=>{new Image().src=IMG+"p-"+f[0]+".webp"});
+  setTimeout(()=>setInterval(()=>{i=(i+1)%F.length;hc.animate([{opacity:1,transform:"translate(-50%,-52%) rotate(0)"},{opacity:0,transform:"translate(-50%,-50%) rotate(-8deg) scale(.96)"}],{duration:280,easing:"ease-in"}).onfinish=()=>{hc.src=IMG+"p-"+F[i][0]+".webp";hc.alt="Puszka SNUZO "+F[i][1];hc.animate([{opacity:0,transform:"translate(-50%,-56%) rotate(8deg) scale(.96)"},{opacity:1,transform:"translate(-50%,-52%) rotate(0)"}],{duration:420,easing:"cubic-bezier(.2,.7,.2,1)"})}},3200),3400)}
+})();
+</script>
+</body>
+</html>
