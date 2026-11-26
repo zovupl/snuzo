@@ -295,6 +295,14 @@ model-viewer.mv,.tile .ph model-viewer,.mvbox model-viewer{clip-path:ellipse(var
 .tile .ph model-viewer{--hx:30%;--hy:26%}
 .mvbox model-viewer{--hx:30%;--hy:26%}
 model-viewer.lidopen{clip-path:inset(0)}
+
+.tile .p{margin-top:6px}
+.tile .row{gap:8px}
+.tq{display:flex;align-items:center;background:var(--alt);border-radius:999px;height:38px}
+.tq button{width:34px;height:38px;font-size:18px}
+.tq span{min-width:20px;text-align:center;font-weight:600;font-size:15px}
+.tile .add{flex:1;min-height:38px}
+@media (max-width:699px){.tq{height:34px}.tq button{width:28px;height:34px}.tile .row{flex-direction:column;align-items:stretch}.tq{justify-content:space-between}}
 </style>
 </head>
 <body>
@@ -320,7 +328,7 @@ model-viewer.lidopen{clip-path:inset(0)}
   <p class="sub">Sześć smaków. 20 saszetek w puszce.</p>
   <div class="ctas"><button class="btn" type="button" id="heroBuy">Kup za 24,99 zł</button><a class="lnk" href="#smaki">Zobacz smaki ›</a></div>
   <div class="stage">
-    <model-viewer touch-action="pan-y" class="mv" id="heroMv" src="../../img/3d/mango.gltf" camera-orbit="-18deg 62deg 2.6m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO w 3D"></model-viewer>
+    <model-viewer touch-action="pan-y" class="mv" id="heroMv" src="../../img/3d/mango.gltf" camera-orbit="-18deg 62deg 2.6m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 42deg 0.5m" max-camera-orbit="auto 78deg 20m" interpolation-decay="120" alt="Puszka SNUZO w 3D"></model-viewer>
   </div>
   <div class="flav" id="flav" role="group" aria-label="Wybierz smak"></div>
   <p class="flavname"><span id="flavName">Mango</span> · obróć puszkę palcem, stuknij dwa razy, żeby otworzyć</p>
@@ -360,7 +368,7 @@ model-viewer.lidopen{clip-path:inset(0)}
 
 <section class="sec alt" id="sklad" aria-labelledby="sklad-h">
   <div class="wrap comp">
-    <div class="mvbox"><model-viewer touch-action="pan-y" id="dnoMv" src="../../img/3d/jagoda.gltf" camera-orbit="20deg 128deg 2.4m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="0" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" loading="lazy" alt="Dno puszki SNUZO z etykietą"></model-viewer></div>
+    <div class="mvbox"><model-viewer touch-action="pan-y" id="dnoMv" src="../../img/3d/jagoda.gltf" camera-orbit="20deg 128deg 2.4m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="0" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 105deg 0.5m" max-camera-orbit="auto 150deg 20m" interpolation-decay="120" loading="lazy" alt="Dno puszki SNUZO z etykietą"></model-viewer></div>
     <div>
       <h2 class="h2 rv" id="sklad-h">Skład.<br><span>Na dnie puszki.</span></h2>
       <dl class="specs">
@@ -413,7 +421,7 @@ model-viewer.lidopen{clip-path:inset(0)}
   <div class="bg" data-close></div>
   <div class="box" role="dialog" aria-modal="true" aria-labelledby="pmName">
     <button class="x" type="button" data-close aria-label="Zamknij">×</button>
-    <div class="view"><div class="gal" id="pmGal"><div class="sl"><model-viewer touch-action="pan-y" id="pmMv" camera-orbit="-18deg 58deg 2.6m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO w 3D"></model-viewer></div></div><div class="dots" id="pmDots"></div></div>
+    <div class="view"><div class="gal" id="pmGal"><div class="sl"><model-viewer touch-action="pan-y" id="pmMv" camera-orbit="-18deg 58deg 2.6m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 42deg 0.5m" max-camera-orbit="auto 78deg 20m" interpolation-decay="120" alt="Puszka SNUZO w 3D"></model-viewer></div></div><div class="dots" id="pmDots"></div></div>
     <div class="info">
       <p class="serif">SNUZO by Fight Mode</p>
       <h2 id="pmName"></h2>
@@ -505,7 +513,7 @@ if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>he
 
 /* smaki */
 const ORDER=["mango","cola","liczi","jagoda","jablko-mieta","ananas"];
-$("shop").innerHTML=ORDER.map(s=>{const[,n,c,t]=by(s);return `<li class="tile" style="--c:${c};--t:${t}"><div class="ph">${s==="mango"?'<span class="tag">Nowość</span>':""}<model-viewer touch-action="pan-y" data-s="${s}" src="${IMG}3d/${s}.gltf" loading="lazy" camera-orbit="-18deg 58deg 2.15m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO ${n} w 3D"></model-viewer></div><div class="body"><h3>${n}</h3><p class="meta">20 saszetek · 0 mg nikotyny</p><div class="row"><p class="p">${zl(P)}</p><button class="add" type="button" data-s="${s}">Kup</button></div><a class="more" href="smak-${s}.html">Zobacz szczegóły ›</a></div></li>`}).join("");
+$("shop").innerHTML=ORDER.map(s=>{const[,n,c,t]=by(s);return `<li class="tile" style="--c:${c};--t:${t}"><div class="ph">${s==="mango"?'<span class="tag">Nowość</span>':""}<model-viewer touch-action="pan-y" data-s="${s}" src="${IMG}3d/${s}.gltf" loading="lazy" camera-orbit="-18deg 58deg 2.15m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 42deg 0.5m" max-camera-orbit="auto 78deg 20m" interpolation-decay="120" alt="Puszka SNUZO ${n} w 3D"></model-viewer></div><div class="body"><h3>${n}</h3><p class="meta">20 saszetek · 0 mg nikotyny</p><p class="p">${zl(P)}</p><div class="row"><div class="tq" data-s="${s}"><button type="button" data-q="-1" aria-label="Mniej">−</button><span>1</span><button type="button" data-q="1" aria-label="Więcej">+</button></div><button class="add" type="button" data-s="${s}">Do koszyka</button></div><a class="more" href="smak-${s}.html">Zobacz szczegóły ›</a></div></li>`}).join("");
 
 document.querySelectorAll("#shop model-viewer").forEach(lid);
 const CFG=[[1,54,7,1700,0],[-1,60,9,2300,1.4],[.8,50,6,2000,2.6],[-.9,58,8,1600,3.7],[1.1,52,10,2600,.8],[-1.2,62,6,1900,2.1]];
@@ -514,7 +522,8 @@ if("IntersectionObserver"in window){const io=new IntersectionObserver(es=>es.for
 
 /* cart */
 let cart=store.get("snuzo-cart",{});const save=()=>store.set("snuzo-cart",cart);const FREE=99;
-document.addEventListener("click",e=>{const b=e.target.closest("button.add");if(!b)return;add(b.dataset.s,1,b);const t=b.textContent;b.classList.add("ok");b.textContent="Dodano ✓";setTimeout(()=>{b.classList.remove("ok");b.textContent=t},1200)});
+document.addEventListener("click",e=>{const qb=e.target.closest(".tq button");if(qb){const sp=qb.parentNode.querySelector("span");sp.textContent=Math.max(1,Math.min(99,+sp.textContent+ +qb.dataset.q));return}});
+document.addEventListener("click",e=>{const b=e.target.closest("button.add");if(!b)return;const tq=b.parentNode.querySelector(".tq span"),q=tq?+tq.textContent:1;add(b.dataset.s,q,b);if(tq)tq.textContent=1;const t=b.textContent;b.classList.add("ok");b.textContent="Dodano ✓";setTimeout(()=>{b.classList.remove("ok");b.textContent=t},1200)});
 function fly(s,from){if(reduce||!from)return;const r=from.getBoundingClientRect(),to=$("cartOpen").getBoundingClientRect(),im=new Image();im.src=IMG+"p6-"+s+".webp";im.className="fly";
   im.style.left=(r.left+r.width/2-45)+"px";im.style.top=(r.top+r.height/2-45)+"px";document.body.appendChild(im);
   requestAnimationFrame(()=>requestAnimationFrame(()=>{im.style.transform=`translate(${to.left+to.width/2-(r.left+r.width/2)}px,${to.top+to.height/2-(r.top+r.height/2)}px) scale(.25) rotate(-25deg)`;im.style.opacity=".4"}));
