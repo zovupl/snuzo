@@ -124,7 +124,7 @@ model-viewer.ok{opacity:1}
 .b .big small{font-size:.4em;letter-spacing:-.02em}
 .b .mid{font-size:28px;line-height:1.1;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-bottom:8px}
 .b4{display:grid;grid-template-columns:1fr;gap:10px;align-items:end}
-.b4 img{width:min(80%,380px);margin:0 auto}
+.b4mv{position:relative;width:min(90%,420px);aspect-ratio:1/.8;margin:0 auto;pointer-events:none}.b4mv model-viewer{position:absolute;inset:0;width:100%;height:100%}
 @media (min-width:860px){.bento{grid-template-columns:repeat(6,1fr)}.b1,.b2,.b3{grid-column:span 2}.b4{grid-column:span 4;grid-template-columns:1.1fr 1fr;align-items:center}.b5{grid-column:span 2}}
 
 /* steps */
@@ -351,7 +351,7 @@ model-viewer.lidopen{clip-path:inset(0)}
       <div class="b b1"><p class="big">0 mg</p><p>nikotyny</p></div>
       <div class="b b2"><p class="big">20</p><p>saszetek w puszce</p></div>
       <div class="b b3"><p class="big">5–20<small> min</small></p><p>jedna saszetka</p></div>
-      <div class="b b4"><img src="../../img/hd-jagoda-sid.webp" width="1400" height="1400" loading="lazy" alt="Puszka SNUZO z boku"><div><p class="mid">Miejsce na zużyte saszetki</p><p>W wieczku jest osobna przegródka.</p></div></div>
+      <div class="b b4"><div class="b4mv"><model-viewer id="benMv" src="../../img/3d/jagoda.gltf" loading="lazy" camera-orbit="0deg 70deg 1.45m" interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO Jagoda w 3D"></model-viewer></div><div><p class="mid">Miejsce na zużyte saszetki</p><p>W wieczku jest osobna przegródka.</p></div></div>
       <div class="b b5"><p class="mid">Bez tytoniu</p><p>Pełny skład niżej.</p></div>
     </div>
   </div>
@@ -501,7 +501,7 @@ function lid(mv){let t0=0,x0=0,y0=0,open=false,busy=false;
 document.querySelectorAll("model-viewer").forEach(lid);
 
 /* hero */
-const heroMv=$("heroMv"),heroS=spinner(heroMv);heroS.r=matchMedia("(max-width:699px)").matches?"3m":"2.25m";heroS.ph0=62;heroS.ph0=56;heroS.on=true;track(heroS);let cur=4;
+const heroMv=$("heroMv"),heroS=spinner(heroMv);heroS.r=matchMedia("(max-width:699px)").matches?"3m":"1.95m";heroS.ph0=62;heroS.ph0=56;heroS.on=true;track(heroS);let cur=4;
 function pick(i){cur=i;const[s,n,c,t]=F[i];root.style.setProperty("--t",t);root.style.setProperty("--c",c);
   heroMv.src=IMG+"3d/"+s+".gltf";heroMv.alt="Puszka SNUZO "+n+" w 3D";
   $("flavName").textContent=n;$("flavEyebrow").textContent=n;$("heroBuy").textContent=`Kup za ${zl(P)}`;$("flav").querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-pressed",j===i))}
