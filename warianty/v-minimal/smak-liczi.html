@@ -242,6 +242,7 @@ footer .by{margin-top:10px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 #ppMv{touch-action:none;cursor:grab;clip-path:ellipse(40% 34% at 50% 50%);transition:clip-path .4s}
 #ppMv.lidopen{clip-path:inset(0)}
+.lidbtn{position:relative;z-index:3;display:block;margin:0 auto 10px;height:40px;padding:0 20px;border-radius:999px;background:#fff;border:1.5px solid #1d1d1f;font:600 14px Archivo,system-ui,sans-serif;cursor:pointer}.lidbtn[aria-pressed=true]{background:#1d1d1f;color:#fff}
 </style>
 </head>
 <body style="--c:#a62a4e;--t:#f1dfe4">
@@ -269,6 +270,7 @@ footer .by{margin-top:10px}
   <div class="pp">
     <div class="pgal">
       <div class="pv">
+        <button class="lidbtn" type="button" id="ppLid" aria-pressed="false">Otwórz puszkę</button>
         <div class="gal" id="ppGal" tabindex="0" aria-roledescription="karuzela" aria-label="Zdjęcia puszki SNUZO Liczi"><div class="sl" role="group" aria-roledescription="slajd" aria-label="1 z 5: 3D"><img class="poster" src="../../img/p6-liczi.webp" width="600" height="600" alt=""><model-viewer id="ppMv" src="../../img/3d/liczi.gltf?v=11262221" camera-orbit="-18deg 58deg 2.15m" interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 3deg 0.5m" max-camera-orbit="auto 177deg 20m" interpolation-decay="120" alt="Puszka SNUZO Liczi w 3D"></model-viewer></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="2 z 5: Widok 3/4"><img src="../../img/hd-liczi-p.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, widok 3/4" loading="lazy" decoding="async"></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="3 z 5: Góra"><img src="../../img/hd-liczi-top.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, góra" loading="lazy" decoding="async"></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="4 z 5: Bok"><img src="../../img/hd-liczi-sid.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, bok" loading="lazy" decoding="async"></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="5 z 5: Dno"><img src="../../img/hd-liczi-bot.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, dno" loading="lazy" decoding="async"></div></div>
         <span class="cnt" id="ppCnt" aria-hidden="true">1 / 5</span>
         <button class="arr l" type="button" data-d="-1" aria-label="Poprzednie zdjęcie">←</button><button class="arr r" type="button" data-d="1" aria-label="Następne zdjęcie">→</button>
@@ -383,11 +385,11 @@ footer .by{margin-top:10px}
   function lid(mv) { let t0 = 0, x0 = 0, y0 = 0, open = false, busy = false;
     const run = (from, to, end) => { busy = true; mv.timeScale = 1; mv.currentTime = from; mv.play(); const w = () => { if (mv.currentTime >= to - .01 || mv.currentTime < from - .05) { mv.pause(); mv.currentTime = end; busy = false; return } requestAnimationFrame(w) }; requestAnimationFrame(w) };
     const tog = () => { if (busy) return; const d = mv.duration || 1.5, h = d / 2; if (!open) { mv.classList.add("lidopen"); run(0, h, h) } else { run(h + .05, d, 0); setTimeout(() => mv.classList.remove("lidopen"), d * 500 + 80) } open = !open };
-    mv.addEventListener("pointerdown", e => { x0 = e.clientX; y0 = e.clientY });
-    mv.addEventListener("pointerup", e => { if (Math.hypot(e.clientX - x0, e.clientY - y0) > 10) return; const n = performance.now(); if (n - t0 < 340) { tog(); t0 = 0 } else t0 = n }) }
+    mv._lid = () => { tog(); return open } }
 
   /* galeria */
-  const mv = $("ppMv"), sp = spinner(mv); sp.r = "2.15m"; sp.ph0 = 58; sp.sp = .7; lid(mv); track(sp);
+  const mv = $("ppMv"), sp = spinner(mv);
+  $("ppLid").onclick = () => { if (!mv._lid) return; const o = mv._lid(); $("ppLid").textContent = o ? "Zamknij puszkę" : "Otwórz puszkę"; $("ppLid").setAttribute("aria-pressed", o) }; sp.r = "2.15m"; sp.ph0 = 58; sp.sp = .7; lid(mv); track(sp);
   const gal = $("ppGal"), th = [...$("ppThumbs").querySelectorAll("button")], N = th.length;
   let slide = 0, vis = true;
   const upd = () => { sp.on = vis && slide === 0 };
