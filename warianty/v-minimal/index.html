@@ -289,6 +289,12 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 .dsub{display:none}
 .hint360{display:none}
 
+
+/* dotyk tylko na puszce: reszta pola przewija strone */
+model-viewer.mv,.tile .ph model-viewer,.mvbox model-viewer{clip-path:ellipse(var(--hx,27%) var(--hy,22%) at 50% 52%);transition:clip-path .45s cubic-bezier(.2,.8,.2,1),opacity .5s}
+.tile .ph model-viewer{--hx:30%;--hy:26%}
+.mvbox model-viewer{--hx:30%;--hy:26%}
+model-viewer.lidopen{clip-path:inset(0)}
 </style>
 </head>
 <body>
@@ -479,7 +485,7 @@ function track(o){spins.add(o);if(spins.size===1)requestAnimationFrame(tick)}
 /* wieczko: podwojne/potrojne stukniecie */
 function lid(mv){let t0=0,x0=0,y0=0,open=false,busy=false;
   const run=(from,to,end)=>{busy=true;mv.timeScale=1;mv.currentTime=from;mv.play();const w=()=>{if(mv.currentTime>=to-.01||mv.currentTime<from-.05){mv.pause();mv.currentTime=end;busy=false;return}requestAnimationFrame(w)};requestAnimationFrame(w)};
-  const tog=()=>{if(busy)return;const d=mv.duration||1.5,h=d/2;if(!open)run(0,h,h);else run(h+.05,d,0);open=!open};
+  const tog=()=>{if(busy)return;const d=mv.duration||1.5,h=d/2;if(!open){mv.classList.add("lidopen");run(0,h,h)}else{run(h+.05,d,0);setTimeout(()=>mv.classList.remove("lidopen"),d*500+80)}open=!open};
   mv.addEventListener("pointerdown",e=>{x0=e.clientX;y0=e.clientY});
   mv.addEventListener("pointerup",e=>{if(Math.hypot(e.clientX-x0,e.clientY-y0)>10)return;const n=performance.now();if(n-t0<340){tog();t0=0}else t0=n})}
 document.querySelectorAll("model-viewer").forEach(lid);
