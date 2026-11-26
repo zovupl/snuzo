@@ -330,7 +330,7 @@ model-viewer.lidopen{clip-path:inset(0)}
   <p class="sub">6 smaków, 20 saszetek w puszce</p>
   <div class="ctas"><button class="btn" type="button" id="heroBuy">Kup za 24,99 zł</button><a class="lnk" href="#smaki">Zobacz smaki ›</a></div>
   <div class="stage">
-    <model-viewer data-drag class="mv" id="heroMv" src="../../img/3d/mango.gltf?v=11262219" camera-orbit="-18deg 62deg 2.6m" interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 3deg 0.5m" max-camera-orbit="auto 177deg 20m" interpolation-decay="120" alt="Puszka SNUZO w 3D"></model-viewer>
+    <model-viewer data-drag class="mv" id="heroMv" src="../../img/3d/mango.gltf?v=11262221" camera-orbit="-18deg 62deg 2.6m" interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 3deg 0.5m" max-camera-orbit="auto 177deg 20m" interpolation-decay="120" alt="Puszka SNUZO w 3D"></model-viewer>
   </div>
   <div class="flav" id="flav" role="group" aria-label="Wybierz smak"></div>
   <p class="flavname"><span id="flavName">Mango</span></p>
@@ -351,7 +351,7 @@ model-viewer.lidopen{clip-path:inset(0)}
       <div class="b b1"><p class="big">0 mg</p><p>nikotyny</p></div>
       <div class="b b2"><p class="big">20</p><p>saszetek w puszce</p></div>
       <div class="b b3"><p class="big">5–20<small> min</small></p><p>jedna saszetka</p></div>
-      <div class="b b4"><div class="b4mv"><model-viewer id="benMv" src="../../img/3d/jagoda.gltf?v=11262219" loading="lazy" camera-orbit="0deg 70deg 1.45m" interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO Jagoda w 3D"></model-viewer></div><div><p class="mid">Miejsce na zużyte saszetki</p><p>W wieczku jest osobna przegródka.</p></div></div>
+      <div class="b b4"><div class="b4mv"><model-viewer id="benMv" src="../../img/3d/jagoda.gltf?v=11262221" loading="lazy" camera-orbit="0deg 70deg 1.45m" interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto auto 20m" alt="Puszka SNUZO Jagoda w 3D"></model-viewer></div><div><p class="mid">Miejsce na zużyte saszetki</p><p>W wieczku jest osobna przegródka.</p></div></div>
       <div class="b b5"><p class="mid">Bez tytoniu</p><p>Pełny skład niżej.</p></div>
     </div>
   </div>
@@ -370,7 +370,7 @@ model-viewer.lidopen{clip-path:inset(0)}
 
 <section class="sec alt" id="sklad" aria-labelledby="sklad-h">
   <div class="wrap comp">
-    <div class="mvbox"><model-viewer data-drag id="dnoMv" src="../../img/3d/jagoda.gltf?v=11262219" camera-orbit="20deg 142deg 1.9m" interaction-prompt="none" shadow-intensity="0" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 3deg 0.5m" max-camera-orbit="auto 177deg 20m" interpolation-decay="120" loading="lazy" alt="Dno puszki SNUZO z etykietą"></model-viewer></div>
+    <div class="mvbox"><model-viewer data-drag id="dnoMv" src="../../img/3d/jagoda.gltf?v=11262221" camera-orbit="20deg 142deg 1.9m" interaction-prompt="none" shadow-intensity="0" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 3deg 0.5m" max-camera-orbit="auto 177deg 20m" interpolation-decay="120" loading="lazy" alt="Dno puszki SNUZO z etykietą"></model-viewer></div>
     <div>
       <h2 class="h2" id="sklad-h">Skład</h2>
       <dl class="specs">
@@ -502,7 +502,7 @@ document.querySelectorAll("model-viewer").forEach(lid);
 /* hero */
 const heroMv=$("heroMv"),heroS=spinner(heroMv);heroS.r=matchMedia("(max-width:699px)").matches?"3m":"1.95m";heroS.ph0=62;heroS.ph0=56;heroS.on=true;track(heroS);let cur=4;
 function pick(i){cur=i;const[s,n,c,t]=F[i];root.style.setProperty("--t",t);root.style.setProperty("--c",c);
-  heroMv.src=IMG+"3d/"+s+".gltf?v=11262219";heroMv.alt="Puszka SNUZO "+n+" w 3D";
+  heroMv.src=IMG+"3d/"+s+".gltf?v=11262221";heroMv.alt="Puszka SNUZO "+n+" w 3D";
   $("flavName").textContent=n;$("flavEyebrow").textContent=n;$("heroBuy").textContent=`Kup za ${zl(P)}`;$("flav").querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-pressed",j===i))}
 $("flav").innerHTML=F.map(([s,n,c])=>`<button type="button" style="--c:${c}" aria-label="${n}"></button>`).join("");
 $("flav").querySelectorAll("button").forEach((b,i)=>b.onclick=()=>{loadMV();pick(i)});
@@ -514,7 +514,7 @@ if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>he
 
 /* smaki */
 const ORDER=["mango","cola","liczi","jagoda","jablko-mieta","ananas"];
-$("shop").innerHTML=ORDER.map(s=>{const[,n,c,t]=by(s);return `<li class="tile" style="--c:${c};--t:${t}"><a class="ph" href="smak-${s}.html" aria-label="${n}, szczegóły">${s==="mango"?'<span class="tag">Nowość</span>':""}<model-viewer data-s="${s}" src="${IMG}3d/${s}.gltf?v=11262219" loading="lazy" camera-orbit="-18deg 58deg 2.15m" disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 3deg 0.5m" max-camera-orbit="auto 177deg 20m" interpolation-decay="120" alt="Puszka SNUZO ${n} w 3D"></model-viewer></a><div class="body"><h3>${n}</h3><p class="meta">20 saszetek · 0 mg nikotyny</p><p class="p">${zl(P)}</p><div class="row"><div class="tq" data-s="${s}"><button type="button" data-q="-1" aria-label="Mniej">−</button><span>1</span><button type="button" data-q="1" aria-label="Więcej">+</button></div><button class="add" type="button" data-s="${s}">Do koszyka</button></div><a class="more" href="smak-${s}.html">Zobacz szczegóły ›</a></div></li>`}).join("");
+$("shop").innerHTML=ORDER.map(s=>{const[,n,c,t]=by(s);return `<li class="tile" style="--c:${c};--t:${t}"><a class="ph" href="smak-${s}.html" aria-label="${n}, szczegóły">${s==="mango"?'<span class="tag">Nowość</span>':""}<model-viewer data-s="${s}" src="${IMG}3d/${s}.gltf?v=11262221" loading="lazy" camera-orbit="-18deg 58deg 2.15m" disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 3deg 0.5m" max-camera-orbit="auto 177deg 20m" interpolation-decay="120" alt="Puszka SNUZO ${n} w 3D"></model-viewer></a><div class="body"><h3>${n}</h3><p class="meta">20 saszetek · 0 mg nikotyny</p><p class="p">${zl(P)}</p><div class="row"><div class="tq" data-s="${s}"><button type="button" data-q="-1" aria-label="Mniej">−</button><span>1</span><button type="button" data-q="1" aria-label="Więcej">+</button></div><button class="add" type="button" data-s="${s}">Do koszyka</button></div><a class="more" href="smak-${s}.html">Zobacz szczegóły ›</a></div></li>`}).join("");
 
 
 const MOB=matchMedia("(max-width:699px)").matches,R_TILE=MOB?"2.5m":"2.05m";
@@ -563,7 +563,7 @@ if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>{b
 const pm=$("pm"),pmMv=$("pmMv"),pmSp=spinner(pmMv);pmSp.r="2.6m";pmSp.sp=.6;track(pmSp);let pmS,pmQ=1,lastP;
 const V=[["p","3/4"],["top","Góra"],["sid","Bok"],["bot","Dno"]];
 function openPm(s){loadMV();pmS=s;pmQ=1;$("pmQ").textContent=1;const[,n,c,t]=by(s);pm.style.setProperty("--t",t);$("pmName").textContent=n;$("pmFl").textContent=n;
-  pmMv.src=IMG+"3d/"+s+".gltf?v=11262219";
+  pmMv.src=IMG+"3d/"+s+".gltf?v=11262221";
   const g=$("pmGal");g.querySelectorAll(".sl.ph").forEach(x=>x.remove());
   V.forEach(([v,l])=>{const d=document.createElement("div");d.className="sl ph";d.innerHTML=`<img src="${IMG}hd-${s}-${v}.webp" width="1400" height="1400" alt="Puszka SNUZO ${n}: ${l}" loading="lazy">`;g.appendChild(d)});
   $("pmDots").innerHTML=`<button type="button" data-i="0" aria-label="3D" aria-current="true">3D</button>`+V.map(([v,l],k)=>`<button type="button" data-i="${k+1}" aria-label="${l}"><img src="${IMG}p6-${s}.webp" alt="" style="${v==="p"?"":"display:none"}">${v==="p"?"":l}</button>`).join("");
