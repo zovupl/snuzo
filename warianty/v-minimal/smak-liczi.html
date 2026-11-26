@@ -240,6 +240,8 @@ footer .by{margin-top:10px}
 .age .no{font-size:14px;color:var(--mute);padding:10px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#ppMv{touch-action:none;cursor:grab;clip-path:ellipse(40% 34% at 50% 50%);transition:clip-path .4s}
+#ppMv.lidopen{clip-path:inset(0)}
 </style>
 </head>
 <body style="--c:#a62a4e;--t:#f1dfe4">
@@ -267,7 +269,7 @@ footer .by{margin-top:10px}
   <div class="pp">
     <div class="pgal">
       <div class="pv">
-        <div class="gal" id="ppGal" tabindex="0" aria-roledescription="karuzela" aria-label="Zdjęcia puszki SNUZO Liczi"><div class="sl" role="group" aria-roledescription="slajd" aria-label="1 z 5: 3D"><img class="poster" src="../../img/p6-liczi.webp" width="600" height="600" alt=""><model-viewer touch-action="pan-y" id="ppMv" src="../../img/3d/liczi.gltf" camera-orbit="-18deg 58deg 2.15m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 42deg 0.5m" max-camera-orbit="auto 78deg 20m" interpolation-decay="120" alt="Puszka SNUZO Liczi w 3D"></model-viewer><p class="hint" aria-hidden="true">Przeciągnij, aby obrócić · stuknij 2×, aby otworzyć</p></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="2 z 5: Widok 3/4"><img src="../../img/hd-liczi-p.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, widok 3/4" loading="lazy" decoding="async"></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="3 z 5: Góra"><img src="../../img/hd-liczi-top.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, góra" loading="lazy" decoding="async"></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="4 z 5: Bok"><img src="../../img/hd-liczi-sid.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, bok" loading="lazy" decoding="async"></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="5 z 5: Dno"><img src="../../img/hd-liczi-bot.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, dno" loading="lazy" decoding="async"></div></div>
+        <div class="gal" id="ppGal" tabindex="0" aria-roledescription="karuzela" aria-label="Zdjęcia puszki SNUZO Liczi"><div class="sl" role="group" aria-roledescription="slajd" aria-label="1 z 5: 3D"><img class="poster" src="../../img/p6-liczi.webp" width="600" height="600" alt=""><model-viewer id="ppMv" src="../../img/3d/liczi.gltf" camera-orbit="-18deg 58deg 2.15m" interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 42deg 0.5m" max-camera-orbit="auto 78deg 20m" interpolation-decay="120" alt="Puszka SNUZO Liczi w 3D"></model-viewer></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="2 z 5: Widok 3/4"><img src="../../img/hd-liczi-p.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, widok 3/4" loading="lazy" decoding="async"></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="3 z 5: Góra"><img src="../../img/hd-liczi-top.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, góra" loading="lazy" decoding="async"></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="4 z 5: Bok"><img src="../../img/hd-liczi-sid.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, bok" loading="lazy" decoding="async"></div><div class="sl" role="group" aria-roledescription="slajd" aria-label="5 z 5: Dno"><img src="../../img/hd-liczi-bot.webp" width="1400" height="1400" alt="Puszka SNUZO Liczi, dno" loading="lazy" decoding="async"></div></div>
         <span class="cnt" id="ppCnt" aria-hidden="true">1 / 5</span>
         <button class="arr l" type="button" data-d="-1" aria-label="Poprzednie zdjęcie">←</button><button class="arr r" type="button" data-d="1" aria-label="Następne zdjęcie">→</button>
       </div>
@@ -277,7 +279,7 @@ footer .by{margin-top:10px}
     <div class="pinfo">
       <p class="eb">Saszetki bez nikotyny</p>
       <h1>SNUZO Liczi</h1>
-      <p class="lead">Słodkie, kwiatowe liczi. 20 saszetek w puszce.</p>
+      <p class="lead">20 saszetek w puszce. 0 mg nikotyny.</p>
       <p class="pr">24,99 zł<small>cena przykładowa</small></p>
       <div class="sw"><p>Smak: <b>Liczi</b></p><ul><li><a href="smak-mango.html" style="--c:#d2581a" aria-label="Mango" title="Mango"></a></li><li><a href="smak-cola.html" style="--c:#5a2716" aria-label="Cola" title="Cola"></a></li><li><a href="smak-liczi.html" style="--c:#a62a4e" aria-label="Liczi" aria-current="page" title="Liczi"></a></li><li><a href="smak-jagoda.html" style="--c:#1e3368" aria-label="Jagoda" title="Jagoda"></a></li><li><a href="smak-jablko-mieta.html" style="--c:#406336" aria-label="Jabłko &amp; Mięta" title="Jabłko &amp; Mięta"></a></li><li><a href="smak-ananas.html" style="--c:#d08e14" aria-label="Ananas" title="Ananas"></a></li></ul></div>
       <div class="buy"><div class="q"><button type="button" id="ppMinus" aria-label="Mniej">−</button><span id="ppQ" aria-live="polite">1</span><button type="button" id="ppPlus" aria-label="Więcej">+</button></div><button class="btn" type="button" id="ppAdd">Dodaj do koszyka</button></div>
@@ -363,24 +365,24 @@ footer .by{margin-top:10px}
   function loadMV() { if (mvReady) return; mvReady = true; customElements.whenDefined("model-viewer").then(() => { const M = customElements.get("model-viewer"); try { M.minimumRenderScale = 1 } catch (_) {} }); const sc = document.createElement("script"); sc.type = "module"; sc.src = "../../js/model-viewer.min.js"; document.head.appendChild(sc) }
   const spins = new Set();
   function spinner(mv) { const o = {mv, th: -18, user: 0, on: false, hold: false};
-    const sync = () => { try { const c = mv.getCameraOrbit(); o.th = c.theta * 180 / Math.PI; o.ph0 = c.phi * 180 / Math.PI; o.amp = 0 } catch (_) {} };
-    const pause = () => { o.hold = true }; const resume = () => { o.hold = false; o.user = performance.now() + 3000; sync() };
-    mv.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") pause() });
-    mv.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") resume() });
-    mv.addEventListener("pointerdown", pause);
-    mv.addEventListener("pointerup", e => { if (e.pointerType !== "mouse") resume(); else sync() });
-    mv.addEventListener("pointercancel", resume);
-    mv.addEventListener("camera-change", e => { if (e.detail && e.detail.source === "user-interaction") { o.user = performance.now() + 3000; sync() } });
+    o.set = () => { mv.cameraOrbit = `${o.th.toFixed(2)}deg ${(o.ph0 || 56).toFixed(2)}deg ${o.r || "2.15m"}` };
+    mv.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") o.hold = true });
+    mv.addEventListener("pointerleave", e => { if (e.pointerType === "mouse" && !o.drag) { o.hold = false; o.user = performance.now() + 3000 } });
+    let x0 = 0, y0 = 0, t0 = 0, p0 = 0, id = null;
+    mv.addEventListener("pointerdown", e => { id = e.pointerId; o.drag = true; o.hold = true; x0 = e.clientX; y0 = e.clientY; t0 = o.th; p0 = o.ph0 || 56; o.amp = 0; try { mv.setPointerCapture(id) } catch (_) {} });
+    mv.addEventListener("pointermove", e => { if (!o.drag || e.pointerId !== id) return; e.preventDefault(); o.th = t0 - (e.clientX - x0) * .6; o.ph0 = Math.max(42, Math.min(78, p0 - (e.clientY - y0) * .25)); o.set() });
+    const end = e => { if (!o.drag) return; o.drag = false; id = null; o.user = performance.now() + 3000; if (e.pointerType !== "mouse") o.hold = false };
+    mv.addEventListener("pointerup", end); mv.addEventListener("pointercancel", end);
     return o }
   let lastT = 0;
   function tick(t) { const dt = lastT ? Math.min(64, t - lastT) : 16; lastT = t;
-    spins.forEach(o => { if (!o.on || o.hold || t < o.user) return; o.th += dt * .0045 * (o.sp ?? 1); const ph = (o.ph0 || 56) + (o.amp ?? 6) * Math.sin(t / ((o.per || 1800) * 2.2) + (o.fz || 0)); o.mv.cameraOrbit = `${o.th.toFixed(2)}deg ${ph.toFixed(2)}deg ${o.r || '1.7m'}` });
+    spins.forEach(o => { if (!o.on || o.hold || o.drag || t < o.user) return; o.th += dt * .0045 * (o.sp ?? 1); const ph = (o.ph0 || 56) + (o.amp ?? 6) * Math.sin(t / ((o.per || 1800) * 2.2) + (o.fz || 0)); o.mv.cameraOrbit = `${o.th.toFixed(2)}deg ${ph.toFixed(2)}deg ${o.r || '1.7m'}` });
     if (spins.size) requestAnimationFrame(tick); else lastT = 0 }
   function track(o) { spins.add(o); if (spins.size === 1) requestAnimationFrame(tick) }
   /* wieczko: podwójne stuknięcie; jedna animacja: 1. połowa otwiera, 2. połowa zamyka */
   function lid(mv) { let t0 = 0, x0 = 0, y0 = 0, open = false, busy = false;
     const run = (from, to, end) => { busy = true; mv.timeScale = 1; mv.currentTime = from; mv.play(); const w = () => { if (mv.currentTime >= to - .01 || mv.currentTime < from - .05) { mv.pause(); mv.currentTime = end; busy = false; return } requestAnimationFrame(w) }; requestAnimationFrame(w) };
-    const tog = () => { if (busy) return; const d = mv.duration || 1.5, h = d / 2; if (!open) run(0, h, h); else run(h + .05, d, 0); open = !open };
+    const tog = () => { if (busy) return; const d = mv.duration || 1.5, h = d / 2; if (!open) { mv.classList.add("lidopen"); run(0, h, h) } else { run(h + .05, d, 0); setTimeout(() => mv.classList.remove("lidopen"), d * 500 + 80) } open = !open };
     mv.addEventListener("pointerdown", e => { x0 = e.clientX; y0 = e.clientY });
     mv.addEventListener("pointerup", e => { if (Math.hypot(e.clientX - x0, e.clientY - y0) > 10) return; const n = performance.now(); if (n - t0 < 340) { tog(); t0 = 0 } else t0 = n }) }
 
@@ -440,5 +442,6 @@ footer .by{margin-top:10px}
   const top = $("top"); let tk = false; addEventListener("scroll", () => { if (tk) return; tk = true; requestAnimationFrame(() => { top.classList.toggle("s", scrollY > 10); tk = false }) }, {passive: true});
 })({"s":"liczi"});
 </script>
+<style>img{-webkit-touch-callout:none;-webkit-user-drag:none;user-select:none}</style>
 </body>
 </html>

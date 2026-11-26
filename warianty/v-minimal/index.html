@@ -138,7 +138,7 @@ model-viewer.ok{opacity:1}
 /* sklad */
 .comp{display:grid;gap:30px;align-items:center}
 .mvbox{position:relative;width:min(84vw,420px);aspect-ratio:1;margin:0 auto}
-.mvbox model-viewer{position:absolute;inset:0;width:100%;height:100%;touch-action:none;clip-path:ellipse(36% 30% at 50% 50%)}
+.mvbox model-viewer{position:absolute;inset:0;width:100%;height:100%;touch-action:none;clip-path:ellipse(46% 42% at 50% 50%)}
 .specs{background:var(--white);border-radius:var(--r);overflow:hidden}
 .specs div{padding:16px 22px;border-bottom:1px solid var(--line2);font-size:15px}
 .specs div:last-child{border:0}
@@ -291,6 +291,7 @@ footer a{text-decoration:none}footer a:hover{text-decoration:underline}
 
 
 /* dotyk tylko na puszce: reszta pola przewija strone */
+model-viewer[data-drag]{touch-action:none;cursor:grab}
 model-viewer.mv{touch-action:none;clip-path:ellipse(var(--hx,40%) var(--hy,34%) at var(--cx,50%) var(--cy,52%));transition:clip-path .45s cubic-bezier(.2,.8,.2,1),opacity .5s}
 .tile .ph model-viewer{pointer-events:none}
 .mvbox model-viewer{--hx:30%;--hy:26%}
@@ -304,6 +305,7 @@ model-viewer.lidopen{clip-path:inset(0)}
 .tile .add{flex:1;min-height:38px}
 @media (max-width:699px){.tq{height:34px}.tq button{width:28px;height:34px}.tile .row{flex-direction:column;align-items:stretch}.tq{justify-content:space-between}}
 </style>
+<style>img{-webkit-touch-callout:none;-webkit-user-drag:none;user-select:none}</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="snuzo" viewBox="0 0 2229 1355"><path fill="currentColor" fill-rule="evenodd" d="M1988 1354C1910 1346 1858 1304 1838 1234C1833 1216 1831 1210 1830 1198C1829 1192 1827 1183 1827 1178C1823 1160 1823 1127 1823 889C1823 667 1823 618 1820 453C1817 257 1818 190 1825 155C1839 80 1879 33 1947 12C1957 9 1993 4 2004 4C2122 4 2201 70 2217 181C2218 189 2219 197 2220 200C2223 219 2224 247 2224 400C2225 483 2225 566 2226 584C2230 902 2230 1128 2224 1178C2212 1277 2159 1333 2058 1353C2051 1354 1998 1355 1988 1354ZM1127 1348C1065 1342 1013 1308 990 1257C971 1216 966 1175 966 1060C966 1024 966 950 965 894C964 840 964 724 963 637C962 550 962 450 961 413C959 281 959 27 960 22C963 15 958 15 1050 16L1131 16L1133 19C1137 22 1137 41 1137 409C1137 583 1138 812 1138 918L1139 1112L1141 1123C1146 1145 1153 1152 1168 1152C1182 1152 1190 1143 1194 1121L1196 1110L1195 565L1195 21L1198 18L1201 15L1286 15C1375 14 1373 14 1376 19C1379 26 1378 1123 1375 1153C1358 1297 1276 1361 1127 1348ZM184 1346C125 1339 74 1310 45 1267C26 1240 12 1196 8 1153C5 1122 5 1105 2 833L2 771L5 768L8 765L26 765C78 763 173 763 176 766C181 770 181 767 181 880C180 1036 181 1116 184 1128C189 1153 208 1162 224 1146C236 1135 237 1120 235 998C231 779 234 795 187 736C162 706 139 677 122 656C107 637 104 634 79 602C30 541 12 502 5 443C5 436 3 425 2 420C-1 397 -0 192 4 181C4 180 5 171 7 162C22 72 74 21 166 3C198 -3 254 -0 290 9C353 26 399 76 410 142C417 186 417 195 417 350L416 481L414 483L411 486L329 486C263 485 246 485 243 484C237 482 237 483 237 423C237 242 235 210 228 197C219 180 196 181 187 198C181 211 178 347 184 408C186 442 199 469 226 498C235 507 257 534 271 552C291 576 310 600 326 620C355 655 367 671 384 702C387 709 390 714 390 715C390 715 392 719 394 724C401 740 409 769 414 798C418 820 418 1115 414 1152C411 1173 407 1197 405 1207C403 1212 401 1219 400 1224C392 1253 370 1289 348 1306C311 1336 241 1353 184 1346ZM779 1342C750 1341 752 1343 746 1312C743 1300 740 1286 739 1282C737 1273 732 1251 728 1226C726 1216 724 1205 723 1200C722 1196 720 1188 720 1182C719 1176 717 1168 716 1164C715 1161 713 1152 712 1145C711 1138 709 1129 708 1126C707 1122 705 1113 704 1106C703 1100 701 1092 700 1088C699 1084 697 1076 696 1068C695 1061 693 1051 692 1045C690 1039 689 1031 688 1027C687 1023 686 1014 684 1008C682 1001 680 991 680 986C679 981 677 972 675 968C674 963 672 953 671 946C670 939 668 931 667 928C667 924 665 916 664 909C663 902 661 893 660 889C659 885 657 877 656 871C656 865 654 856 652 850C651 844 649 834 648 827C645 808 638 783 636 783C632 783 632 796 635 1228C636 1344 636 1338 629 1340C624 1342 480 1341 476 1340C471 1337 471 1346 470 1165C469 1072 469 951 468 894C467 838 467 755 466 710C466 665 466 573 465 507C463 280 463 27 464 23C466 16 462 16 541 16C621 16 615 15 619 23C620 26 622 32 623 38C624 44 627 55 628 63C630 71 633 83 635 90C640 115 644 131 645 133C646 135 647 142 649 149C650 156 654 176 658 194C662 212 665 229 665 231C666 233 668 242 669 250C671 258 675 274 677 284C679 296 682 311 684 318C686 325 688 336 688 340C689 345 691 355 693 362C695 368 696 376 697 378C697 380 698 386 699 390C701 399 707 429 713 456C715 466 717 478 718 482C719 486 720 493 721 498C722 502 723 509 724 513C725 517 727 528 728 536C735 580 742 592 743 562C744 541 742 308 740 206C739 125 739 23 740 20C742 16 747 16 771 16C784 16 819 16 850 16L905 15L908 18L911 21L911 52C911 69 911 137 912 202C912 267 913 444 914 594C914 744 914 920 915 984C916 1360 916 1340 910 1342C908 1343 818 1343 779 1342ZM1430 1342C1421 1341 1420 1341 1419 1337C1417 1332 1418 1175 1420 1170C1420 1167 1422 1159 1423 1150C1424 1141 1426 1132 1427 1128C1429 1118 1430 1113 1432 1100C1432 1093 1434 1084 1435 1080C1436 1075 1438 1065 1439 1056C1440 1048 1442 1037 1443 1032C1444 1026 1446 1014 1447 1006C1449 997 1451 985 1452 979C1454 973 1455 965 1456 960C1457 956 1458 948 1460 943C1461 938 1463 928 1463 921C1464 914 1466 904 1467 898C1469 891 1471 881 1471 874C1472 868 1474 859 1475 855C1476 851 1478 842 1479 834C1480 827 1482 816 1484 810C1485 805 1487 795 1488 789C1488 783 1490 773 1492 768C1493 762 1495 752 1496 746C1496 739 1498 728 1500 721C1502 713 1503 703 1504 698C1505 694 1506 685 1507 680C1509 674 1511 665 1512 658C1512 652 1514 643 1516 638C1517 633 1519 624 1520 618C1520 612 1522 602 1524 594C1526 587 1527 577 1528 572C1529 567 1530 559 1531 555C1532 551 1534 541 1535 534C1536 527 1538 516 1540 511C1541 506 1543 497 1543 491C1544 486 1546 477 1547 472C1548 467 1550 457 1551 450C1552 443 1554 433 1555 428C1556 423 1558 412 1559 405C1560 397 1562 386 1564 382C1565 377 1566 370 1567 367C1567 364 1569 353 1571 342C1573 331 1576 318 1576 313C1577 307 1579 299 1580 295C1581 290 1583 281 1584 275C1585 268 1587 259 1588 254C1589 249 1590 241 1591 236C1592 232 1593 224 1594 219C1597 202 1604 204 1510 203L1431 202L1429 200L1426 198L1426 108C1426 7 1426 14 1433 12C1437 11 1630 11 1719 12L1770 12L1772 15C1776 19 1778 180 1774 198C1773 202 1769 223 1766 243C1763 263 1759 286 1757 295C1756 304 1754 319 1752 330C1750 340 1748 354 1747 362C1745 369 1744 378 1743 382C1742 386 1741 393 1740 398C1739 402 1737 411 1736 416C1736 421 1733 434 1732 444C1726 471 1723 489 1720 507C1719 516 1717 528 1716 535C1714 541 1713 550 1712 555C1711 560 1710 570 1708 576C1707 583 1705 594 1704 602C1703 609 1701 617 1700 621C1700 625 1698 636 1696 646C1694 655 1692 669 1691 676C1685 704 1683 717 1680 732C1678 741 1677 751 1676 754C1675 758 1673 767 1672 774C1671 781 1669 793 1667 800C1665 808 1664 816 1663 819C1663 822 1662 829 1660 835C1659 841 1657 850 1656 855C1656 861 1654 870 1653 876C1651 881 1649 890 1648 895C1648 900 1646 909 1644 914C1643 919 1641 930 1640 937C1639 944 1637 955 1636 962C1634 968 1633 977 1632 982C1631 986 1630 994 1629 998C1628 1002 1626 1012 1625 1021C1623 1030 1621 1040 1620 1044C1619 1049 1617 1059 1616 1066C1614 1074 1612 1083 1611 1086C1611 1089 1609 1097 1607 1104C1606 1111 1605 1119 1604 1122C1601 1137 1599 1136 1673 1135C1767 1134 1772 1134 1775 1141C1778 1149 1776 1334 1772 1337L1770 1340L1650 1340C1584 1341 1512 1341 1490 1342C1448 1343 1443 1343 1430 1342ZM2033 1156C2037 1154 2043 1148 2045 1143C2051 1133 2051 1094 2049 644C2048 532 2048 397 2048 344C2048 237 2048 227 2043 212C2034 185 2008 183 1999 208C1995 221 1995 207 1995 672L1996 1116L1998 1128C2002 1154 2016 1164 2033 1156Z"/></symbol></svg>
@@ -324,19 +326,19 @@ model-viewer.lidopen{clip-path:inset(0)}
 <main>
 <section class="hero" aria-labelledby="h1">
   <p class="eyebrow" id="flavEyebrow">Mango</p>
-  <h1 id="h1">Saszetki bez nikotyny.</h1>
-  <p class="sub">Sześć smaków. 20 saszetek w puszce.</p>
+  <h1 id="h1">Saszetki bez nikotyny</h1>
+  <p class="sub">6 smaków, 20 saszetek w puszce</p>
   <div class="ctas"><button class="btn" type="button" id="heroBuy">Kup za 24,99 zł</button><a class="lnk" href="#smaki">Zobacz smaki ›</a></div>
   <div class="stage">
-    <model-viewer touch-action="pan-y" orbit-sensitivity="1.4" class="mv" id="heroMv" src="../../img/3d/mango.gltf" camera-orbit="-18deg 62deg 2.6m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 42deg 0.5m" max-camera-orbit="auto 78deg 20m" interpolation-decay="120" alt="Puszka SNUZO w 3D"></model-viewer>
+    <model-viewer data-drag class="mv" id="heroMv" src="../../img/3d/mango.gltf" camera-orbit="-18deg 62deg 2.6m" interaction-prompt="none" shadow-intensity="1" shadow-softness="1" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 42deg 0.5m" max-camera-orbit="auto 78deg 20m" interpolation-decay="120" alt="Puszka SNUZO w 3D"></model-viewer>
   </div>
   <div class="flav" id="flav" role="group" aria-label="Wybierz smak"></div>
-  <p class="flavname"><span id="flavName">Mango</span> · obróć puszkę palcem, stuknij dwa razy, żeby otworzyć</p>
+  <p class="flavname"><span id="flavName">Mango</span></p>
 </section>
 
 <section class="sec" id="smaki" aria-labelledby="smaki-h">
   <div class="wrap">
-    <h2 class="h2 rv" id="smaki-h">Sześć smaków.<br><span>Jedna puszka.</span></h2>
+    <h2 class="h2" id="smaki-h">Smaki</h2>
     <ul class="tiles" id="shop"></ul>
     <p class="note">Ceny brutto. Płatność BLIK, kartą lub przelewem. Dostawa InPost.</p>
   </div>
@@ -344,20 +346,20 @@ model-viewer.lidopen{clip-path:inset(0)}
 
 <section class="sec alt" id="cechy" aria-labelledby="cechy-h">
   <div class="wrap">
-    <h2 class="h2 rv" id="cechy-h">Prosto.<br><span>Bez nikotyny.</span></h2>
+    <h2 class="h2" id="cechy-h">O produkcie</h2>
     <div class="bento">
-      <div class="b b1"><p class="big">0 mg</p><p>nikotyny w każdej saszetce</p></div>
+      <div class="b b1"><p class="big">0 mg</p><p>nikotyny</p></div>
       <div class="b b2"><p class="big">20</p><p>saszetek w puszce</p></div>
-      <div class="b b3"><p class="big">5–20<small> min</small></p><p>tyle trwa jedna saszetka</p></div>
-      <div class="b b4"><img src="../../img/hd-jagoda-sid.webp" width="1400" height="1400" loading="lazy" alt="Puszka SNUZO z boku"><div><p class="mid">Przegródka na zużyte saszetki</p><p>Zużytą saszetkę chowasz w wieczku i wyrzucasz później do kosza.</p></div></div>
-      <div class="b b5"><p class="mid">Bez tytoniu</p><p>Saszetka z włókniny, w środku celuloza i aromat.</p></div>
+      <div class="b b3"><p class="big">5–20<small> min</small></p><p>jedna saszetka</p></div>
+      <div class="b b4"><img src="../../img/hd-jagoda-sid.webp" width="1400" height="1400" loading="lazy" alt="Puszka SNUZO z boku"><div><p class="mid">Miejsce na zużyte saszetki</p><p>W wieczku jest osobna przegródka.</p></div></div>
+      <div class="b b5"><p class="mid">Bez tytoniu</p><p>Pełny skład niżej.</p></div>
     </div>
   </div>
 </section>
 
 <section class="sec" id="jak" aria-labelledby="jak-h">
   <div class="wrap">
-    <h2 class="h2 rv" id="jak-h">Jak używać.</h2>
+    <h2 class="h2" id="jak-h">Jak używać</h2>
     <ol class="steps">
       <li><span>1</span><h3>Włóż saszetkę</h3><p>Jedną pod górną wargę albo pod język.</p></li>
       <li><span>2</span><h3>Zostaw na 5–20 minut</h3><p>Nie połykaj i nie rozrywaj saszetki.</p></li>
@@ -368,9 +370,9 @@ model-viewer.lidopen{clip-path:inset(0)}
 
 <section class="sec alt" id="sklad" aria-labelledby="sklad-h">
   <div class="wrap comp">
-    <div class="mvbox"><model-viewer touch-action="pan-y" orbit-sensitivity="1.6" id="dnoMv" src="../../img/3d/jagoda.gltf" camera-orbit="20deg 128deg 2.4m" camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none" shadow-intensity="0" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 105deg 0.5m" max-camera-orbit="auto 150deg 20m" interpolation-decay="120" loading="lazy" alt="Dno puszki SNUZO z etykietą"></model-viewer></div>
+    <div class="mvbox"><model-viewer data-drag id="dnoMv" src="../../img/3d/jagoda.gltf" camera-orbit="20deg 142deg 1.9m" interaction-prompt="none" shadow-intensity="0" exposure="1" environment-image="neutral" tone-mapping="neutral" field-of-view="30deg" min-field-of-view="30deg" max-field-of-view="30deg" min-camera-orbit="auto 125deg 0.5m" max-camera-orbit="auto 160deg 20m" interpolation-decay="120" loading="lazy" alt="Dno puszki SNUZO z etykietą"></model-viewer></div>
     <div>
-      <h2 class="h2 rv" id="sklad-h">Skład.<br><span>Na dnie puszki.</span></h2>
+      <h2 class="h2" id="sklad-h">Skład</h2>
       <dl class="specs">
         <div><dt>Składniki</dt><dd>Celuloza, woda, eelpee*, aromat, sól, sukraloza, sorbian potasu, węglan potasu.<small>*autorski kompleks 4 składników w oparciu o glikol propylenowy i spilanthol</small></dd></div>
         <div><dt>Porcja</dt><dd>Maksymalnie 10 saszetek dziennie.</dd></div>
@@ -384,7 +386,7 @@ model-viewer.lidopen{clip-path:inset(0)}
 
 <section class="sec" id="faq" aria-labelledby="faq-h">
   <div class="wrap">
-    <h2 class="h2 rv" id="faq-h">Pytania.</h2>
+    <h2 class="h2" id="faq-h">Pytania</h2>
     <div class="faq">
       <details><summary>Czy SNUZO zawiera nikotynę albo tytoń?</summary><p>Nie. Saszetki nie zawierają nikotyny ani tytoniu.</p></details>
       <details><summary>Kto może kupić SNUZO?</summary><p>Tylko osoby pełnoletnie. Wiek potwierdzasz przy zamówieniu.</p></details>
@@ -475,18 +477,18 @@ document.addEventListener("load",e=>{if(e.target.tagName==="MODEL-VIEWER")e.targ
 function loadMV(){if(mvReady)return;mvReady=true;customElements.whenDefined("model-viewer").then(()=>{const M=customElements.get("model-viewer");try{M.minimumRenderScale=1}catch(_){}});const sc=document.createElement("script");sc.type="module";sc.src="../../js/model-viewer.min.js";document.head.appendChild(sc)}
 const spins=new Set();
 function spinner(mv){const o={mv,th:-18,user:0,on:false,hold:false};
-  const sync=()=>{try{const c=mv.getCameraOrbit();o.th=c.theta*180/Math.PI;o.ph0=c.phi*180/Math.PI;o.amp=0}catch(_){}};
-  const pause=()=>{o.hold=true};const resume=()=>{o.hold=false;o.user=performance.now()+3000;sync()};
-  mv.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse")pause()});
-  mv.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse")resume()});
-  mv.addEventListener("pointerdown",pause);
-  mv.addEventListener("pointerup",e=>{if(e.pointerType!=="mouse")resume();else sync()});
-  mv.addEventListener("pointercancel",resume);
-  mv.addEventListener("camera-change",e=>{if(e.detail&&e.detail.source==="user-interaction"){o.user=performance.now()+3000;sync()}});
+  o.set=()=>{mv.cameraOrbit=`${o.th.toFixed(2)}deg ${(o.ph0||56).toFixed(2)}deg ${o.r||"2.6m"}`};
+  mv.addEventListener("pointerenter",e=>{if(e.pointerType==="mouse")o.hold=true});
+  mv.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse"&&!o.drag){o.hold=false;o.user=performance.now()+3000}});
+  if(mv.hasAttribute("data-drag")){let x0=0,y0=0,t0=0,p0=0,id=null;const lo=o.lo??42,hi=o.hi??78;
+    mv.addEventListener("pointerdown",e=>{id=e.pointerId;o.drag=true;o.hold=true;x0=e.clientX;y0=e.clientY;t0=o.th;p0=o.ph0||56;o.amp=0;try{mv.setPointerCapture(id)}catch(_){}});
+    mv.addEventListener("pointermove",e=>{if(!o.drag||e.pointerId!==id)return;e.preventDefault();o.th=t0-(e.clientX-x0)*.6;o.ph0=Math.max(o.lo??42,Math.min(o.hi??78,p0-(e.clientY-y0)*.25));o.set()});
+    const end=e=>{if(!o.drag)return;o.drag=false;id=null;o.user=performance.now()+3000;if(e.pointerType!=="mouse")o.hold=false};
+    mv.addEventListener("pointerup",end);mv.addEventListener("pointercancel",end);}
   return o}
 let lastT=0;
 function tick(t){const dt=lastT?Math.min(64,t-lastT):16;lastT=t;
-  spins.forEach(o=>{if(!o.on||o.hold||t<o.user)return;o.th+=dt*.0045*(o.sp??1);const ph=(o.ph0||56)+(o.amp??6)*Math.sin(t/((o.per||1800)*2.2)+(o.fz||0));o.mv.cameraOrbit=`${o.th.toFixed(2)}deg ${ph.toFixed(2)}deg ${o.r||'1.7m'}`});
+  spins.forEach(o=>{if(!o.on||o.hold||o.drag||t<o.user)return;o.th+=dt*.0045*(o.sp??1);const ph=(o.ph0||56)+(o.amp??6)*Math.sin(t/((o.per||1800)*2.2)+(o.fz||0));o.mv.cameraOrbit=`${o.th.toFixed(2)}deg ${ph.toFixed(2)}deg ${o.r||'1.7m'}`});
   if(spins.size)requestAnimationFrame(tick);else lastT=0}
 function track(o){spins.add(o);if(spins.size===1)requestAnimationFrame(tick)}
 
@@ -550,7 +552,7 @@ let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on"
 render();
 
 /* sklad: dno */
-const dnoMv=$("dnoMv"),dnoS=spinner(dnoMv);dnoS.ph0=126;dnoS.amp=8;dnoS.r="3m";dnoS.th=20;track(dnoS);
+const dnoMv=$("dnoMv"),dnoS=spinner(dnoMv);dnoS.ph0=142;dnoS.lo=125;dnoS.hi=160;dnoS.amp=4;dnoS.r="1.9m";dnoS.th=20;track(dnoS);
 if("IntersectionObserver"in window)new IntersectionObserver(es=>es.forEach(e=>{dnoS.on=e.isIntersecting;if(e.isIntersecting)loadMV()}),{threshold:.3}).observe(dnoMv);
 
 /* product modal: galeria */
