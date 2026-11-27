@@ -36,3 +36,15 @@
 #snuzo-cc .cc-always{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cc-gold2);white-space:nowrap}
 @media (min-width:520px){#snuzo-cc .cc-pri{flex:1 1 auto}}
 @media print{#snuzo-cc{display:none!important}}
+
+/* styl jasny jak strona (27.11) */
+#snuzo-cc{background:rgba(255,255,255,.96);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border:1px solid #e8e8ed;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.12)}
+#snuzo-cc .cc-kick{display:none}
+#snuzo-cc h2{font-stretch:100%;font-weight:700;text-transform:none;font-size:19px;letter-spacing:-.02em;line-height:1.2;margin:0 0 6px}
+#snuzo-cc p{color:#424245;font-size:13.5px}
+#snuzo-cc a{text-decoration-color:#86868b}
+#snuzo-cc button{border-radius:999px;text-transform:none;letter-spacing:-.01em;font-size:14px;font-weight:600;height:42px}
+#snuzo-cc .cc-pri:hover{background:#000;color:#fff}
+#snuzo-cc .cc-row{border-color:#e8e8ed}
+#snuzo-cc input:checked+.cc-sw::after{background:#fff}
+#snuzo-cc .cc-always{color:#6e6e73;letter-spacing:.02em;text-transform:none}
